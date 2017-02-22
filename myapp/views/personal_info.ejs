@@ -1,0 +1,39 @@
+<% include ./header %>
+<div class="container-fluid text-center">    
+	<div class="row content">
+		<div class="col-sm-12"> 
+			<% if(member) {%>
+			<h1><%= member.name %></h1>
+			<% } %>
+			<img class="img-thumbnail" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcR8zrE1DLads0mYqakFoa_ZeChcP39nQvkHOR7tVUlx5mBwnEQdLg">
+			<br><br>
+			<div class="container">
+				<table class="table" style="font-size: 20px">
+					<tbody>
+						<tr>
+						</tr>
+						<tr>
+							<td> <span class="glyphicon glyphicon-earphone" aria-hidden="true" style="color: #649965"></span></td>
+							<% if(member) {%>
+							<td><%= member.phonenum %></td>
+							<% } %>
+						</tr>
+						<tr>
+							<td> <span class="glyphicon glyphicon-home" aria-hidden="true" style="color: #649965"></span></td>
+							<% if(member) {%>
+							<td><%= member.address %></td>
+							<% } %>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+<br>
+</body>
+</html>

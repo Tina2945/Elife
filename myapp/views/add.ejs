@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<style>
+		body{
+			background-color: #ff9999;
+		}
+		h1{
+			color: #ffffff;
+		}
+	</style>
+  </head>
+  <body>
+  	<div class="container" style="width:80%">
+  		<h1>新增商品</h1>
+  		<hr>
+		<form action="/add" method="POST" enctype="multipart/form-data">
+			<div class="form-group">
+			  	<h4><label for="name">商品名稱:</label></h4>
+			  	<input type="text" class="form-control" name="name" id="name" placeholder="請輸入商品名稱">
+			</div>
+			<div class="form-group">
+			  	<h4><label for="price">商品價格:</label></h4>
+			  	<input type="text" class="form-control" name="price" id="price" placeholder="請輸入商品價格(元/單位)">
+			</div>
+			<div class="form-group">
+				<h4><label for="description">商品簡介:</label></h4>
+				<textarea class="form-control" rows="3" name="description" id="description" placeholder="請輸入商品簡介"></textarea>
+    		</div>	
+		 	<div class="form-group">
+			    <h4><label for="photo">上傳圖片</label></h4>
+			    <input type="file" accept="image/*" capture="camera" name="photo" id="photo">
+			</div>
+  			<div class="form-group" style="text-align:right">
+				<button type="submit" class="btn btn-default">新增</button>
+				<a href="/"><button type="button" class="btn btn-default">取消</button></a>
+			</div>
+		</form>
+	</div>
+  </body>
+</html>

@@ -1,0 +1,83 @@
+<% include ./header %>
+<div class="container-fluid text-center">    
+	<div class="row content">
+		<div class="col-sm-12 text-middle"> 
+			<h1>購買紀錄</h1>
+			<hr>
+			<div class="container">
+				<div class="row">
+					<div id="custom-search-input">
+						<div class="input-group col-md-12">
+							<input type="text" class=" search-query form-control" placeholder="搜尋店家或日期" />
+							<span class="input-group-btn ">
+								<button class="btn btn-success " type="button">
+									<span class=" glyphicon glyphicon-search"></span>
+								</button>
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<br>
+			<div class="container">
+				<a data-toggle="modal" data-target="#rec_info" button type="button" class="btn btn-success btn-lg btn-block"><%= date %></button></a>
+				<a href="" button type="button" class="btn btn-success btn-lg btn-block"><%= date %></button></a>
+				<a href="" button type="button" class="btn btn-success btn-lg btn-block"><%= date %></button></a>
+				<a href="" button type="button" class="btn btn-success btn-lg btn-block"><%= date %></button></a>
+				<a href="" button type="button" class="btn btn-success btn-lg btn-block"><%= date %></button></a>
+			</div>
+			<!-- Modal -->
+			<div class="modal fade" id="rec_info" role="dialog">
+				<div class="modal-dialog modal-lg">
+					<div class="modal-content col-sm-12 text-center">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h2 class="modal-title text-center"><%= date %>購買紀錄</h4>
+							</div>
+							<div class="modal-body">
+								<h2>政大水果店</h2>
+								<table class="table table-striped" style="font-size: 20px">
+									<tbody>
+										<tr>
+											<td><div class="media-left media-top">
+												<img src="http://www.wall001.com/photograph/fruit_strawberry/mxxx01/fruit_strawberry_wallpaper_Vol_014_SN156.JPG" class="media-object" style="width:80px">
+											</div></td>
+											<td>大湖草莓</td>
+											<td>1盒</td>
+											<td>$400</td>
+										</tr>
+										<tr>
+											<td><div class="media-left media-top">
+												<img src="http://hk.etw.nextmedia.com/images/next-photos/Eat_Travel/950/640pixfolder/ETA950_018a_IMG_6087.jpg" style="width:80px">
+											</div></td>
+											<td>富士蘋果</td>
+											<td>3顆</td>
+											<td>$100</td>
+										</tr>
+									</tbody>
+								</table>
+								<h2>政大蔬菜店</h2>
+								<table class="table table-striped" style="font-size: 20px">
+									<tbody>
+										<tr>
+											<td><div class="media-left media-top">
+												<img src="http://www.dodocook.com/user_upload/recipe/5/47/24/recipe_0054724_600_fit_1406886913.jpg" class="media-object" style="width:80px">
+											</div></td>
+											<td>杏鮑菇</td>
+											<td>1袋</td>
+											<td>$40</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="modal-footer">
+								<h3 class="text-center" style="color: #EE4035">總金額 $540元</h3>
+								<button type="button" class="btn btn-success btn-lg" data-dismiss="modal">簽收</button></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	</html>

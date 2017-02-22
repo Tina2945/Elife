@@ -1,0 +1,174 @@
+<% include ./header %>
+<br>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="container">
+				<ul class="nav nav-tabs text-center" style="font-size: 25px">
+					<li class="active col-xs-6"><a data-toggle="tab" href="#contact-store">追蹤店家</a></li>
+					<li class="col-xs-6"><a data-toggle="tab" href="#all-store">全部店家</a></li>
+				</ul>
+				<br><br>
+				<div class="tab-content">
+					<div id="contact-store" class="tab-pane fade in active">
+						<div class="col-xs-12">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h1 class="panel-title text-center" style="font-size: 25px"><%= fruit_store %></h1>
+								</div>
+								<div class="panel-image hide-panel-body text-center">
+									<a href="/fruits_store"><img class="img-thumbnail" src="http://iphoto.ipeen.com.tw/photo/comment/201103/cgmfba5d97e1973ee50ac278f63e28ac0db277.jpg" /></a>
+								</div>
+								<div class="panel-footer text-center">
+									<a data-toggle="modal" data-target="#store_info">
+										<button type="button" class="btn btn-info btn-lg">
+											<span class="glyphicon glyphicon-info-sign"></span> 店家資訊
+										</button>
+									</a>
+									<button type="button" class="btn btn-success btn-lg">取消追蹤</button>
+								</div>
+							</div>
+						</div>
+						<!-- Modal -->
+						<div class="modal fade" id="store_info" role="dialog">
+							<div class="modal-dialog modal-lg">
+								<div class="modal-content col-sm-12 text-center">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal">&times;</button>
+										<h2 class="modal-title text-center"><%= fruit_store %></h4>
+										</div>
+										<div class="modal-body">
+											<img class="img-thumbnail" src="http://iphoto.ipeen.com.tw/photo/comment/201103/cgmfba5d97e1973ee50ac278f63e28ac0db277.jpg"/>
+											<h4>政大最好吃的水果店</h4>
+											<br>
+											<h4><span class="glyphicon glyphicon-earphone" aria-hidden="true"> </span> 電話: 02-4444-9999</h4>
+											<h4><span class="glyphicon glyphicon-home" aria-hidden="true"> </span> 地址: 台北市文山區指南路二段64號</h4>
+											<h4><span class="glyphicon glyphicon-user" aria-hidden="true"> </span> 聯絡人: 水果王</h4>
+											<h3 style="color: #EE4035">最後出貨時間 17:00</h3>
+										</div>
+										<div class="modal-footer">
+											<a href="/fruits_store" button type="button" class="btn btn-success btn-lg">購物去!</button></a>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-xs-12">
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h2 class="panel-title text-center" style="font-size: 25px"><%= veg_store %></h2>
+									</div>
+									<div class="panel-image hide-panel-body text-center">
+										<a href="#"><img class="img-thumbnail" src="http://www.v627.com/uploads/allimg/c151019/144523C364P-1M03.jpg" /></a>
+									</div>
+									<div class="panel-footer text-center">
+										<a data-toggle="modal" data-target="#store_info">
+											<button type="button" class="btn btn-info btn-lg">
+												<span class="glyphicon glyphicon-info-sign"></span> 店家資訊
+											</button>
+										</a>
+										<button type="button" class="btn btn-success btn-lg">取消追蹤</button>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div id="all-store" class="tab-pane fade">
+							<div class="col-xs-12">
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h2 class="panel-title text-center" style="font-size: 25px"><%= fifty_store %></h2>
+									</div>
+									<div class="panel-image hide-panel-body text-center">
+										<img class="img-thumbnail" src="http://img.ltn.com.tw/Upload/liveNews/BigPic/600_phpjo1vnP.jpeg" />
+									</div>
+									<div class="panel-footer text-center">
+										<a data-toggle="modal" data-target="#store_info">
+											<button type="button" class="btn btn-info btn-lg">
+												<span class="glyphicon glyphicon-info-sign"></span> 店家資訊
+											</button>
+										</a>
+										<button type="button" class="btn btn-success btn-lg">追蹤</button>
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-12">
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h2 class="panel-title text-center" style="font-size: 25px"><%= watsons %></h2>
+									</div>
+									<div class="panel-image hide-panel-body text-center">
+										<img class="img-thumbnail" src="http://s314.siliconimg.com/kb/content_images/2014/01/25/372338/1390640343_81.png" />
+									</div>
+									<div class="panel-footer text-center">
+										<a data-toggle="modal" data-target="#store_info">
+											<button type="button" class="btn btn-info btn-lg">
+												<span class="glyphicon glyphicon-info-sign"></span> 店家資訊
+											</button>
+										</a>
+										<button type="button" class="btn btn-success btn-lg">追蹤</button>
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-12">
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h2 class="panel-title text-center" style="font-size: 25px"><%= pharmacy %></h2>
+									</div>
+									<div class="panel-image hide-panel-body text-center">
+										<img class="img-thumbnail" src="http://cyh365.gogoblog.com.tw/images/vote/s40.jpg" />
+									</div>
+									<div class="panel-footer text-center">
+										<a data-toggle="modal" data-target="#store_info">
+											<button type="button" class="btn btn-info btn-lg">
+												<span class="glyphicon glyphicon-info-sign"></span> 店家資訊
+											</button>
+										</a>
+										<button type="button" class="btn btn-success btn-lg">追蹤</button>
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-12">
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h2 class="panel-title text-center" style="font-size: 25px"><%= fruit_store %></h2>
+									</div>
+									<div class="panel-image hide-panel-body text-center">
+										<img class="img-thumbnail" src="http://iphoto.ipeen.com.tw/photo/comment/201103/cgmfba5d97e1973ee50ac278f63e28ac0db277.jpg" />
+									</div>
+									<div class="panel-footer text-center">
+										<a data-toggle="modal" data-target="#store_info">
+										<button type="button" class="btn btn-info btn-lg">
+												<span class="glyphicon glyphicon-info-sign"></span> 店家資訊
+											</button>
+										</a>
+										<button type="button" class="btn btn-success btn-lg">取消追蹤</button>
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-12">
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h2 class="panel-title text-center" style="font-size: 25px"><%= veg_store %></h2>
+									</div>
+									<div class="panel-image hide-panel-body text-center">
+										<img class="img-thumbnail" src="http://www.v627.com/uploads/allimg/c151019/144523C364P-1M03.jpg" />
+									</div>
+									<div class="panel-footer text-center">
+										<a data-toggle="modal" data-target="#store_info">
+											<button type="button" class="btn btn-info btn-lg">
+												<span class="glyphicon glyphicon-info-sign"></span> 店家資訊
+											</button>
+										</a>
+										<button type="button" class="btn btn-success btn-lg">取消追蹤</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>
