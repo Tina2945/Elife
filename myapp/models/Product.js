@@ -7,6 +7,57 @@ var Product = function(options) {
     this.price = options.price;
     this.description = options.description;
     this.photo = options.photo;
+    this.supplierId = options.supplierId;
+};
+
+Product.getAll = function(cb) {
+    db.select()
+        .from("product")
+        .map(function(row) {
+            return new Product({
+                id: row.id,
+                name: row.name,
+                price: row.price,
+                description: row.description,
+                photo: row.photo,
+                supplierId: row.supplier_id
+            });
+        })
+        .then(function(productList) {
+            cb(null, productList);
+        })
+        .catch(function(err) {
+            cb(new GeneralErrors.Database());
+        });
+};
+
+Product.get = function(productId, cb) {
+    db.select()
+        .from("product")
+        .where({
+            id: productId
+        })
+        .map(function(row) {
+            return new Product({
+                id: row.id,
+                name: row.name,
+                price: row.price,
+                description: row.description,
+                photo: row.photo,
+                supplierId: row.supplier_id
+            });
+        })
+        .then(function(productList) {
+            if (productList.length) {
+                cb(null, productList[0]);
+            } else {
+                cb(null, new GeneralErrors.NotFound());
+            }
+        })
+        .catch(function(err) {
+            console.log(err);
+            cb(new GeneralErrors.Database());
+        });
 };
 
 Product.prototype.save = function(cb) {
@@ -34,7 +85,8 @@ Product.prototype.save = function(cb) {
                 name: this.name,
                 price: this.price,
                 description: this.description,
-                photo: this.photo
+                photo: this.photo,
+                supplier_id: this.supplierId
             })
             .then(function(result) {
                 var insertedId = result[0];

@@ -12,7 +12,7 @@ var register = require('./routes/member/register');
 var login = require('./routes/member/login');
 var supplier = require('./routes/supplier/supplier');
 var third = require('./routes/third/third');
-var add = require('./routes/supplier/add');
+var product = require('./routes/supplier/product');
 var home = require('./routes/member/home');
 var thirdlogin = require('./routes/third/thirdlogin');
 var supplierlogin = require('./routes/supplier/supplierlogin');
@@ -54,7 +54,7 @@ app.use('/fruits_store', fruits_store);
 app.use('/strawberry', strawberry);
 app.use('/order_suc', order_suc);
 app.use('/home', home);
-app.use('/add', add);
+app.use('/product', product);
 
 
 // catch 404 and forward to error handler
