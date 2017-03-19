@@ -1,24 +1,44 @@
-<% include ./header %>
-    <div class="container-fluid text-center">
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <title>Elife</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/stylesheets/purchase_rec.css">
+</head>
+
+<body>
+    <div class="navbar-header">
+        <div class="navbar-brand pull-right">
+            <img src="/images/logo.png" alt="Brand Image">
+        </div>
+        <div id="mySidenav" class="sidenav sidenav-hover">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <h3> &nbsp;&nbsp;&nbsp;
+                <% if(member) {%>
+                    <%= member.name %>
+                        <% } %>, 您好!</h3>
+            <a href="/home"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;首頁</a>
+            <a href="/shopping_cart"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;&nbsp;購物車</a>
+            <a href="/purchase_rec"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;購買紀錄</a>
+            <a href="/personal_info"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;個人資料</a>
+            <a href="/"><span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;登出</a>
+        </div>
+        <div id="main">
+            <span style="font-size:30px;cursor:pointer;color:white" onclick="openNav()">&#9776; 
+        </span>
+        </div>
+    </div>
+    <div class="container text-center">
         <div class="row content">
             <div class="col-sm-12 text-middle">
                 <h1>購買紀錄</h1>
                 <hr>
-                <div class="container">
-                    <div class="row">
-                        <div id="custom-search-input">
-                            <div class="input-group col-md-12">
-                                <input type="text" class=" search-query form-control" placeholder="搜尋店家或日期" />
-                                <span class="input-group-btn ">
-								<button class="btn btn-success " type="button">
-									<span class=" glyphicon glyphicon-search"></span>
-                                </button>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <br>
                 <div class="container">
                     <a data-toggle="modal" data-target="#rec_info" button type="button" class="btn btn-success btn-lg btn-block">
                         <%= date %>
@@ -48,10 +68,10 @@
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                                 <h2 class="modal-title text-center"><%= date %>購買紀錄</h4>
-							</div>
-							<div class="modal-body">
-								<h2>政大水果店</h2>
-                                <table class="table table-striped" style="font-size: 20px">
+                            </div>
+                            <div class="modal-body">
+                                <h2>政大水果店</h2>
+                                <table class="table" style="font-size: 20px">
                                     <tbody>
                                         <tr>
                                             <td>
@@ -76,7 +96,7 @@
                                     </tbody>
                                 </table>
                                 <h2>政大蔬菜店</h2>
-                                <table class="table table-striped" style="font-size: 20px">
+                                <table class="table" style="font-size: 20px">
                                     <tbody>
                                         <tr>
                                             <td>
@@ -101,6 +121,15 @@
                 </div>
             </div>
         </div>
-        </body>
+        <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
 
-        </html>
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+        </script>
+</body>
+
+</html>
