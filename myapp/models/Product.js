@@ -10,9 +10,13 @@ var Product = function(options) {
     this.supplierId = options.supplierId;
 };
 
-Product.getAll = function(cb) {
+Product.getAll = function(supplierId, cb) {
     db.select()
         .from("product")
+        .where({
+            supplier_id: supplierId
+        })
+        .orderBy("id", "desc")
         .map(function(row) {
             return new Product({
                 id: row.id,
@@ -70,7 +74,8 @@ Product.prototype.save = function(cb) {
                 name: this.name,
                 price: this.price,
                 description: this.description,
-                photo: this.photo
+                photo: this.photo,
+                supplier_id: this.supplierId
             })
             .then(function() {
                 cb(null, this);
@@ -95,6 +100,23 @@ Product.prototype.save = function(cb) {
             }.bind(this))
             .catch(function(err) {
                 console.log("PRODUCT INSERT", err);
+                cb(new GeneralErrors.Database());
+            });
+    }
+};
+
+Product.prototype.delete = function(cb) {
+    if (this.id) {
+        db("product")
+            .where({
+                id: this.id
+            })
+            .del()
+            .then(function() {
+                cb(null, this);
+            }.bind(this))
+            .catch(function(err) {
+                console.log("PRODUCT DELETED", err);
                 cb(new GeneralErrors.Database());
             });
     }
