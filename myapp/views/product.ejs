@@ -12,12 +12,11 @@
 
 <body>
     <div class="container" style="width:85%">
-        <% if(supplierm) {%>
+        <% if(supplierm) { %>
             <h3>歡迎，<%= supplierm.name %></h3>
-            <br>
             <div>
-                <a data-toggle="modal" data-target="#addProduct">
-                    <button type="button" class="btn btn-info btn-lg">
+                <a href="/product/add">
+                    <button class="btn btn-info btn-lg">
                         <span class="glyphicon glyphicon-plus"></span> 新增
                     </button>
                 </a>
@@ -31,89 +30,48 @@
                                 <%= product.name %> $
                                     <%= product.price %>
                             </div>
-                            <a data-toggle="modal" data-target="#editProduct">
-                                <div class="panel-body"><img src="<%= product.photo %>" class="img-responsive" style="width:100%" alt="Image"></div>
-                            </a>
+                            <div class="panel-body">
+                                <img src="<%= product.photo %>" class="img-responsive" alt="Image" style="width:100%">
+                            </div>
                             <div class="panel-footer">
-                                <%= product.description %>
+                                <%= product.description %> By
+                                    <%= product.supplier.name %>
+                                        <br>
+                                        <form action="/product/edit" method="POST" style="float:left">
+                                            <input type="hidden" name="id" value="<%= product.id %>">
+                                            <button type="submit" class="btn btn-default">修改</button>
+                                        </form>
+                                        <a data-toggle="modal" data-target="#deleteProduct" style="padding-left:5px">
+                                            <button type="button" class="btn btn-default">刪除</button>
+                                        </a>
+                                        <!-- deleteProduct -->
+                                        <div class="modal fade" id="deleteProduct" role="dialog">
+                                            <div class="modal-dialog modal-sm">
+                                                <div class="modal-content col-sm-12">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                        <div class="modal-title">
+                                                            <h4>Elife</h4>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>確定刪除此項商品?</p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <form action="/product/delete" method="POST" style="padding-left:60px">
+                                                            <input type="hidden" name="id" value="<%= product.id %>">
+                                                            <button type="submit" class="btn btn-default">確定</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                             </div>
                         </div>
                     </div>
                     <%  }); %>
             </div>
             <% } %>
-    </div>
-    <!-- addProduct -->
-    <div class="modal fade" id="addProduct" role="dialog">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content col-sm-12">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h1 class="modal-title text-left">新增商品</h1>
-                </div>
-                <form action="/product/add" method="POST" enctype="multipart/form-data">
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <h4><label for="name">商品名稱:</label></h4>
-                            <input type="text" class="form-control" name="name" id="name" placeholder="請輸入商品名稱">
-                        </div>
-                        <div class="form-group">
-                            <h4><label for="price">商品價格:</label></h4>
-                            <input type="text" class="form-control" name="price" id="price" placeholder="請輸入商品價格">
-                        </div>
-                        <div class="form-group">
-                            <h4><label for="description">商品簡介:</label></h4>
-                            <textarea class="form-control" rows="3" name="description" id="description" placeholder="請輸入商品簡介"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <h4><label for="photo">上傳圖片</label></h4>
-                            <input type="file" accept="image/*" capture="camera" name="photo" id="photo">
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <div class="form-group" style="text-align:right">
-                            <button type="submit" class="btn btn-default">新增</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    <!-- updateProduct -->
-    <div class="modal fade" id="editProduct" role="dialog">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content col-sm-12">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h1 class="modal-title text-left">修改商品</h1>
-                </div>
-                <form action="/product/edit" method="POST" enctype="multipart/form-data">
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <h4><label for="name">商品名稱:</label></h4>
-                            <input type="text" class="form-control" name="name" id="name" placeholder="請輸入商品名稱">
-                        </div>
-                        <div class="form-group">
-                            <h4><label for="price">商品價格:</label></h4>
-                            <input type="text" class="form-control" name="price" id="price" placeholder="請輸入商品價格">
-                        </div>
-                        <div class="form-group">
-                            <h4><label for="description">商品簡介:</label></h4>
-                            <textarea class="form-control" rows="3" name="description" id="description" placeholder="請輸入商品簡介"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <h4><label for="photo">上傳圖片</label></h4>
-                            <input type="file" accept="image/*" capture="camera" name="photo" id="photo">
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <div class="form-group" style="text-align:right">
-                            <button type="submit" class="btn btn-default">儲存</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
     </div>
 </body>
 
