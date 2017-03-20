@@ -20,7 +20,7 @@ var supplierlogin = require('./routes/supplier/supplierlogin');
 var personal_info = require('./routes/member/personal_info');
 var purchase_rec = require('./routes/member/purchase_rec');
 var shopping_cart = require('./routes/member/shopping_cart');
-var fruits_store = require('./routes/member/fruits_store');
+var store = require('./routes/member/store');
 var order_suc = require('./routes/member/order_suc');
 var zmq = require('zeromq');
 var zreq = zmq.socket('req');
@@ -29,7 +29,11 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-app.use(session({secret : 'HelloExpressSESSION'}));
+app.use(session({
+    secret: 'HelloExpressSESSION',
+    resave: false,
+    saveUninitialized: true
+}));
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -51,7 +55,7 @@ app.use('/thirdlogin', thirdlogin);
 app.use('/personal_info', personal_info);
 app.use('/purchase_rec', purchase_rec);
 app.use('/shopping_cart', shopping_cart);
-app.use('/fruits_store', fruits_store);
+app.use('/store', store);
 app.use('/order_suc', order_suc);
 app.use('/home', home);
 app.use('/product', product);

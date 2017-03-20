@@ -3,7 +3,6 @@ var router = express.Router();
 var upload = require('../../libs/upload');
 var imgur = require('../../libs/imgur')
 var Product = require('../../models/Product');
-var SupplierMember = require('../../models/supplierm');
 var fs = require('fs');
 var async = require('async');
 
@@ -16,25 +15,9 @@ router.get('/', function(req, res, next) {
         if (err) {
             next();
         } else {
-            async.each(productList, function(product, cb) {
-                SupplierMember.get(product.supplierId, function(err, supplier) {
-                    if (err) {
-                        cb(err);
-                    } else {
-                        product.supplier = supplier;
-                        cb(null);
-                    }
-                });
-            }, function(err) {
-                if (err) {
-                    res.status = err.code;
-                    next();
-                } else {
-                    res.render('product', {
-                        supplierm: req.session.supplierm || null,
-                        productList: productList
-                    });
-                }
+            res.render('product', {
+                supplierm: req.session.supplierm || null,
+                productList: productList || null
             });
         }
     });
@@ -77,17 +60,9 @@ router.post('/edit', function(req, res) {
         if (err) {
             console.log(err);
         } else {
-            SupplierMember.get(product.supplierId, function(err, supplier) {
-                if (err) {
-                    console.log(err);
-                } else {
-                    product.supplier = supplier;
-                    res.render('edit', {
-                        product: product
-                    });
-                }
-            })
-
+            res.render('edit', {
+                product: product
+            });
         }
     });
 });

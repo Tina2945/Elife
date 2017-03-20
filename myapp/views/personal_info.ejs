@@ -22,12 +22,13 @@
             <h3> &nbsp;&nbsp;&nbsp;
                 <% if(member) {%>
                     <%= member.name %>
-                        <% } %>, 您好!</h3>
+                      , 您好!</h3>
             <a href="/home"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;首頁</a>
             <a href="/shopping_cart"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;&nbsp;購物車</a>
             <a href="/purchase_rec"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;購買紀錄</a>
             <a href="/personal_info"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;個人資料</a>
             <a href="/"><span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;登出</a>
+            <% } %>
         </div>
         <div id="main">
             <span style="font-size:30px;cursor:pointer;color:white" onclick="openNav()">&#9776; 
@@ -40,38 +41,30 @@
             <div class="col-sm-12">
                 <% if(member) {%>
                     <h1><%= member.name %></h1>
+                    <img class="img-thumbnail" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcR8zrE1DLads0mYqakFoa_ZeChcP39nQvkHOR7tVUlx5mBwnEQdLg">
+                    <br>
+                    <br>
+                    <div class="container">
+                        <table class="table" style="font-size: 20px">
+                            <tbody>
+                                <tr>
+                                </tr>
+                                <tr>
+                                    <td> <span class="glyphicon glyphicon-earphone" aria-hidden="true" style="color: #649965"></span></td>
+                                    <td>
+                                        <%= member.phonenum %>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td> <span class="glyphicon glyphicon-home" aria-hidden="true" style="color: #649965"></span></td>
+                                    <td>
+                                        <%= member.address %>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                     <% } %>
-                        <img class="img-thumbnail" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcR8zrE1DLads0mYqakFoa_ZeChcP39nQvkHOR7tVUlx5mBwnEQdLg">
-                        <br>
-                        <br>
-                        <div class="container">
-                            <table class="table" style="font-size: 20px">
-                                <tbody>
-                                    <tr>
-                                    </tr>
-                                    <tr>
-                                        <td> <span class="glyphicon glyphicon-earphone" aria-hidden="true" style="color: #649965"></span></td>
-                                        <% if(member) {%>
-                                            <td>
-                                                <%= member.phonenum %>
-                                            </td>
-                                            <% } %>
-                                    </tr>
-                                    <tr>
-                                        <td> <span class="glyphicon glyphicon-home" aria-hidden="true" style="color: #649965"></span></td>
-                                        <% if(member) {%>
-                                            <td>
-                                                <%= member.address %>
-                                            </td>
-                                            <% } %>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
             </div>
         </div>
     </div>

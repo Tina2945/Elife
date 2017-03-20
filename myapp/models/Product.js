@@ -28,9 +28,14 @@ Product.getAll = function(supplierId, cb) {
             });
         })
         .then(function(productList) {
-            cb(null, productList);
+            if (productList.length) {
+                cb(null, productList);
+            } else {
+                cb(null, null);
+            }
         })
         .catch(function(err) {
+            console.log(err);
             cb(new GeneralErrors.Database());
         });
 };
@@ -59,8 +64,7 @@ Product.get = function(productId, cb) {
             }
         })
         .catch(function(err) {
-            console.log(err);
-            cb(new GeneralErrors.Database());
+            cb(err);
         });
 };
 

@@ -10,11 +10,11 @@ router.get('/', function(req, res, next) {
 
 router.post('/', function(req, res, next) {
     var newMember = new Member({
-        account: req.body.account,
-        password: req.body.password,
         name: req.body.name,
         phonenum: req.body.phonenum,
-        address: req.body.address
+        address: req.body.address,
+        account: req.body.account,
+        password: req.body.password
     });
     newMember.save(function(err) {
         if (err) {
@@ -26,7 +26,6 @@ router.post('/', function(req, res, next) {
     });
 });
 
-/* Log  Out*/
 router.post('/logout', function(req, res, next) {
     req.session.member = null;
     res.redirect('/');

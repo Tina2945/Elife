@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var SupplierMember = require('../../models/supplierm');
+var SupplierMember = require('../../models/SupplierMember');
 
 router.get('/', function(req, res, next) {
     res.render('supplier', {
@@ -10,6 +10,7 @@ router.get('/', function(req, res, next) {
 
 router.post('/', function(req, res, next) {
     var newSupplierMember = new SupplierMember({
+        storeName: req.body.storeName,
         name: req.body.name,
         phonenum: req.body.phonenum,
         address: req.body.address,

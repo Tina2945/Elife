@@ -1,25 +1,44 @@
-//這是一個Member Model
-var db = require('../libs/db'); //引入我們的sql builder
+var db = require('../libs/db');
 var GeneralErrors = require('../errors/GeneralErrors');
 
-var Member = function(options) {
+var SupplierMember = function(options) {
     this.id = options.id;
+    this.storeName = options.storeName;
     this.name = options.name;
     this.phonenum = options.phonenum;
     this.address = options.address;
-    this.password = options.password;
+    //this.photo = options.photo;
     this.account = options.account;
+    this.password = options.password;
 };
 
-//Class Function
-Member.get = function(memberId, cb) {
+SupplierMember.getAll = function(cb) {
     db.select()
-        .from('member')
+        .from('supplierm')
+        .map(function(row) {
+            return new SupplierMember(row);
+        })
+        .then(function(memberList) {
+            if (memberList.length) {
+                cb(null, memberList);
+            } else {
+                cb(null, null);
+            }
+        })
+        .catch(function(err) {
+            console.log(err);
+            cb(new GeneralErrors.Database());
+        })
+}
+
+SupplierMember.get = function(supplierId, cb) {
+    db.select()
+        .from("supplierm")
         .where({
-            id: memberId
+            id: supplierId
         })
         .map(function(row) {
-            return new Member(row);
+            return new SupplierMember(row);
         })
         .then(function(memberList) {
             if (memberList.length) {
@@ -31,18 +50,20 @@ Member.get = function(memberId, cb) {
         .catch(function(err) {
             cb(err);
         })
-}
+};
 
-Member.prototype.save = function(cb) {
+SupplierMember.prototype.save = function(cb) {
     if (this.id) {
-        db("member")
+        db("supplierm")
             .where({
                 id: this.id
             })
             .update({
+                storeName: this.storeName,
                 name: this.name,
                 phonenum: this.phonenum,
                 address: this.address,
+                //photo: this.photo,
                 account: this.account,
                 password: this.password
             })
@@ -50,15 +71,17 @@ Member.prototype.save = function(cb) {
                 cb(null, this);
             }.bind(this))
             .catch(function(err) {
-                console.log("MEMBER UPDATED", err);
+                console.log("SUPPLIERMEMBER UPDATED", err);
                 cb(new GeneralErrors.Database());
             });
     } else {
-        db("member")
+        db("supplierm")
             .insert({
+                storeName: this.storeName,
                 name: this.name,
                 phonenum: this.phonenum,
                 address: this.address,
+                //photo: this.photo,
                 account: this.account,
                 password: this.password
             })
@@ -68,20 +91,20 @@ Member.prototype.save = function(cb) {
                 cb(null, this);
             }.bind(this))
             .catch(function(err) {
-                console.log("MEMBER INSERT", err);
+                console.log("SUPPLIERMEMBER INSERT", err);
                 cb(new GeneralErrors.Database());
             });
     }
 };
 
-Member.check = function(memberAccount, cb) {
+SupplierMember.check = function(memberAccount, cb) {
     db.select()
-        .from('member')
+        .from("supplierm")
         .where({
             account: memberAccount
         })
         .map(function(row) {
-            return new Member(row);
+            return new SupplierMember(row);
         })
         .then(function(memberList) {
             if (memberList.length) {
@@ -92,7 +115,7 @@ Member.check = function(memberAccount, cb) {
         })
         .catch(function(err) {
             cb(err);
-        })
-}
+        });
+};
 
-module.exports = Member;
+module.exports = SupplierMember;

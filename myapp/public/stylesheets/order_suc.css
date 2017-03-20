@@ -1,75 +1,39 @@
-body {
-    font-family: "Lato", sans-serif;
-    background-color: #FBFFEF;
-}
-.navbar-header {
-    background-color: #6F916F;
-    width:100%;
+   /* Remove the navbar's default margin-bottom and rounded borders */ 
+   .navbar {
+    margin-bottom: 0;
+    border-radius: 0;
+
+/*      background-color: #56CC2D;
+border-color: #56CC2D;*/
 }
 
 .navbar-brand>img {
-    width: 50%;
-    float:right;
-}
+  height: 300%;
+    padding-bottom : 30px;
 
-/* The side navigation menu */
-.sidenav {
-    height: 100%; /* 100% Full-height */
-    width: 0; /* 0 width - change this with JavaScript */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Stay on top */
-    top: 0;
-    left: 0;
-    /*background-color: #cff09e;*/
-    background-color:  #a8dba8;
-    overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 60px; /* Place content 60px from the top */
-    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+  width: auto;
 }
-.sidenav h3 {
-    color: #3a5134;
-}
-
-/* The navigation menu links */
-.sidenav a {
-    padding: 20px 8px 20px 30px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #3a5134;
-    display: block;
-    transition: 0.3s
-    /*margi-top: 10px;*/
-    /*margin-bottom: 10px;*/
-    /*height: 25%;*/
-}
-
-/* When you mouse over the navigation links, change their color */
-.sidenav a:hover, .offcanvas a:focus{
-    padding: 20px 8px 20px 30px;
-    /*margin-top: 10px;*/
-    /*margin-bottom: 10px;*/
-    color: #000000;
-    background-color: #6F916F;
-}
-
-/* Position and style the close button (top right corner) */
-.sidenav .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
+h3{
+  color: white;
+  text-align: center;
+  font-size: 30px;
+  letter-spacing: 3px;　 
 }
 
 
-/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
-#main {
-    transition: margin-left .5s;
-    padding: 20px;
-}
 
-/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-@media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
-}
+/* Set black background color, white text and some padding */
+/*    footer {
+      background-color: #e6f3ff;
+      color: white;
+      padding: 15px;
+      }*/
+
+      /* On small screens, set height to 'auto' for sidenav and grid */
+      @media screen and (max-width: 767px) {
+        .sidenav {
+          height: auto;
+          padding: 15px;
+        }
+        .row.content {height:auto;} 
+      }

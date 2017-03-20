@@ -13,7 +13,7 @@
 <body>
     <div class="container" style="width:85%">
         <% if(supplierm) { %>
-            <h3>歡迎，<%= supplierm.name %></h3>
+            <h3>歡迎，<%= supplierm.storeName %></h3>
             <div>
                 <a href="/product/add">
                     <button class="btn btn-info btn-lg">
@@ -22,20 +22,20 @@
                 </a>
             </div>
             <br>
-            <div class="row">
-                <% productList.forEach(function(product) { %>
-                    <div class="col-sm-4">
-                        <div class="panel panel-primary">
-                            <div class="panel-heading">
-                                <%= product.name %> $
-                                    <%= product.price %>
-                            </div>
-                            <div class="panel-body">
-                                <img src="<%= product.photo %>" class="img-responsive" alt="Image" style="width:100%">
-                            </div>
-                            <div class="panel-footer">
-                                <%= product.description %> By
-                                    <%= product.supplier.name %>
+            <% if(productList) { %>
+                <div class="row">
+                    <% productList.forEach(function(product) { %>
+                        <div class="col-sm-4">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <%= product.name %> $
+                                        <%= product.price %>
+                                </div>
+                                <div class="hide-panel-body">
+                                    <img src="<%= product.photo %>" class="img-responsive" alt="Image" style="width:100%">
+                                </div>
+                                <div class="panel-footer">
+                                    <%= product.description %>
                                         <br>
                                         <form action="/product/edit" method="POST" style="float:left">
                                             <input type="hidden" name="id" value="<%= product.id %>">
@@ -44,7 +44,7 @@
                                         <a data-toggle="modal" data-target="#deleteProduct" style="padding-left:5px">
                                             <button type="button" class="btn btn-default">刪除</button>
                                         </a>
-                                        <!-- deleteProduct -->
+                                        <!-- deleteProduct Modal -->
                                         <div class="modal fade" id="deleteProduct" role="dialog">
                                             <div class="modal-dialog modal-sm">
                                                 <div class="modal-content col-sm-12">
@@ -66,12 +66,17 @@
                                                 </div>
                                             </div>
                                         </div>
+                                </div>
                             </div>
                         </div>
+                        <%  }); %>
+                </div>
+                <% } else { %>
+                    <div>
+                        <h4>目前無商品資料</h4>
                     </div>
-                    <%  }); %>
-            </div>
-            <% } %>
+                    <% }%>
+                        <% } %>
     </div>
 </body>
 
