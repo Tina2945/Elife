@@ -3,7 +3,7 @@ var router = express.Router();
 var SupplierMember = require('../../models/SupplierMember');
 var Product = require('../../models/Product');
 
-router.get('/:supplierId/:storeName', function(req, res, next) {
+router.get('/:supplierId', function(req, res, next) {
     if (!req.session.member) {
         res.redirect('/');
     }
@@ -12,11 +12,41 @@ router.get('/:supplierId/:storeName', function(req, res, next) {
         if (err) {
             next();
         } else {
-            res.render('store', {
-                storeName: req.params.storeName,
-                member: req.session.member || null,
-                productList: productList || null
-            });
+            SupplierMember.get(req.params.supplierId, function(err, supplier) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    res.render('member/store', {
+                        member: req.session.member || null,
+                        supplier: supplier,
+                        productList: productList || null
+                    });
+                }
+            })
+        }
+    });
+});
+
+router.get('/:supplierId/search', function(req, res) {
+    if (!req.session.member) {
+        res.redirect('/');
+    }
+
+    Product.search(req.params.supplierId, req.query.name, function(err, productList) {
+        if (err) {
+            next();
+        } else {
+            SupplierMember.get(req.params.supplierId, function(err, supplier) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    res.render('member/store', {
+                        member: req.session.member || null,
+                        supplier: supplier,
+                        productList: productList || null
+                    });
+                }
+            })
         }
     });
 });

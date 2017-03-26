@@ -24,17 +24,16 @@ router.get('/', function(req, res, next) {
                 });
             }, function(err) {
                 if (err) {
-                    res.status = err.code;
-                    next();
+                    console.log(err);
                 } else {
                     SupplierMember.getAll(function(err, supplierList) {
                         if (err) {
                             next();
                         } else {
-                            res.render('home', {
+                            res.render('member/home', {
                                 member: req.session.member || null,
-                                followList: followList,
-                                supplierList: supplierList
+                                followList: followList || null,
+                                supplierList: supplierList || null
                             });
                         }
                     });

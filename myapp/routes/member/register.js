@@ -3,7 +3,7 @@ var router = express.Router();
 var Member = require('../../models/Member');
 
 router.get('/', function(req, res, next) {
-    res.render('register', {
+    res.render('member/register', {
         member: null
     });
 });

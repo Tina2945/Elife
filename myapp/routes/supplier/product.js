@@ -15,7 +15,7 @@ router.get('/', function(req, res, next) {
         if (err) {
             next();
         } else {
-            res.render('product', {
+            res.render('supplier/product', {
                 supplierm: req.session.supplierm || null,
                 productList: productList || null
             });
@@ -60,7 +60,7 @@ router.post('/edit', function(req, res) {
         if (err) {
             console.log(err);
         } else {
-            res.render('edit', {
+            res.render('supplier/edit', {
                 product: product
             });
         }

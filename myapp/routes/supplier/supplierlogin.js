@@ -3,7 +3,7 @@ var router = express.Router();
 var SupplierMember = require('../../models/SupplierMember');
 
 router.get('/', function(req, res, next) {
-    res.render('supplierlogin');
+    res.render('supplier/supplierlogin');
 });
 
 router.post('/', function(req, res, next) {
