@@ -1,6 +1,6 @@
 body {
     font-family: "Lato", sans-serif;
-    background-color: #FBFFEF;
+    /*background-color: #FBFFEF;*/
 }
 .navbar-header {
     background-color: #6F916F;
@@ -62,10 +62,10 @@ body {
 }
 
 
-.form-group-lg>label {
+/*.form-group-lg>label {
   font-size: 25px;
   color: #6F916F;
-}
+}*/
 
 /*.form-group-lg>select {
   width:50%;
@@ -75,6 +75,12 @@ body {
 #main {
     transition: margin-left .5s;
     padding: 20px;
+}
+
+#logout {
+    background-color: transparent;
+    border: none;
+    outline: none;
 }
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
