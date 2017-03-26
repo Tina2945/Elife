@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <title>Elife</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/stylesheets/shopping_cart.css">
+</head>
+
+<body>
+    <% if(member) { %>
+        <div class="navbar-header">
+            <div class="navbar-brand pull-right">
+                <img src="/images/logo.png" alt="Brand Image">
+            </div>
+            <div id="mySidenav" class="sidenav sidenav-hover">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= member.name %>, 您好!</h3>
+                <a href="/home"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;首頁</a>
+                <a href="/shopping_cart"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;&nbsp;購物車</a>
+                <a href="/purchase_rec"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;購買紀錄</a>
+                <a href="/personal_info"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;個人資料</a>
+                <form action="/register/logout" method="POST">
+                    <a><span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;<input id="logout" type="submit" value="登出"></a>
+                </form>
+            </div>
+            <div id="main">
+                <span style="font-size:30px;cursor:pointer;color:white" onclick="openNav()">&#9776; 
+                </span>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row content">
+                <div class="col-sm-12 text-center">
+                    <h1>購物車</h1>
+                    <hr>
+                    <div class="container">
+                        <% if(cartList) { %>
+                            <form action="/shopping_cart" method="POST">
+                                <h2>政大水果店</h2>
+                                <table class="table" style="font-size: 20px">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Price</th>
+                                            <th>Quan</th>
+                                            <th>Total</th>
+                                            <th> </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% cartList.forEach(function(cart) { %>
+                                            <input type="hidden" name="cartId" value="<%= cart.id %>">
+                                            <tr>
+                                                <td>
+                                                    <%= cart.supplier.storeName %>
+                                                        <br>
+                                                        <%= cart.product.name %>
+                                                </td>
+                                                <!--  <td>
+                                                <div class="media-left media-top">
+                                                    <img src="<%= cart.product.photo %>" class="media-object" style="width:80px">
+                                                </div>
+                                            </td> -->
+                                                <td>
+                                                    <%= cart.price %>
+                                                </td>
+                                                <td>
+                                                    <input type="text" name="cartQ" value="<%= cart.quantity %>" style="width:25px">
+                                                </td>
+                                                <td>
+                                                    <input type="hidden" name="cartP" value="<%= cart.price * cart.quantity %>">
+                                                    <%= cart.total %>
+                                                </td>
+                                                <td>
+                                                    <a data-toggle="modal" data-target="#deleteProduct">
+                                                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                                    </a>
+                                                </td>
+                                                <!-- deleteProduct Modal -->
+                                                <div class="modal fade" id="deleteProduct" role="dialog">
+                                                    <div class="modal-dialog modal-sm">
+                                                        <div class="modal-content col-sm-12">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                <div class="modal-title">
+                                                                    <h4>Elife</h4>
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <p>確定刪除此項商品?</p>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <form action="/shopping_cart/delete" method="POST" style="padding-left:60px">
+                                                                    <input type="hidden" name="id" value="<%= cart.id %>">
+                                                                    <button type="submit" class="btn btn-default">確定</button>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </tr>
+                                            <% }); %>
+                                    </tbody>
+                                </table>
+                                <hr>
+                                <h3 class="text-center" style="color: #EE4035">總金額$元</h3>
+                                <br>
+                                <div class="col-xs-6 text-left">
+                                    <a href="/home">
+                                        <button type="button" class="btn btn-success btn-lg">
+                                            <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> 繼續選購
+                                        </button>
+                                    </a>
+                                </div>
+                                <div class="col-xs-6 text-right">
+                                    <!-- <a href="/order_suc"> -->
+                                    <button type="submit" class="btn btn-success btn-lg">
+                                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>送出訂單
+                                    </button>
+                                    <!--  </a> -->
+                                </div>
+                            </form>
+                            <% } else { %>
+                                <h2>購物車內無商品</h2>
+                                <br>
+                                <div>
+                                    <a href="/home">
+                                        <button type="button" class="btn btn-success btn-lg">
+                                            <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> 繼續選購
+                                        </button>
+                                    </a>
+                                </div>
+                                <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% } %>
+            <script>
+            function openNav() {
+                document.getElementById("mySidenav").style.width = "250px";
+            }
+
+            function closeNav() {
+                document.getElementById("mySidenav").style.width = "0";
+            }
+            </script>
+</body>
+
+</html>

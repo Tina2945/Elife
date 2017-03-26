@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <!-- Theme Made By www.w3schools.com - No Copyright -->
+    <title>政大水果店</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/stylesheets/store.css">
+</head>
+
+<body>
+    <% if(member) { %>
+        <div class="navbar-header">
+            <div class="navbar-brand pull-right">
+                <img src="/images/logo.png" alt="Brand Image">
+            </div>
+            <div id="mySidenav" class="sidenav sidenav-hover">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= member.name %>, 您好!</h3>
+                <a href="/home"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;首頁</a>
+                <a href="/shopping_cart"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;&nbsp;購物車</a>
+                <a href="/purchase_rec"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;購買紀錄</a>
+                <a href="/personal_info"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;個人資料</a>
+                <form action="/register/logout" method="POST">
+                    <a><span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;<input id="logout" type="submit" value="登出"></a>
+                </form>
+            </div>
+            <div id="main">
+                <span style="font-size:30px;cursor:pointer;color:white" onclick="openNav()">&#9776; 
+                </span>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row col-sm-12">
+                <div class="text-center">
+                    <h1><%= supplier.storeName %></h1>
+                </div>
+                <hr>
+                <form action="/store/<%= supplier.id %>/search" method="GET">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="搜尋商品名稱" name="name">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" type="submit">
+                                <i class="glyphicon glyphicon-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                <div class="container text-center">
+                    <% if(productList) { %>
+                        <h2>產品</h2>
+                        <h3 style="color: #56B949">點圖片可以看商品資訊喔</h3>
+                        <div class="row form-group ">
+                            <% productList.forEach(function(product) { %>
+                                <div class="col-sm-4">
+                                    <div class="panel panel-default">
+                                        <div class="panel-image hide-panel-body">
+                                            <img src="<%= product.photo %>" style="width:100%" data-toggle="modal" data-target="#product_<%= product.id %>" role="dialog">
+                                        </div>
+                                        <div class="panel-body">
+                                            <h3><%= product.name %></h3>
+                                            <h3 style="color: #EE4035">$ <%= product.price %></h3>
+                                            <!-- </div> -->
+                                            <!--  <div class="panel-footer col-sm-12" style="display: inline-block;"> -->
+                                            <form action="/shopping_cart/add" method="POST">
+                                                <input type="hidden" name="supplierId" value="<%= product.supplierId %>">
+                                                <input type="hidden" name="id" value="<%= product.id %>">
+                                                <input type="hidden" name="price" value="<%= product.price %>">
+                                                <div class="form-group-lg col-xs-6" style="display: inline-block; vertical-align: top;">
+                                                    <select class="form-control" name="quantity">
+                                                        <option class="active">數量</option>
+                                                        <option>1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                        <option>4</option>
+                                                        <option>5</option>
+                                                    </select>
+                                                </div>
+                                                <button type="submit" class="btn btn-default btn-lg col-xs-6" style="display:inline-block; vertical-align:top;"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;加入購物車</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <!-- product Modal -->
+                                    <div class="modal fade" id="product_<%= product.id %>" role="dialog">
+                                        <div class="modal-dialog modal-lg">
+                                            <div class="modal-content col-sm-12">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                    <h2 class="modal-title"><%= product.name %></h2>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <img src="<%= product.photo %>" style="width:100%">
+                                                    <h3 style="color: #56B949">產品描述</h3>
+                                                    <h3 class="text-left"><%= product.description %></h3>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-success" data-dismiss="modal">返回</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <%  }); } else { %>
+                                    <div>
+                                        <h4>目前無商品資料</h4>
+                                    </div>
+                                    <% } %>
+                        </div>
+                </div>
+            </div>
+        </div>
+        <% }%>
+            <script>
+            function openNav() {
+                document.getElementById("mySidenav").style.width = "250px";
+            }
+
+            function closeNav() {
+                document.getElementById("mySidenav").style.width = "0";
+            }
+            </script>
+</body>
+
+</html>

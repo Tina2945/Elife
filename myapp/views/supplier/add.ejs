@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+    $(function() {
+        $("#photo").change(function() {
+            if (this.files && this.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    $('#preview').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(this.files[0]);
+            }
+        });
+    });
+    </script>
+</head>
+
+<body>
+    <div class="container" style="width:85%">
+        <h1>新增商品</h1>
+        <hr>
+        <form action="/product/add/save" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="id">
+            <div class="form-group">
+                <h4><label for="name">商品名稱:</label></h4>
+                <input type="text" class="form-control" name="name" id="name" placeholder="請輸入商品名稱">
+            </div>
+            <div class="form-group">
+                <h4><label for="price">商品價格:</label></h4>
+                <input type="text" class="form-control" name="price" id="price" placeholder="請輸入商品價格">
+            </div>
+            <div class="form-group">
+                <h4><label for="description">商品簡介:</label></h4>
+                <textarea class="form-control" rows="3" name="description" id="description" placeholder="請輸入商品簡介"></textarea>
+            </div>
+            <div class="form-group">
+                <h4><label for="photo">上傳圖片</label></h4>
+                <input type="file" accept="image/*" capture="camera" name="photo" id="photo">
+            </div>
+            <div>
+                <img id="preview" src="#" class="img-responsive" style="width:200px" alt="Image">
+            </div>
+            <br>
+            <div class="form-group" style="float:left">
+                <button type="submit" class="btn btn-default">儲存</button>
+            </div>
+        </form>
+        <div style="padding-left:60px">
+            <a href="/product">
+                <button class="btn btn-default">取消</button>
+            </a>
+        </div>
+    </div>
+</body>
+
+</html>
