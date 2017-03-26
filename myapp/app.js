@@ -12,6 +12,7 @@ var register = require('./routes/member/register');
 var login = require('./routes/member/login');
 var supplier = require('./routes/supplier/supplier');
 var third = require('./routes/third/third');
+var third_order = require('./routes/third/third_order');
 var namelist = require('./routes/third/namelist');
 var product = require('./routes/supplier/product');
 var home = require('./routes/member/home');
@@ -59,6 +60,7 @@ app.use('/store', store);
 app.use('/order_suc', order_suc);
 app.use('/home', home);
 app.use('/product', product);
+app.use('/third_order',third_order);
 
 
 // catch 404 and forward to error handler
