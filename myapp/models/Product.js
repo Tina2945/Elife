@@ -40,6 +40,38 @@ Product.getAll = function(supplierId, cb) {
         });
 };
 
+Product.search = function(supplierId, name, cb) {
+    db.select()
+        .from("product")
+        .where({
+            supplier_id: supplierId
+        })
+        .andWhere("name", "like", "%" + name + "%")
+        .orderBy("id", "desc")
+
+        .map(function(row) {
+            return new Product({
+                id: row.id,
+                name: row.name,
+                price: row.price,
+                description: row.description,
+                photo: row.photo,
+                supplierId: row.supplier_id
+            });
+        })
+        .then(function(productList) {
+            if (productList.length) {
+                cb(null, productList);
+            } else {
+                cb(null, null);
+            }
+        })
+        .catch(function(err) {
+            console.log(err);
+            cb(new GeneralErrors.Database());
+        });
+}
+
 Product.get = function(productId, cb) {
     db.select()
         .from("product")
