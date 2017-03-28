@@ -1,10 +1,13 @@
 var express = require('express');
 var router = express.Router();
 var SupplierMember = require('../../models/SupplierMember');
+var District = require('../../models/District');
 
 router.get('/', function(req, res, next) {
-    res.render('supplier/supplier', {
-        member: null
+    District.get(function(err, district) {
+        res.render('supplier/supplier', {
+            district: district
+        });
     });
 });
 
@@ -13,6 +16,8 @@ router.post('/', function(req, res, next) {
         storeName: req.body.storeName,
         name: req.body.name,
         phonenum: req.body.phonenum,
+        city: req.body.city,
+        hometown: req.body.hometown,
         address: req.body.address,
         //photo : req.body.photo,
         account: req.body.account,
