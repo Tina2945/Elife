@@ -8,21 +8,29 @@ var session = require('express-session');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+
+//member
 var register = require('./routes/member/register');
 var login = require('./routes/member/login');
-var supplier = require('./routes/supplier/supplier');
-var third = require('./routes/third/third');
-var third_order = require('./routes/third/third_order');
-var namelist = require('./routes/third/namelist');
-var product = require('./routes/supplier/product');
 var home = require('./routes/member/home');
-var thirdlogin = require('./routes/third/thirdlogin');
-var supplierlogin = require('./routes/supplier/supplierlogin');
 var personal_info = require('./routes/member/personal_info');
 var purchase_rec = require('./routes/member/purchase_rec');
 var shopping_cart = require('./routes/member/shopping_cart');
-var store = require('./routes/member/store');
+var fruits_store = require('./routes/member/fruits_store');
 var order_suc = require('./routes/member/order_suc');
+
+//supplier
+var supplier = require('./routes/supplier/supplier');
+var supplierlogin = require('./routes/supplier/supplierlogin');
+var product = require('./routes/supplier/product');
+var supplier_info = require('./routes/supplier/supplier_info');
+
+//third
+var third = require('./routes/third/third');
+var thirdlogin = require('./routes/third/thirdlogin');
+var third_order = require('./routes/third/third_order');
+
+var namelist = require('./routes/third/namelist');
 var zmq = require('zeromq');
 var zreq = zmq.socket('req');
 var app = express();
@@ -30,11 +38,7 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-app.use(session({
-    secret: 'HelloExpressSESSION',
-    resave: false,
-    saveUninitialized: true
-}));
+app.use(session({secret : 'HelloExpressSESSION'}));
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -46,21 +50,28 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
+
+//member
 app.use('/register', register);
-app.use('/supplier', supplier);
-app.use('/third', third);
-app.use('/namelist', namelist);
 app.use('/login', login);
-app.use('/supplierlogin', supplierlogin);
-app.use('/thirdlogin', thirdlogin);
+app.use('/home', home);
 app.use('/personal_info', personal_info);
 app.use('/purchase_rec', purchase_rec);
 app.use('/shopping_cart', shopping_cart);
-app.use('/store', store);
+app.use('/fruits_store', fruits_store);
 app.use('/order_suc', order_suc);
-app.use('/home', home);
+
+//supplier
+app.use('/supplier', supplier);
+app.use('/supplierlogin', supplierlogin);
 app.use('/product', product);
-app.use('/third_order',third_order);
+app.use('/supplier_info', supplier_info);
+
+//third
+app.use('/third', third);
+app.use('/namelist', namelist);
+app.use('/thirdlogin', thirdlogin);
+app.use('/third_order', third_order);
 
 
 // catch 404 and forward to error handler
