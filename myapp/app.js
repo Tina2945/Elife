@@ -16,7 +16,7 @@ var home = require('./routes/member/home');
 var personal_info = require('./routes/member/personal_info');
 var purchase_rec = require('./routes/member/purchase_rec');
 var shopping_cart = require('./routes/member/shopping_cart');
-var fruits_store = require('./routes/member/fruits_store');
+var store = require('./routes/member/store');
 var order_suc = require('./routes/member/order_suc');
 
 //supplier
@@ -58,7 +58,7 @@ app.use('/home', home);
 app.use('/personal_info', personal_info);
 app.use('/purchase_rec', purchase_rec);
 app.use('/shopping_cart', shopping_cart);
-app.use('/fruits_store', fruits_store);
+app.use('/store', store);
 app.use('/order_suc', order_suc);
 
 //supplier
