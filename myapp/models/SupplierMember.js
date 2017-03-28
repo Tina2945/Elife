@@ -6,15 +6,21 @@ var SupplierMember = function(options) {
     this.storeName = options.storeName;
     this.name = options.name;
     this.phonenum = options.phonenum;
+    this.city = options.city;
+    this.hometown = options.hometown;
     this.address = options.address;
     //this.photo = options.photo;
     this.account = options.account;
     this.password = options.password;
 };
 
-SupplierMember.getAll = function(cb) {
+SupplierMember.getAll = function(city, hometown, cb) {
     db.select()
         .from('supplierm')
+        .where({
+            city: city,
+            hometown: hometown
+        })
         .map(function(row) {
             return new SupplierMember(row);
         })
@@ -29,7 +35,7 @@ SupplierMember.getAll = function(cb) {
             console.log(err);
             cb(new GeneralErrors.Database());
         })
-}
+};
 
 SupplierMember.get = function(supplierId, cb) {
     db.select()
@@ -62,6 +68,8 @@ SupplierMember.prototype.save = function(cb) {
                 storeName: this.storeName,
                 name: this.name,
                 phonenum: this.phonenum,
+                city: this.city,
+                hometown: this.hometown,
                 address: this.address,
                 //photo: this.photo,
                 account: this.account,
@@ -80,6 +88,8 @@ SupplierMember.prototype.save = function(cb) {
                 storeName: this.storeName,
                 name: this.name,
                 phonenum: this.phonenum,
+                city: this.city,
+                hometown: this.hometown,
                 address: this.address,
                 //photo: this.photo,
                 account: this.account,

@@ -1,17 +1,17 @@
-//這是一個Member Model
-var db = require('../libs/db'); //引入我們的sql builder
+var db = require('../libs/db');
 var GeneralErrors = require('../errors/GeneralErrors');
 
 var Member = function(options) {
     this.id = options.id;
     this.name = options.name;
     this.phonenum = options.phonenum;
+    this.city = options.city;
+    this.hometown = options.hometown;
     this.address = options.address;
     this.password = options.password;
     this.account = options.account;
 };
 
-//Class Function
 Member.get = function(memberId, cb) {
     db.select()
         .from('member')
@@ -42,7 +42,10 @@ Member.prototype.save = function(cb) {
             .update({
                 name: this.name,
                 phonenum: this.phonenum,
+                city: this.city,
+                hometown: this.hometown,
                 address: this.address,
+                //photo: this.photo,
                 account: this.account,
                 password: this.password
             })
@@ -58,7 +61,10 @@ Member.prototype.save = function(cb) {
             .insert({
                 name: this.name,
                 phonenum: this.phonenum,
+                city: this.city,
+                hometown: this.hometown,
                 address: this.address,
+                //photo: this.photo,
                 account: this.account,
                 password: this.password
             })
