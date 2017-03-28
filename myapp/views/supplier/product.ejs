@@ -8,50 +8,56 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/stylesheets/supplier/product.css">
 </head>
-<style>
-body {
-    font-family: "Lato", sans-serif;
-    background-color: #FBFFEF;
-}
-</style>
 
 <body>
-    <div class="container" style="width:85%">
-        <% if(supplierm) { %>
-            <h3>歡迎，<%= supplierm.storeName %></h3>
-            <div>
-                <a href="/product/add">
-                    <button class="btn btn-info btn-lg">
-                        <span class="glyphicon glyphicon-plus"></span> 新增
-                    </button>
-                </a>
+    <% if(supplierm) { %>
+        <div class="navbar-header">
+            <div class="navbar-brand pull-right">
+                <img src="/images/logo.png" alt="Brand Image">
             </div>
-            <br>
+            <div id="mySidenav" class="sidenav sidenav-hover">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <br>
+                <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= supplierm.name %>, 您好!</h3>
+                <a href="/product"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;首頁</a>
+                <a href="/product/add"><span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;新增商品</a>
+                <a href="/supplier_info"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;商家資料</a>
+                <form action="/register/logout" method="POST">
+                    <a><span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;<input id="logout" type="submit" value="登出"></a>
+                </form>
+            </div>
+            <div id="main">
+                <span style="font-size:30px;cursor:pointer;color:white" onclick="openNav()">&#9776;</span>
+            </div>
+        </div>
+        <br>
+        <div class="container">
             <% if(productList) { %>
                 <div class="row">
                     <% productList.forEach(function(product) { %>
                         <div class="col-sm-4">
-                            <div class="panel panel-primary">
-                                <div class="panel-heading">
+                            <div class="panel panel-success">
+                                <div class="panel-heading" style="font-size: 25px">
                                     <%= product.name %> $
                                         <%= product.price %>
                                 </div>
-                                <div class="hide-panel-body">
+                                <div class="panel-body">
                                     <img src="<%= product.photo %>" class="img-responsive" alt="Image" style="width:100%">
                                 </div>
-                                <div class="panel-footer">
+                                <div class="panel-footer" style="font-size: 25px;">
                                     <%= product.description %>
                                         <br>
-                                        <form action="/product/edit" method="POST" style="float:left">
+                                        <form action="/product/edit" method="POST" style="float: left">
                                             <input type="hidden" name="id" value="<%= product.id %>">
-                                            <button type="submit" class="btn btn-default">修改</button>
+                                            <button type="submit" class="btn btn-lg btn-success" style="display: inline-block;">修改</button>
                                         </form>
-                                        <a data-toggle="modal" data-target="#deleteProduct" style="padding-left:5px">
-                                            <button type="button" class="btn btn-default">刪除</button>
+                                        <a data-toggle="modal" data-target="#deleteProduct_<%= product.id%>" style="display: inline-block; margin-left:5px;">
+                                            <button type="button" class=" btn btn-lg btn-success">刪除</button>
                                         </a>
-                                        <!-- deleteProduct Modal -->
-                                        <div class="modal fade" id="deleteProduct" role="dialog">
+                                        <!-- deleteProduct -->
+                                        <div class="modal fade" id="deleteProduct_<%= product.id%>" role="dialog">
                                             <div class="modal-dialog modal-sm">
                                                 <div class="modal-content col-sm-12">
                                                     <div class="modal-header">
@@ -78,12 +84,19 @@ body {
                         <%  }); %>
                 </div>
                 <% } else { %>
-                    <div>
-                        <h4>目前無商品資料</h4>
-                    </div>
-                    <% }%>
-                        <% } %>
-    </div>
+                    <h2 class="text-center">目前無商品資料</h2>
+                    <% } %>
+            <% } %>
+        </div>
+        <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+        </script>
 </body>
 
 </html>
