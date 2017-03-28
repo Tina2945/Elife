@@ -5,58 +5,64 @@
     <title>註冊</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    </script>
 </head>
 
 <body>
     <style>
-    input[type=text] {
-        width: 100%;
-        height: 50px;
-        padding: 5px 10px;
-        margin: 8px 0;
-        font-size: 20px;
-        box-sizing: border-box;
-        border: 1px solid SaddleBrown;
-        border-radius: 4px;
-    }
-    
     body {
         font-family: "Microsoft JhengHei";
         font-size: 48px;
     }
     
-    #sure {
-        width: 100%;
-        height: 60px;
-        background-color: #95eb00;
-        font-size: 35px;
-        color: black;
-    }
-    
-    label {
-        font-size: 30px;
-    }
-    
-    #password {
-        width: 100%;
-        height: 50px;
-        font-size: 20px;
-        border: 1px solid SaddleBrown;
-    }
-    
     .col-xs-8 {
-        font-family: "Microsoft JhengHei";
+        font-size: 60px;
         text-align: center;
-        font-size: 200px;
     }
     
     img {
         width: 100%;
         margin-bottom: 10px;
+    }
+    
+    label {
+        font-size: 35px;
+    }
+    
+    input {
+        width: 100%;
+        height: 50px;
+        padding: 5px 10px;
+        margin: 8px 0;
+        font-size: 30px;
+        box-sizing: border-box;
+        border: 1px solid;
+        border-radius: 6px;
+    }
+    
+    .btn {
+        width: 100%;
+        height: 60px;
+        font-size: 35px;
+        padding: 10px;
+        border-radius: 10px;
+        background-color: #95eb00;
+    }
+    
+    #city {
+        width: 100%;
+        height: 50px;
+        padding: 5px 10px;
+        margin: 8px 0;
+        font-size: 30px;
+        box-sizing: border-box;
+        border: 1px solid;
+        border-radius: 6px;
     }
     </style>
     <div class="container">
@@ -66,50 +72,64 @@
                 <p>新帳號</p>
             </div>
         </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <form name="sentMessage" action="/register" method="POST" id="contactForm" novalidate>
-                        <div class="row control-group">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <form name="sentMessage" action="/register" method="POST" id="contactForm" novalidate>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label for="name">姓名:</label>
+                            <input type="text" placeholder="請輸入姓名" id="name" name="name">
+                        </div>
+                    </div>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label for="phonenum">電話:</label>
+                            <input type="text" placeholder="請輸入電話" id="phonenum" name="phonenum">
+                        </div>
+                    </div>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label for="city">地址:</label>
+                            <select required="required" id="city" name="city">
+                                <option class="active">縣市</option>
+                                <% district.forEach(function(district) { %>
+                                    <option>
+                                        <%= district.city %>
+                                            <%= district.town %>
+                                    </option>
+                                    <%  }); %>
+                            </select>
+                            <input type="text" required="required" placeholder="請輸入村里" id="hometown" name="hometown">
+                            <input type="text" required="required" placeholder="請輸入地址" id="address" name="address">
+                        </div>
+                    </div>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label for="account">帳號:</label>
+                            <input type="text" placeholder="請輸入帳號" id="account" name="account">
+                        </div>
+                    </div>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label for="password">密碼:</label>
+                            <input type="password" placeholder="請輸入密碼" id="password" name="password">
+                        </div>
+                    </div>
+                    <!-- <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
-                                <label for="name">姓名:</label>
-                                <input type="text" class="form-control" placeholder="請輸入姓名" id="name" name="name">
+                                <label for="photo">相片:</label>
+                                <input type="file" accept="image/*" capture="camera" name="photo" id="photo">
                             </div>
+                        </div> -->
+                    <div class="row">
+                        <div class="form-group col-xs-12">
+                            <button type="submit" class="btn btn-default btn-lg">確定</button>
                         </div>
-                        <div class="row control-group">
-                            <div class="form-group col-xs-12 floating-label-form-group controls">
-                                <label for="phonenum">電話:</label>
-                                <input type="text" class="form-control" placeholder="請輸入電話" id="phonenum" name="phonenum">
-                            </div>
-                        </div>
-                        <div class="row control-group">
-                            <div class="form-group col-xs-12 floating-label-form-group controls">
-                                <label for="address">地址:</label>
-                                <input type="text" class="form-control" placeholder="請輸入地址" id="address" name="address">
-                            </div>
-                        </div>
-                        <div class="row control-group">
-                            <div class="form-group col-xs-12 floating-label-form-group controls">
-                                <label for="account">帳號:</label>
-                                <input type="text" class="form-control" placeholder="請輸入帳號" id="account" name="account">
-                            </div>
-                        </div>
-                        <div class="row control-group">
-                            <div class="form-group col-xs-12 floating-label-form-group controls">
-                                <label for="password">密碼:</label>
-                                <input type="password" class="form-control" placeholder="請輸入密碼" id="password" name="password">
-                            </div>
-                        </div>
-                        <div id="success"></div>
-                        <div class="row">
-                            <div class="form-group col-xs-12">
-                                <button type="submit" class="btn btn-primary btn-lg" id="sure">確定</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+                    </div>
+                </form>
             </div>
         </div>
+    </div>
 </body>
 
 </html>
