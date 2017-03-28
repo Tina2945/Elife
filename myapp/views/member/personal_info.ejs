@@ -9,7 +9,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="/stylesheets/personal_info.css">
+    <link rel="stylesheet" href="/stylesheets/member/personal_info.css">
 </head>
 
 <body>
@@ -19,6 +19,7 @@
         </div>
         <div id="mySidenav" class="sidenav sidenav-hover">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <br>
             <h3> &nbsp;&nbsp;&nbsp;
                 <% if(member) {%>
                     <%= member.name %>
