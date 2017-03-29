@@ -13,13 +13,7 @@ District.get = function(cb) {
         .select()
         .from("district")
         .map(function(row) {
-            console.log(row);
-            return new District({
-                id: row.id,
-                city: row.city,
-                town: row.town,
-                hometown: row.hometown
-            });
+            return new District(row);
         })
         .then(function(districtList) {
             if (districtList.length) {
