@@ -31,8 +31,7 @@ var thirdlogin = require('./routes/third/thirdlogin');
 var third_order = require('./routes/third/third_order');
 
 var namelist = require('./routes/third/namelist');
-var zmq = require('zeromq');
-var zreq = zmq.socket('req');
+
 var app = express();
 
 // view engine setup
