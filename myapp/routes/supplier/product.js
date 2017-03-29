@@ -24,7 +24,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/add', function(req, res) {
-    res.render('add');
+    res.render('supplier/add');
 });
 
 router.post('/add/save', upload.single('photo'), function(req, res) {

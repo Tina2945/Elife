@@ -1,55 +1,38 @@
 body {
-    font-family: 'Gabriola', serif;
+    font-family: "Microsoft JhengHei";
     font-size: 48px;
 }
 
-.container {
-    width:85%;
-}
-
-input {
-    width: 100%;
-    height: 120px;
-    padding: 10px 20px;
-    margin: 15px 0;
-    box-sizing: border-box;
-    border: 2px solid Navy;
-    border-radius: 20px;
-    font-size: 80px;
-}
-
-h1 {
-    font-size: 100px;
-    font-family: "Microsoft JhengHei";
-    /*malgun gothic, SimSun, Microsoft JhengHei*/
-}
-
-h2 {
-    font-size: 80px;
-}
-
-
-.btn {
-    width: 100%;
-    height: 160px;
-    font-size: 100px;
-    background-color: #95eb00;
-    border: 1px solid Navy;
-    border-radius: 30px;
-    color: black;
-    font-family: "Microsoft JhengHei";
-}
-
-a {
-    color: red;
-}
-
 .col-xs-8 {
-    font-size: 200px;
+    font-size: 60px;
     text-align: center;
-    letter-spacing: 15px;
 }
 
 img {
     width: 100%;
+    margin-bottom: 10px;
+}
+
+label {
+    font-size: 35px;
+}
+
+input {
+    width: 100%;
+    height: 50px;
+    padding: 5px 10px;
+    margin: 8px 0;
+    font-size: 30px;
+    box-sizing: border-box;
+    border: 1px solid;
+    border-radius: 6px;
+}
+
+.btn {
+    width: 100%;
+    height: 60px;
+    font-size: 35px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #95eb00;
 }

@@ -43,7 +43,7 @@
                     <div class="container">
                         <% if(cartList) { %>
                             <form action="/shopping_cart" method="POST">
-                                <h2>政大水果店</h2>
+                                <!--  <h2>政大水果店</h2> -->
                                 <table class="table" style="font-size: 20px">
                                     <thead>
                                         <tr>
@@ -79,12 +79,12 @@
                                                     <%= cart.total %>
                                                 </td>
                                                 <td>
-                                                    <a data-toggle="modal" data-target="#deleteProduct">
+                                                    <a data-toggle="modal" data-target="#deleteProduct_<%= cart.id %>">
                                                         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                                                     </a>
                                                 </td>
                                                 <!-- deleteProduct Modal -->
-                                                <div class="modal fade" id="deleteProduct" role="dialog">
+                                                <div class="modal fade" id="deleteProduct_<%= cart.id %>" role="dialog">
                                                     <div class="modal-dialog modal-sm">
                                                         <div class="modal-content col-sm-12">
                                                             <div class="modal-header">
@@ -97,10 +97,9 @@
                                                                 <p>確定刪除此項商品?</p>
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <form action="/shopping_cart/delete" method="POST" style="padding-left:60px">
-                                                                    <input type="hidden" name="id" value="<%= cart.id %>">
-                                                                    <button type="submit" class="btn btn-default">確定</button>
-                                                                </form>
+                                                                <a href="/shopping_cart/<%= cart.id %>">
+                                                                    <button type="button" class="btn btn-default">確定</button>
+                                                                </a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -110,7 +109,7 @@
                                     </tbody>
                                 </table>
                                 <hr>
-                                <h3 class="text-center" style="color: #EE4035">總金額$元</h3>
+                                <!-- <h3 class="text-center" style="color: #EE4035">總金額$元</h3> -->
                                 <br>
                                 <div class="col-xs-6 text-left">
                                     <a href="/home">

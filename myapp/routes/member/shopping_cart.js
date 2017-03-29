@@ -42,6 +42,21 @@ router.get('/', function(req, res, next) {
 
 });
 
+router.get('/:cartId', function(req, res, next) {
+    var newCart = new Cart({
+        id: req.params.cartId
+    });
+
+    newCart.delete(function(err) {
+        if (err) {
+            next();
+        } else {
+            res.redirect('/shopping_cart');
+        }
+    });
+
+});
+
 router.post('/', function(req, res) {
     var d = new Date();
     date = d.toLocaleDateString();
@@ -86,19 +101,19 @@ router.post('/add', function(req, res) {
     });
 });
 
-router.post('/delete', function(req, res) {
-    var newCart = new Cart({
-        id: req.body.id
-    });
+// router.post('/delete', function(req, res) {
+//     var newCart = new Cart({
+//         id: req.body.id
+//     });
 
-    newCart.delete(function(err) {
-        if (err) {
-            res.status = err.code;
-            res.json(err);
-        } else {
-            res.redirect('/shopping_cart');
-        }
-    });
-});
+//     newCart.delete(function(err) {
+//         if (err) {
+//             res.status = err.code;
+//             res.json(err);
+//         } else {
+//             res.redirect('/shopping_cart');
+//         }
+//     });
+// });
 
 module.exports = router;
