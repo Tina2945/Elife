@@ -10,29 +10,50 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="/stylesheets/supplier/add.css">
     <script>
-    $(function() {
-        $("#photo").change(function() {
-            if (this.files && this.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    $('#preview').attr('src', e.target.result);
+        $(function() {
+            $("#photo").change(function() {
+                if (this.files && this.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        $('#preview').attr('src', e.target.result);
+                    }
+                    reader.readAsDataURL(this.files[0]);
                 }
-                reader.readAsDataURL(this.files[0]);
-            }
+            });
         });
-    });
     </script>
 </head>
 
 <body>
-    <div class="navbar-header">
+    <!--    <div class="navbar-header">
         <div class="navbar-brand pull-right">
             <img src="/images/logo.png" alt="Brand Image">
         </div>
         <div id="main">
             <span style="font-size:30px;cursor:pointer;color:#6F916F" onclick="openNav()">&#9776;</span>
         </div>
+    </div> -->
+    <% if(supplierm) { %>
+    <div class="navbar-header">
+        <div class="navbar-brand pull-right">
+            <img src="/images/logo.png" alt="Brand Image">
+        </div>
+        <div id="mySidenav" class="sidenav sidenav-hover">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <br>
+            <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= supplierm.storeName %>, 您好!</h3>
+            <a href="/product"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;首頁</a>
+            <a href="/product/add"><span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;新增商品</a>
+            <a href="/supplier_info"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;商家資料</a>
+            <form action="/register/logout" method="POST">
+                <a><span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;<input id="logout" type="submit" value="登出"></a>
+            </form>
+        </div>
+        <div id="main">
+            <span style="font-size:30px;cursor:pointer;color:white" onclick="openNav()">&#9776;</span>
+        </div>
     </div>
+    <br>
     <div class="container" style="width:85%">
         <h1>新增商品</h1>
         <hr>
@@ -68,6 +89,16 @@
             </a>
         </div>
     </div>
+    <% } %>
+    <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+    </script>
 </body>
 
 </html>
