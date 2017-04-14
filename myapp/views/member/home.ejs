@@ -38,17 +38,16 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
-                    <div class="container">
-                        <ul class="nav nav-tabs text-center" style="font-size: 25px">
-                            <li class="active col-xs-6"><a data-toggle="tab" href="#contact-store">追蹤店家</a></li>
-                            <li class="col-xs-6"><a data-toggle="tab" href="#all-store">全部店家</a></li>
+                    <!-- Nav tabs -->
+                    <div class="card">
+                        <ul class="nav nav-tabs text-center" role="tablist">
+                            <li role="presentation" class="active col-xs-6"><a href="#contact-store" aria-controls="home" role="tab" data-toggle="tab">追蹤店家</a></li>
+                            <li role="presentation" class="col-xs-6"><a href="#all-store" aria-controls="profile" role="tab" data-toggle="tab">全部店家</a></li>
                         </ul>
-                        <br>
-                        <br>
+                        <!-- Tab panes -->
                         <div class="tab-content">
-                            <!-- contact-store -->
-                            <div id="contact-store" class="tab-pane fade in active">
-                                <% if(followList) { %>
+                         <!-- contact-store -->
+                            <div role="tabpanel" class="tab-pane active" id="contact-store"> <% if(followList) { %>
                                     <% followList.forEach(function(follow) { %>
                                         <div class="col-sm-4">
                                             <div class="panel panel-default">
@@ -91,11 +90,9 @@
                                         <%  }); %>
                                             <% } else { %>
                                                 <h3 class="text-center">目前無追蹤店家</h3>
-                                                <% } %>
-                            </div>
+                                                <% } %></div>
                             <!-- all-store -->
-                            <div id="all-store" class="tab-pane fade">
-                                <% if(supplierList) { %>
+                            <div role="tabpanel" class="tab-pane" id="all-store">    <% if(supplierList) { %>
                                     <% supplierList.forEach(function(supplierm) { %>
                                         <div class="col-sm-4">
                                             <div class="panel panel-default">
@@ -135,23 +132,22 @@
                                         <%  }); %>
                                             <% } else { %>
                                                 <h3 class="text-center">目前無店家</h3>
-                                                <% } %>
-                            </div>
+                                                <% } %></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <% } %>
-            <script>
-            function openNav() {
-                document.getElementById("mySidenav").style.width = "250px";
-            }
+        <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
 
-            function closeNav() {
-                document.getElementById("mySidenav").style.width = "0";
-            }
-            </script>
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+        </script>
 </body>
 
 </html>
