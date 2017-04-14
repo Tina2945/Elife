@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <title>Elife</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/stylesheets/supplier/order_detail.css">
+</head>
+
+<body>
+    <% if(supplierm) { %>
+        <div class="navbar-header">
+            <div class="navbar-brand pull-right">
+                <img src="/images/logo.png" alt="Brand Image">
+            </div>
+            <div id="mySidenav" class="sidenav sidenav-hover">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <br>
+                <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= supplierm.storeName %>, 您好!</h3>
+                <a href="/product"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;首頁</a>
+                <a href="/product/add"><span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;新增商品</a>
+                <a href="/order"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;查看訂單</a>
+                <a href="/supplier_info"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;商家資料</a>
+                <form action="/register/logout" method="POST">
+                    <a><span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;<input id="logout" type="submit" value="登出"></a>
+                </form>
+            </div>
+            <div id="main">
+                <span style="font-size:30px;cursor:pointer;color:white" onclick="openNav()">&#9776;</span>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row content">
+                <div class="col-sm-12 text-center">
+                    <h1>2017/04/15紀錄</h1>
+                    <br>
+                    <div class="container">
+                        <table class="table" style="font-size: 20px">
+                            <thead>
+                                <tr>
+                                    <th>Store</th>
+                                    <th>Name</th>
+                                    <th>Price</th>
+                                    <th>Quan</th>
+                                    <th>Total</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                               
+                                    <tr>
+                                        <td>
+                                           
+                                        </td>
+                                        <td>
+                                            
+                                        </td>
+                                        <td>
+                                            
+                                        </td>
+                                        <td>
+                                            
+                                        </td>
+                                        <td>
+                                            
+                                        </td>
+                                        <td>
+                                         
+                                        </td>
+                                    </tr>
+                                    
+                            </tbody>
+                        </table>
+                        <h3 class="text-center" style="color: #EE4035">總金額$元</h3>
+                        <br>
+                        <div>
+                            <a href="/order">
+                                <button type="button" class="btn btn-success btn-lg">
+                                    <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> 返回
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% } %>
+    <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+        </script>
+</body>
+
+</html>
