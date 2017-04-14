@@ -23,6 +23,7 @@
                 <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= supplierm.storeName %>, 您好!</h3>
                 <a href="/product"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;首頁</a>
                 <a href="/product/add"><span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;新增商品</a>
+                <a href="/order"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;查看訂單</a>
                 <a href="/supplier_info"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;商家資料</a>
                 <form action="/register/logout" method="POST">
                     <a><span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;<input id="logout" type="submit" value="登出"></a>
@@ -53,11 +54,11 @@
                                             <input type="hidden" name="id" value="<%= product.id %>">
                                             <button type="submit" class="btn btn-lg btn-success" style="display: inline-block;">修改</button>
                                         </form>
-                                        <a data-toggle="modal" data-target="#deleteProduct_<%= product.id %>" style="display: inline-block; margin-left:5px;">
+                                        <a data-toggle="modal" data-target="#deleteProduct_<%= product.id%>" style="display: inline-block; margin-left:5px;">
                                             <button type="button" class=" btn btn-lg btn-success">刪除</button>
                                         </a>
                                         <!-- deleteProduct -->
-                                        <div class="modal fade" id="deleteProduct_<%= product.id %>" role="dialog">
+                                        <div class="modal fade" id="deleteProduct_<%= product.id%>" role="dialog">
                                             <div class="modal-dialog modal-sm">
                                                 <div class="modal-content col-sm-12">
                                                     <div class="modal-header">
@@ -86,7 +87,7 @@
                 <% } else { %>
                     <h2 class="text-center">目前無商品資料</h2>
                     <% } %>
-                        <% } %>
+            <% } %>
         </div>
         <script>
         function openNav() {
