@@ -1,6 +1,5 @@
 body {
     font-family: "Lato", sans-serif;
-    background-color: #FBFFEF;
 }
 .navbar-header {
     background-color: #6F916F;
@@ -17,10 +16,10 @@ body {
     height: 100%; /* 100% Full-height */
     width: 0; /* 0 width - change this with JavaScript */
     position: fixed; /* Stay in place */
-    z-index: 1; /* Stay on top */
+    z-index: 5; /* Stay on top */
     top: 0;
     left: 0;
-    background-color: #a8dba8; 
+    background-color: #cff09e; 
     overflow-x: hidden; /* Disable horizontal scroll */
     padding-top: 60px; /* Place content 60px from the top */
     transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
@@ -47,6 +46,13 @@ body {
     padding: 20px 8px 20px 30px;
     /*margin-top: 10px;*/
     /*margin-bottom: 10px;*/
+    color: #ffffff;
+    background-color: #6F916F;
+}
+
+.sidenav a:active {
+    padding: 20px 8px 20px 30px;
+    margin-top: 10px;
     color: #ffffff;
     background-color: #6F916F;
 }
@@ -81,4 +87,52 @@ body {
 @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
+}
+
+.nav-tabs { 
+    border-bottom: 2px solid #DDD; 
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover { 
+    border-width: 0; 
+}
+
+.nav-tabs > li > a { 
+    border: none; 
+    color: #666; 
+    font-size: 25px;
+}
+        
+.nav-tabs > li.active > a, .nav-tabs > li > a:hover { 
+    border: none; 
+    color: #5A9367 !important; 
+    background: transparent; 
+}
+
+.nav-tabs > li > a::after { 
+    content: ""; 
+    background: #67B868 ; 
+    height: 4px; 
+    position: absolute; 
+    width: 100%; 
+    left: 0px; 
+    bottom: -1px; 
+    transition: all 250ms ease 0s; 
+    transform: scale(0); 
+}
+
+.nav-tabs > li.active > a::after, .nav-tabs > li:hover > a::after { 
+    transform: scale(1); 
+}
+
+.tab-nav > li > a::after { 
+    background: #21527d none repeat scroll 0% 0%; color: #fff; 
+}
+
+.tab-pane { 
+    padding-top: 10px; 
+}
+
+.card {
+    background: #FFF none repeat scroll 0% 0%; 
 }
