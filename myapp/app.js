@@ -25,6 +25,7 @@ var supplierlogin = require('./routes/supplier/supplierlogin');
 var product = require('./routes/supplier/product');
 var supplier_info = require('./routes/supplier/supplier_info');
 var order = require('./routes/supplier/order');
+var order_detail = require('./routes/supplier/order_detail');
 
 //third
 var third = require('./routes/third/third');
@@ -68,6 +69,7 @@ app.use('/supplierlogin', supplierlogin);
 app.use('/product', product);
 app.use('/supplier_info', supplier_info);
 app.use('/order', order);
+app.use('/order_detail', order_detail);
 
 //third
 app.use('/third', third);
