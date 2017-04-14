@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <title>Elife</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/stylesheets/supplier/supplier_info.css">
+</head>
+
+<body>
+    <div class="navbar-header">
+        <div class="navbar-brand pull-right">
+            <img src="/images/logo.png" alt="Brand Image">
+        </div>
+        <div id="mySidenav" class="sidenav sidenav-hover">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <br>
+            <h3> &nbsp;&nbsp;&nbsp;
+                <% if(supplierm) {%>
+                    <%= supplierm.storeName %>
+                        <% } %>, 您好!</h3>
+            <a href="/product"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;首頁</a>
+            <a href="/product/add"><span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;新增商品</a>
+            <a href="/order"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;查看訂單</a>
+            <a href="/supplier_info"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;商家資料</a>
+            <form action="/register/logout" method="POST">
+                <a><span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;<input id="logout" type="submit" value="登出"></a>
+            </form>
+        </div>
+        <div id="main">
+            <span style="font-size:30px;cursor:pointer;color:white" onclick="openNav()">&#9776; 
+        </span>
+        </div>
+    </div>
+    <!-- <br> -->
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-sm-12">
+                <% if(supplierm) {%>
+                    <h1><%= supplierm.storeName %></h1>
+                    <% } %>
+                        <img class="img-thumbnail" src="http://www.newdesignfile.com/postpic/2012/05/store-icon_281737.png">
+                        <br>
+                        <br>
+                        <div class="container">
+                            <table class="table" style="font-size: 20px">
+                                <tbody>
+                                    <tr>
+                                    </tr>
+                                    <tr>
+                                        <td> <span class="glyphicon glyphicon-user" aria-hidden="true" style="color: #649965"></span></td>
+                                        <% if(supplierm) {%>
+                                            <td>
+                                                <%= supplierm.name %>
+                                            </td>
+                                            <% } %>
+                                    </tr>
+                                    <tr>
+                                        <td> <span class="glyphicon glyphicon-earphone" aria-hidden="true" style="color: #649965"></span></td>
+                                        <% if(supplierm) {%>
+                                            <td>
+                                                <%= supplierm.phonenum %>
+                                            </td>
+                                            <% } %>
+                                    </tr>
+                                    <tr>
+                                        <td> <span class="glyphicon glyphicon-home" aria-hidden="true" style="color: #649965"></span></td>
+                                        <% if(supplierm) {%>
+                                            <td>
+                                                <%= supplierm.address %>
+                                            </td>
+                                            <% } %>
+                                    </tr>
+                                    <tr>
+                                        <td> <span class="glyphicon glyphicon-credit-card" aria-hidden="true" style="color: #649965"></span></td>
+                                        <!-- <% if(supplierm) {%> -->
+                                            <td>
+                                                <!-- <%= supplierm.address %> -->
+                                                信用卡卡號
+                                            </td>
+                                            <!-- <% } %> -->
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <script>
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+    }
+    </script>
+</body>
+
+</html>
