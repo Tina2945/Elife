@@ -48,7 +48,6 @@ Product.search = function(supplierId, name, cb) {
         })
         .andWhere("name", "like", "%" + name + "%")
         .orderBy("id", "desc")
-
         .map(function(row) {
             return new Product({
                 id: row.id,
@@ -110,8 +109,7 @@ Product.prototype.save = function(cb) {
                 name: this.name,
                 price: this.price,
                 description: this.description,
-                photo: this.photo,
-                supplier_id: this.supplierId
+                photo: this.photo
             })
             .then(function() {
                 cb(null, this);

@@ -8,8 +8,12 @@ var Member = function(options) {
     this.city = options.city;
     this.hometown = options.hometown;
     this.address = options.address;
-    this.password = options.password;
+    this.card1 = options.card1;
+    this.card2 = options.card2;
+    this.card3 = options.card3;
+    this.card4 = options.card4;
     this.account = options.account;
+    this.password = options.password;
 };
 
 Member.get = function(memberId, cb) {
@@ -31,7 +35,7 @@ Member.get = function(memberId, cb) {
         .catch(function(err) {
             cb(err);
         })
-}
+};
 
 Member.prototype.save = function(cb) {
     if (this.id) {
@@ -44,10 +48,7 @@ Member.prototype.save = function(cb) {
                 phonenum: this.phonenum,
                 city: this.city,
                 hometown: this.hometown,
-                address: this.address,
-                //photo: this.photo,
-                account: this.account,
-                password: this.password
+                address: this.address
             })
             .then(function() {
                 cb(null, this);
@@ -64,7 +65,10 @@ Member.prototype.save = function(cb) {
                 city: this.city,
                 hometown: this.hometown,
                 address: this.address,
-                //photo: this.photo,
+                card1: this.card1,
+                card2: this.card2,
+                card3: this.card3,
+                card4: this.card4,
                 account: this.account,
                 password: this.password
             })

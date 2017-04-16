@@ -6,13 +6,16 @@ var Cart = function(options) {
     this.memberId = options.memberId;
     this.supplierId = options.supplierId;
     this.productId = options.productId;
+    this.name = options.name;
     this.price = options.price;
     this.quantity = options.quantity;
     this.total = options.total;
     this.paid = options.paid;
-    this.status = options.status;
     this.date = options.date;
     this.time = options.time;
+    this.status = options.status;
+    this.thirdId = options.thirdId;
+    this.received = options.received;
 };
 
 Cart.getAll = function(memberId, cb) {
@@ -29,13 +32,16 @@ Cart.getAll = function(memberId, cb) {
                 memberId: row.member_id,
                 supplierId: row.supplier_id,
                 productId: row.product_id,
+                name: row.name,
                 price: row.price,
                 quantity: row.quantity,
                 total: row.total,
                 paid: row.paid,
-                status: row.status,
                 date: row.date,
-                time: row.time
+                time: row.time,
+                status: row.status,
+                thirdId: row.third_id,
+                received: row.received
             });
         })
         .then(function(cartList) {
@@ -58,8 +64,6 @@ Cart.prototype.save = function(cb) {
                 id: this.id
             })
             .update({
-                quantity: this.quantity,
-                total: this.total,
                 paid: this.paid,
                 date: this.date,
                 time: this.time
@@ -77,6 +81,7 @@ Cart.prototype.save = function(cb) {
                 member_id: this.memberId,
                 supplier_id: this.supplierId,
                 product_id: this.productId,
+                name: this.name,
                 price: this.price,
                 quantity: this.quantity,
                 total: this.total

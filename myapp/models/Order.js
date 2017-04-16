@@ -1,7 +1,7 @@
 var db = require('../libs/db');
 var GeneralErrors = require('../errors/GeneralErrors');
 
-var Record = function(options) {
+var Order = function(options) {
     this.id = options.id;
     this.memberId = options.memberId;
     this.supplierId = options.supplierId;
@@ -18,19 +18,18 @@ var Record = function(options) {
     this.received = options.received;
 };
 
-Record.getAll = function(memberId, cb) {
-    db.distinct("date", "time")
+Order.getAll = function(supplierId, cb) {
+    db.distinct("date")
         .select()
         .from("buylist")
         .where({
-            member_id: memberId,
-            paid: 1
+            supplier_id: supplierId,
+            paid: 1,
+            received: 0
         })
         .orderBy("date", "desc")
-        .orderBy("time", "desc")
         .map(function(row) {
-            var result = row.date + " " + row.time;
-            return result;
+            return row.date;
         })
         .then(function(dateList) {
             if (dateList.length) {
@@ -45,17 +44,18 @@ Record.getAll = function(memberId, cb) {
         });
 };
 
-Record.get = function(memberId, date, time, cb) {
+Order.get = function(supplierId, date, cb) {
     db.select()
         .from("buylist")
         .where({
-            member_id: memberId,
+            supplier_id: supplierId,
             paid: 1,
-            date: date,
-            time: time
+            received: 0,
+            date: date
         })
+        .orderBy("time", "desc")
         .map(function(row) {
-            return new Record({
+            return new Order({
                 id: row.id,
                 memberId: row.member_id,
                 supplierId: row.supplier_id,
@@ -72,9 +72,9 @@ Record.get = function(memberId, date, time, cb) {
                 received: row.received
             });
         })
-        .then(function(recordList) {
-            if (recordList.length) {
-                cb(null, recordList);
+        .then(function(orderList) {
+            if (orderList.length) {
+                cb(null, orderList);
             } else {
                 cb(null, new GeneralErrors.NotFound());
             }
@@ -84,21 +84,4 @@ Record.get = function(memberId, date, time, cb) {
         });
 };
 
-Record.prototype.save = function(cb) {
-    db("buylist")
-        .where({
-            id: this.id
-        })
-        .update({
-            received: this.received
-        })
-        .then(function() {
-            cb(null, this);
-        }.bind(this))
-        .catch(function(err) {
-            console.log("RECORD UPDATED", err);
-            cb(new GeneralErrors.Database());
-        });
-};
-
-module.exports = Record;
+module.exports = Order;

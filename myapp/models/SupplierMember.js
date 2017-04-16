@@ -4,12 +4,16 @@ var GeneralErrors = require('../errors/GeneralErrors');
 var SupplierMember = function(options) {
     this.id = options.id;
     this.storeName = options.storeName;
+    this.photo = options.photo;
     this.name = options.name;
     this.phonenum = options.phonenum;
     this.city = options.city;
     this.hometown = options.hometown;
     this.address = options.address;
-    //this.photo = options.photo;
+    this.card1 = options.card1;
+    this.card2 = options.card2;
+    this.card3 = options.card3;
+    this.card4 = options.card4;
     this.account = options.account;
     this.password = options.password;
 };
@@ -66,14 +70,16 @@ SupplierMember.prototype.save = function(cb) {
             })
             .update({
                 storeName: this.storeName,
+                photo: this.photo,
                 name: this.name,
                 phonenum: this.phonenum,
                 city: this.city,
                 hometown: this.hometown,
                 address: this.address,
-                //photo: this.photo,
-                account: this.account,
-                password: this.password
+                card1: this.card1,
+                card2: this.card2,
+                card3: this.card3,
+                card4: this.card4
             })
             .then(function() {
                 cb(null, this);
@@ -86,12 +92,16 @@ SupplierMember.prototype.save = function(cb) {
         db("supplierm")
             .insert({
                 storeName: this.storeName,
+                photo: this.photo,
                 name: this.name,
                 phonenum: this.phonenum,
                 city: this.city,
                 hometown: this.hometown,
                 address: this.address,
-                //photo: this.photo,
+                card1: this.card1,
+                card2: this.card2,
+                card3: this.card3,
+                card4: this.card4,
                 account: this.account,
                 password: this.password
             })
