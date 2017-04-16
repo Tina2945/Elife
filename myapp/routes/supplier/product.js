@@ -4,7 +4,6 @@ var upload = require('../../libs/upload');
 var imgur = require('../../libs/imgur')
 var Product = require('../../models/Product');
 var fs = require('fs');
-var async = require('async');
 
 router.get('/', function(req, res, next) {
     if (!req.session.supplierm) {
@@ -16,7 +15,7 @@ router.get('/', function(req, res, next) {
             next();
         } else {
             res.render('supplier/product', {
-                supplierm: req.session.supplierm || null,
+                supplierm: req.session.supplierm,
                 productList: productList || null
             });
         }
@@ -24,8 +23,12 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/add', function(req, res) {
-    res.render('supplier/add',{ 
-        supplierm:req.session.supplierm 
+    if (!req.session.supplierm) {
+        res.redirect('/supplierlogin');
+    }
+
+    res.render('supplier/add', {
+        supplierm: req.session.supplierm
     });
 });
 

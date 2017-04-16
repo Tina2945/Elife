@@ -3,11 +3,11 @@ var router = express.Router();
 
 router.get('/', function(req, res, next) {
 	if(!req.session.supplierm){
-		res.redirect('/');
+		res.redirect('/supplierlogin');
 	}
 	
     res.render('supplier/supplier_info', {
-        supplierm: req.session.supplierm || null
+        supplierm: req.session.supplierm
     });
 });
 
