@@ -13,56 +13,58 @@
 </head>
 
 <body>
-    <div class="navbar-header">
-        <div class="navbar-brand pull-right">
-            <img src="/images/logo.png" alt="Brand Image">
-        </div>
-        <div id="mySidenav" class="sidenav sidenav-hover">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <br>
-            <h3> &nbsp;&nbsp;&nbsp;
-                <% if(supplierm) {%>
-                    <%= supplierm.storeName %>
-                        <% } %>, 您好!</h3>
-            <a href="/product"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;首頁</a>
-            <a href="/product/add"><span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;新增商品</a>
-            <a href="/order"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;查看訂單</a>
-            <a href="/supplier_info"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;商家資料</a>
-            <form action="/register/logout" method="POST">
-                <a><span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;<input id="logout" type="submit" value="登出"></a>
-            </form>
-        </div>
-        <div id="main">
-            <span style="font-size:30px;cursor:pointer;color:white" onclick="openNav()">&#9776; 
-        </span>
-        </div>
-    </div>
-    <div class="container text-center">
-        <div class="row content">
-            <div class="col-sm-12 text-middle">
-                <h1>訂單紀錄</h1>
-                <hr>
-                <div class="container">
-                    <a href="/order_detail">
-                        <button type="button" class="btn btn-success btn-lg btn-block">
-                            2017/03/14
-                        </button>
-                    </a>
-                    <br>
-                    <h2>目前無訂單</h2>
-                </div>
+    <% if(supplierm) {%>
+        <div class="navbar-header">
+            <div class="navbar-brand pull-right">
+                <img src="/images/logo.png" alt="Brand Image">
+            </div>
+            <div id="mySidenav" class="sidenav sidenav-hover">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <br>
+                <h3> &nbsp;&nbsp;&nbsp;&nbsp;<%= supplierm.storeName %>, 您好!</h3>
+                <a href="/product"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;首頁</a>
+                <a href="/product/add"><span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;新增商品</a>
+                <a href="/order"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;查看訂單</a>
+                <a href="/supplier_info"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;商家資料</a>
+                <form action="/supplier/logout" method="POST">
+                    <a><span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;<input id="logout" type="submit" value="登出"></a>
+                </form>
+            </div>
+            <div id="main">
+                <span style="font-size:30px;cursor:pointer;color:white" onclick="openNav()">&#9776;</span>
             </div>
         </div>
-        <br>
-        <script>
-        function openNav() {
-            document.getElementById("mySidenav").style.width = "250px";
-        }
+        <div class="container text-center">
+            <div class="row content">
+                <div class="col-sm-12 text-middle">
+                    <h1>訂單紀錄</h1>
+                    <hr>
+                    <div class="container">
+                        <% if(dateList) { %>
+                            <% for(i in dateList) { %>
+                                <a href="/order/<%= dateList[i] %>">
+                                    <button type="button" class="btn btn-success btn-lg btn-block">
+                                        <%= dateList[i] %>
+                                    </button>
+                                </a>
+                                <br>
+                                <% } %>
+                                    <% } else { %>
+                                        <h2>目前無訂單</h2>
+                                        <% } %>
+                    </div>
+                </div>
+            </div>
+            <% }%>
+                <script>
+                function openNav() {
+                    document.getElementById("mySidenav").style.width = "250px";
+                }
 
-        function closeNav() {
-            document.getElementById("mySidenav").style.width = "0";
-        }
-        </script>
+                function closeNav() {
+                    document.getElementById("mySidenav").style.width = "0";
+                }
+                </script>
 </body>
 
 </html>

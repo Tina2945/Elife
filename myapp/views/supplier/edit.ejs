@@ -51,12 +51,12 @@
                 <textarea class="form-control" rows="3" name="description" id="description" placeholder="請輸入商品簡介"><%= product.description %></textarea>
             </div>
             <div class="form-group">
-                <h4><label for="photo">上傳圖片</label></h4>
+                <h4><label for="photo">商品圖片:</label></h4>
                 <input type="file" accept="image/*" capture="camera" name="photo" id="photo">
             </div>
             <div>
                 <input type="hidden" name="url" value="<%= product.photo %>">
-                <img id="preview" src="<%= product.photo %>" class="img-responsive" style="width:200px" alt="Image">
+                <img id="preview" src="<%= product.photo %>" class="img-responsive" alt="圖片" style="width:200px;height:200px;border:1px solid;border-radius:6px;">
             </div>
             <br>
             <div class="form-group" style="float:left">
