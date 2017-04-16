@@ -25,7 +25,6 @@ var supplierlogin = require('./routes/supplier/supplierlogin');
 var product = require('./routes/supplier/product');
 var supplier_info = require('./routes/supplier/supplier_info');
 var order = require('./routes/supplier/order');
-var order_detail = require('./routes/supplier/order_detail');
 
 //third
 var third = require('./routes/third/third');
@@ -33,8 +32,6 @@ var thirdlogin = require('./routes/third/thirdlogin');
 var third_order = require('./routes/third/third_order');
 
 var namelist = require('./routes/third/namelist');
-var zmq = require('zeromq');
-var zreq = zmq.socket('req');
 var app = express();
 
 // view engine setup
@@ -69,7 +66,6 @@ app.use('/supplierlogin', supplierlogin);
 app.use('/product', product);
 app.use('/supplier_info', supplier_info);
 app.use('/order', order);
-app.use('/order_detail', order_detail);
 
 //third
 app.use('/third', third);
