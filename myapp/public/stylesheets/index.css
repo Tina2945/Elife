@@ -1,24 +1,79 @@
 body {
     font-family: "Microsoft JhengHei";
-    font-size: 48px;
-    
+    background-color: #6E8F6E;
+   /* font-size: 48px;*/
+   margin: auto;
 }
 
-.col-xs-8 {
+.container-fluid {
+    width: 85%;
+    margin-top: -55px;
+}
+
+#elife {
+    background-color: #6E8F6E;
+    /*padding: 30px;*/
+    /*width:85%;*/
+   /* border:5px solid #ffffff ;*/
+}
+
+.logo img {
+    width: 100%; 
+    margin-top: 20px ;
+    padding: 20px;
+    text-align: center;  
+   /* background-color: #ffffff;*/
+    /*border:5px solid #ffffff ;*/
+}
+
+/*.name> p {
     font-family: "Gabriola", serif;
     font-size: 200px;
-    text-align: center;
-    letter-spacing: 15px;
-}
+    letter-spacing: 8px;
+    color:#ffffff;
+    text-align: center; 
+}*/
 
-img {
-    width: 100%;
-}
 
 .btn {
     width: 100%;
-    height: 200px;
+    height: 170px;
     font-size: 100px;
-    padding: 30px;
-    border-radius: 30px;
+    font-weight: bold ;
+    margin: 10px;
+    border-radius: 85px;
+    color:  #3F4B3B;
+    text-align: center;
+    background-color: #a8dba8;
+    border: 1px solid #a8dba8;
 }
+
+.btn:hover {
+    background-color: #88dba3;
+    border: 1px solid #88dba3;
+}
+
+.btn: active {
+    background-color: #88dba3;
+    border: 1px solid #88dba3;
+}
+
+#member {
+    /*background-color: #C5E99B;*/
+    padding: 20px 30px 20px 70px;
+    letter-spacing: 30px;
+}
+
+#supplier {
+    /*background-color: #a8dba8;*/
+    padding: 20px 30px 20px 70px;
+    letter-spacing: 30px;
+}
+
+#third {
+    /*background-color: #88dba3;*/
+    padding: 20px 30px 20px 55px;
+    letter-spacing: 15px;
+}
+
+
