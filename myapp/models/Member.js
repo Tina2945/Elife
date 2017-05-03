@@ -5,6 +5,7 @@ var Member = function(options) {
     this.id = options.id;
     this.name = options.name;
     this.phonenum = options.phonenum;
+    this.email = options.email;
     this.city = options.city;
     this.hometown = options.hometown;
     this.address = options.address;
@@ -46,9 +47,14 @@ Member.prototype.save = function(cb) {
             .update({
                 name: this.name,
                 phonenum: this.phonenum,
+                email: this.email,
                 city: this.city,
                 hometown: this.hometown,
-                address: this.address
+                address: this.address,
+                card1: this.card1,
+                card2: this.card2,
+                card3: this.card3,
+                card4: this.card4
             })
             .then(function() {
                 cb(null, this);
@@ -62,6 +68,7 @@ Member.prototype.save = function(cb) {
             .insert({
                 name: this.name,
                 phonenum: this.phonenum,
+                email: this.email,
                 city: this.city,
                 hometown: this.hometown,
                 address: this.address,

@@ -21,7 +21,7 @@
             <div id="mySidenav" class="sidenav sidenav-hover">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                 <br>
-                <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= member.name %>, 您好!</h3>
+                <h3>&nbsp;&nbsp;&nbsp;&nbsp;<%= member.name %>, 您好!</h3>
                 <a href="/home"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;首頁</a>
                 <a href="/shopping_cart"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;&nbsp;購物車</a>
                 <a href="/purchase_rec"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;購買紀錄</a>
@@ -38,16 +38,17 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
-                    <!-- Nav tabs -->
-                    <div class="card">
-                        <ul class="nav nav-tabs text-center" role="tablist">
-                            <li role="presentation" class="active col-xs-6"><a href="#contact-store" aria-controls="home" role="tab" data-toggle="tab">追蹤店家</a></li>
-                            <li role="presentation" class="col-xs-6"><a href="#all-store" aria-controls="profile" role="tab" data-toggle="tab">全部店家</a></li>
+                    <div class="container">
+                        <ul class="nav nav-tabs text-center" style="font-size: 25px">
+                            <li class="active col-xs-6"><a data-toggle="tab" href="#contact-store">追蹤店家</a></li>
+                            <li class="col-xs-6"><a data-toggle="tab" href="#all-store">全部店家</a></li>
                         </ul>
-                        <!-- Tab panes -->
+                        <br>
+                        <br>
                         <div class="tab-content">
-                         <!-- contact-store -->
-                            <div role="tabpanel" class="tab-pane active" id="contact-store"> <% if(followList) { %>
+                            <!-- contact-store -->
+                            <div id="contact-store" class="tab-pane fade in active">
+                                <% if(followList) { %>
                                     <% followList.forEach(function(follow) { %>
                                         <div class="col-sm-4">
                                             <div class="panel panel-default">
@@ -56,7 +57,11 @@
                                                 </div>
                                                 <div class="panel-image hide-panel-body text-center">
                                                     <a data-toggle="modal" data-target="#info_<%= follow.id %>">
-                                                        <img src="http://iphoto.ipeen.com.tw/photo/comment/201103/cgmfba5d97e1973ee50ac278f63e28ac0db277.jpg" style="width:100%">
+                                                        <% if(follow.supplier.photo == null) { %>
+                                                            <img src="http://www.newdesignfile.com/postpic/2012/05/store-icon_281737.png" style="width:100%">
+                                                            <% } else { %>
+                                                                <img src="<%= follow.supplier.photo %>" style="width:100%">
+                                                                <% } %>
                                                     </a>
                                                 </div>
                                                 <div class="panel-footer text-center">
@@ -78,11 +83,18 @@
                                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                                                         <h2 class="modal-title text-center"><%= follow.supplier.storeName %></h2>
                                                     </div>
-                                                    <div class="modal-body">
-                                                        <img src="http://iphoto.ipeen.com.tw/photo/comment/201103/cgmfba5d97e1973ee50ac278f63e28ac0db277.jpg" style="width:100%">
-                                                        <h4><span class="glyphicon glyphicon-user" aria-hidden="true"> </span> 聯絡人: <%= follow.supplier.name %></h4>
-                                                        <h4><span class="glyphicon glyphicon-earphone" aria-hidden="true"> </span> 電話: <%= follow.supplier.phonenum %></h4>
-                                                        <h4><span class="glyphicon glyphicon-home" aria-hidden="true"> </span> 地址: <%= follow.supplier.address %></h4>
+                                                    <div class="modal-body text-left">
+                                                        <% if(follow.supplier.photo == null) { %>
+                                                            <img src="http://www.newdesignfile.com/postpic/2012/05/store-icon_281737.png" style="width:100%">
+                                                            <% } else { %>
+                                                                <img src="<%= follow.supplier.photo %>" style="width:100%">
+                                                                <% } %>
+                                                                    <h3><span class="glyphicon glyphicon-user" aria-hidden="true"></span> 聯絡人: <%= follow.supplier.name %></h3>
+                                                                    <h3><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span> 電話: <%= follow.supplier.phonenum %></h3>
+                                                                    <h3><span class="glyphicon glyphicon-home" aria-hidden="true"></span> 地址: 
+                                                                        <%= follow.supplier.city %>
+                                                                        <%= follow.supplier.hometown %>
+                                                                        <%= follow.supplier.address %></h3>
                                                     </div>
                                                 </div>
                                             </div>
@@ -90,9 +102,11 @@
                                         <%  }); %>
                                             <% } else { %>
                                                 <h3 class="text-center">目前無追蹤店家</h3>
-                                                <% } %></div>
+                                                <% } %>
+                            </div>
                             <!-- all-store -->
-                            <div role="tabpanel" class="tab-pane" id="all-store">    <% if(supplierList) { %>
+                            <div id="all-store" class="tab-pane fade">
+                                <% if(supplierList) { %>
                                     <% supplierList.forEach(function(supplierm) { %>
                                         <div class="col-sm-4">
                                             <div class="panel panel-default">
@@ -101,7 +115,11 @@
                                                 </div>
                                                 <a data-toggle="modal" data-target="#store_info_<%= supplierm.id %>">
                                                     <div class="panel-image hide-panel-body text-center">
-                                                        <img src="http://img.ltn.com.tw/Upload/liveNews/BigPic/600_phpjo1vnP.jpeg" style="width:100%">
+                                                        <% if(supplierm.photo == null) { %>
+                                                            <img src="http://www.newdesignfile.com/postpic/2012/05/store-icon_281737.png" style="width:100%">
+                                                            <% } else { %>
+                                                                <img src="<%= supplierm.photo %>" style="width:100%">
+                                                                <% } %>
                                                     </div>
                                                 </a>
                                                 <div class="panel-footer text-center">
@@ -120,11 +138,18 @@
                                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                                                         <h2 class="modal-title text-center"><%= supplierm.storeName %></h2>
                                                     </div>
-                                                    <div class="modal-body">
-                                                        <img src="http://iphoto.ipeen.com.tw/photo/comment/201103/cgmfba5d97e1973ee50ac278f63e28ac0db277.jpg" style="width:100%">
-                                                        <h4><span class="glyphicon glyphicon-user" aria-hidden="true"> </span> 聯絡人: <%= supplierm.name %></h4>
-                                                        <h4><span class="glyphicon glyphicon-earphone" aria-hidden="true"> </span> 電話: <%= supplierm.phonenum %></h4>
-                                                        <h4><span class="glyphicon glyphicon-home" aria-hidden="true"> </span> 地址: <%= supplierm.address %></h4>
+                                                    <div class="modal-body text-left">
+                                                        <% if(supplierm.photo == null) { %>
+                                                            <img src="http://www.newdesignfile.com/postpic/2012/05/store-icon_281737.png" style="width:100%">
+                                                            <% } else { %>
+                                                                <img src="<%= supplierm.photo %>" style="width:100%">
+                                                                <% } %>
+                                                                    <h3><span class="glyphicon glyphicon-user" aria-hidden="true"> </span> 聯絡人: <%= supplierm.name %></h3>
+                                                                    <h3><span class="glyphicon glyphicon-earphone" aria-hidden="true"> </span> 電話: <%= supplierm.phonenum %></h3>
+                                                                    <h3><span class="glyphicon glyphicon-home" aria-hidden="true"> </span> 地址: 
+                                                                        <%= supplierm.city %>
+                                                                        <%= supplierm.hometown %>
+                                                                        <%= supplierm.address %></h3>
                                                     </div>
                                                 </div>
                                             </div>
@@ -132,22 +157,23 @@
                                         <%  }); %>
                                             <% } else { %>
                                                 <h3 class="text-center">目前無店家</h3>
-                                                <% } %></div>
+                                                <% } %>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <% } %>
-        <script>
-        function openNav() {
-            document.getElementById("mySidenav").style.width = "250px";
-        }
+            <script>
+            function openNav() {
+                document.getElementById("mySidenav").style.width = "250px";
+            }
 
-        function closeNav() {
-            document.getElementById("mySidenav").style.width = "0";
-        }
-        </script>
+            function closeNav() {
+                document.getElementById("mySidenav").style.width = "0";
+            }
+            </script>
 </body>
 
 </html>

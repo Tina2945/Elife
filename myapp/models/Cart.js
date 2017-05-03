@@ -57,6 +57,25 @@ Cart.getAll = function(memberId, cb) {
         });
 };
 
+Cart.sum = function(memberId, cb) {
+    db("buylist")
+        .sum("total as sum")
+        .where({
+            member_id: memberId,
+            paid: 0
+        })
+        .map(function(row) {
+            return row.sum;
+        })
+        .then(function(sum) {
+            cb(null, sum);
+        })
+        .catch(function(err) {
+            console.log(err);
+            cb(new GeneralErrors.Database());
+        });
+};
+
 Cart.prototype.save = function(cb) {
     if (this.id) {
         db("buylist")

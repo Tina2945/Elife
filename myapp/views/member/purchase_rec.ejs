@@ -21,7 +21,7 @@
             <div id="mySidenav" class="sidenav sidenav-hover">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                 <br>
-                <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= member.name %>, 您好!</h3>
+                <h3>&nbsp;&nbsp;&nbsp;&nbsp;<%= member.name %>, 您好!</h3>
                 <a href="/home"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;首頁</a>
                 <a href="/shopping_cart"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;&nbsp;購物車</a>
                 <a href="/purchase_rec"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;購買紀錄</a>
@@ -31,8 +31,7 @@
                 </form>
             </div>
             <div id="main">
-                <span style="font-size:30px;cursor:pointer;color:white" onclick="openNav()">&#9776; 
-                </span>
+                <span style="font-size:30px;cursor:pointer;color:white" onclick="openNav()">&#9776;</span>
             </div>
         </div>
         <div class="container text-center">
@@ -43,75 +42,15 @@
                     <div class="container">
                         <% if(dateList) { %>
                             <% for(i in dateList) { %>
-                                <!-- <a data-toggle="modal" data-target="#rec_info_<%= i %>"> -->
                                 <a href="/purchase_rec/<%= dateList[i] %>">
                                     <button type="button" class="btn btn-success btn-lg btn-block">
                                         <%= dateList[i] %>
                                     </button>
                                 </a>
-                                <!-- </a> -->
                                 <br>
-                                <!-- Modal -->
-                                <!-- <div class="modal fade" id="rec_info_<%= i %>" role="dialog">
-                                    <div class="modal-dialog modal-lg">
-                                        <div class="modal-content col-sm-12 text-center">
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                <h2 class="modal-title text-center"><%= dateList[i] %> 購買紀錄</h2>
-                                            </div>
-                                            <div class="modal-body">
-                                                <h2>政大水果店</h2>
-                                                <table class="table" style="font-size: 20px">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>
-                                                                <div class="media-left media-top">
-                                                                    <img src="http://www.wall001.com/photograph/fruit_strawberry/mxxx01/fruit_strawberry_wallpaper_Vol_014_SN156.JPG" class="media-object" style="width:80px">
-                                                                </div>
-                                                            </td>
-                                                            <td>大湖草莓</td>
-                                                            <td>1盒</td>
-                                                            <td>$400</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <div class="media-left media-top">
-                                                                    <img src="http://hk.etw.nextmedia.com/images/next-photos/Eat_Travel/950/640pixfolder/ETA950_018a_IMG_6087.jpg" style="width:80px">
-                                                                </div>
-                                                            </td>
-                                                            <td>富士蘋果</td>
-                                                            <td>3顆</td>
-                                                            <td>$100</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                                <h2>政大蔬菜店</h2>
-                                                <table class="table" style="font-size: 20px">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>
-                                                                <div class="media-left media-top">
-                                                                    <img src="http://www.dodocook.com/user_upload/recipe/5/47/24/recipe_0054724_600_fit_1406886913.jpg" class="media-object" style="width:80px">
-                                                                </div>
-                                                            </td>
-                                                            <td>杏鮑菇</td>
-                                                            <td>1袋</td>
-                                                            <td>$40</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <h3 class="text-center" style="color: #EE4035">總金額 $540元</h3>
-                                                <button type="submit" class="btn btn-success btn-lg" data-dismiss="modal">簽收</button>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> -->
                                 <% } %>
                                     <% } else { %>
-                                        <h2>目前無購物紀錄</h2>
+                                        <h2>目前無購買紀錄</h2>
                                         <% } %>
                     </div>
                 </div>

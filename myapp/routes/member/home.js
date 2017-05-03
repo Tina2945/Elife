@@ -6,7 +6,7 @@ var async = require('async');
 
 router.get('/', function(req, res, next) {
     if (!req.session.member) {
-        res.redirect('/');
+        res.redirect('/login');
     }
 
     Follow.getAll(req.session.member.id, function(err, followList) {
@@ -31,7 +31,7 @@ router.get('/', function(req, res, next) {
                             next();
                         } else {
                             res.render('member/home', {
-                                member: req.session.member || null,
+                                member: req.session.member,
                                 followList: followList || null,
                                 supplierList: supplierList || null
                             });

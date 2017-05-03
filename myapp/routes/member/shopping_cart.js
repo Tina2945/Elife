@@ -2,44 +2,52 @@ var express = require('express');
 var router = express.Router();
 var Cart = require('../../models/Cart');
 var SupplierMember = require('../../models/SupplierMember');
-var Product = require('../../models/Product');
 var async = require('async');
 
 router.get('/', function(req, res, next) {
+    if (!req.session.member) {
+        res.redirect('/login');
+    }
+
     Cart.getAll(req.session.member.id, function(err, cartList) {
         if (err) {
             next();
         } else {
-            async.each(cartList, function(cart, cb) {
-                SupplierMember.get(cart.supplierId, function(err, supplier) {
+            if (cartList) {
+                async.each(cartList, function(cart, cb) {
+                    SupplierMember.get(cart.supplierId, function(err, supplier) {
+                        if (err) {
+                            cb(err);
+                        } else {
+                            cart.supplier = supplier;
+                            cb(null);
+                        }
+                    });
+                }, function(err) {
                     if (err) {
-                        cb(err);
+                        next();
                     } else {
-                        cart.supplier = supplier;
-
-                        Product.get(cart.productId, function(err, product) {
+                        Cart.sum(req.session.member.id, function(err, sum) {
                             if (err) {
-                                cb(err);
+                                console.log(err);
                             } else {
-                                cart.product = product;
-                                cb(null);
+                                res.render('member/shopping_cart', {
+                                    member: req.session.member,
+                                    cartList: cartList,
+                                    sum: sum
+                                });
                             }
-                        });
+                        })
                     }
                 });
-            }, function(err) {
-                if (err) {
-                    console.log(err);
-                } else {
-                    res.render('member/shopping_cart', {
-                        member: req.session.member || null,
-                        cartList: cartList || null
-                    });
-                }
-            });
+            } else {
+                res.render('member/shopping_cart', {
+                    member: req.session.member,
+                    cartList: null
+                });
+            }
         }
     })
-
 });
 
 router.get('/:cartId', function(req, res, next) {
@@ -65,8 +73,6 @@ router.post('/', function(req, res) {
     for (i in req.body.cartId) {
         var newCart = new Cart({
             id: req.body.cartId[i],
-            quantity: req.body.cartQ[i],
-            total: req.body.cartP[i],
             paid: true,
             date: date,
             time: time
@@ -87,6 +93,7 @@ router.post('/add', function(req, res) {
         memberId: req.session.member.id,
         supplierId: req.body.supplierId,
         productId: req.body.id,
+        name: req.body.name,
         price: req.body.price,
         quantity: req.body.quantity,
         total: req.body.price * req.body.quantity
@@ -100,20 +107,5 @@ router.post('/add', function(req, res) {
         }
     });
 });
-
-// router.post('/delete', function(req, res) {
-//     var newCart = new Cart({
-//         id: req.body.id
-//     });
-
-//     newCart.delete(function(err) {
-//         if (err) {
-//             res.status = err.code;
-//             res.json(err);
-//         } else {
-//             res.redirect('/shopping_cart');
-//         }
-//     });
-// });
 
 module.exports = router;

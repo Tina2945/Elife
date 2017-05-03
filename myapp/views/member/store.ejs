@@ -2,8 +2,7 @@
 <html lang="zh">
 
 <head>
-    <!-- Theme Made By www.w3schools.com - No Copyright -->
-    <title>政大水果店</title>
+    <title>Elife</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -23,7 +22,7 @@
             <div id="mySidenav" class="sidenav sidenav-hover">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                 <br>
-                <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= member.name %>, 您好!</h3>
+                <h3>&nbsp;&nbsp;&nbsp;&nbsp;<%= member.name %>, 您好!</h3>
                 <a href="/home"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;首頁</a>
                 <a href="/shopping_cart"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;&nbsp;購物車</a>
                 <a href="/purchase_rec"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;購買紀錄</a>
@@ -72,6 +71,7 @@
                                             <form action="/shopping_cart/add" method="POST">
                                                 <input type="hidden" name="supplierId" value="<%= product.supplierId %>">
                                                 <input type="hidden" name="id" value="<%= product.id %>">
+                                                <input type="hidden" name="name" value="<%= product.name %>">
                                                 <input type="hidden" name="price" value="<%= product.price %>">
                                                 <div class="form-group-lg col-xs-6" style="display: inline-block; vertical-align: top;">
                                                     <select class="form-control" name="quantity">

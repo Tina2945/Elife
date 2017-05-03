@@ -12,6 +12,7 @@ var users = require('./routes/users');
 //member
 var register = require('./routes/member/register');
 var login = require('./routes/member/login');
+var login_error = require('./routes/member/login_error');
 var home = require('./routes/member/home');
 var personal_info = require('./routes/member/personal_info');
 var purchase_rec = require('./routes/member/purchase_rec');
@@ -22,6 +23,7 @@ var order_suc = require('./routes/member/order_suc');
 //supplier
 var supplier = require('./routes/supplier/supplier');
 var supplierlogin = require('./routes/supplier/supplierlogin');
+var supplierlogin_error = require('./routes/supplier/supplierlogin_error');
 var product = require('./routes/supplier/product');
 var supplier_info = require('./routes/supplier/supplier_info');
 var order = require('./routes/supplier/order');
@@ -53,6 +55,7 @@ app.use('/users', users);
 //member
 app.use('/register', register);
 app.use('/login', login);
+app.use('/login_error', login_error);
 app.use('/home', home);
 app.use('/personal_info', personal_info);
 app.use('/purchase_rec', purchase_rec);
@@ -63,6 +66,7 @@ app.use('/order_suc', order_suc);
 //supplier
 app.use('/supplier', supplier);
 app.use('/supplierlogin', supplierlogin);
+app.use('/supplierlogin_error', supplierlogin_error);
 app.use('/product', product);
 app.use('/supplier_info', supplier_info);
 app.use('/order', order);

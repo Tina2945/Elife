@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var SupplierMember = require('../../models/SupplierMember');
+var crypto = require('crypto');
 
 router.get('/', function(req, res, next) {
     res.render('supplier/supplierlogin');
@@ -8,10 +9,11 @@ router.get('/', function(req, res, next) {
 
 router.post('/', function(req, res, next) {
     SupplierMember.check(req.body.account, function(err, supplierm) {
-        if (req.body.password != supplierm.password) {
-            //res.send('Your password is incorrect!');
-            console.log('Your password is incorrect!')
-            res.redirect('/supplierlogin');
+        var md5 = crypto.createHash('md5');
+        var password = md5.update(req.body.password).digest('hex');
+
+        if (password != supplierm.password) {
+            res.redirect('/supplierlogin_error');
         } else {
             req.session.supplierm = supplierm;
             res.redirect('/product');

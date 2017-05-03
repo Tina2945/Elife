@@ -84,19 +84,23 @@ Record.get = function(memberId, date, time, cb) {
         });
 };
 
-Record.prototype.save = function(cb) {
+Record.sum = function(memberId, date, time, cb) {
     db("buylist")
+        .sum("total as sum")
         .where({
-            id: this.id
+            member_id: memberId,
+            paid: 1,
+            date: date,
+            time: time
         })
-        .update({
-            received: this.received
+        .map(function(row) {
+            return row.sum;
         })
-        .then(function() {
-            cb(null, this);
-        }.bind(this))
+        .then(function(sum) {
+            cb(null, sum);
+        })
         .catch(function(err) {
-            console.log("RECORD UPDATED", err);
+            console.log(err);
             cb(new GeneralErrors.Database());
         });
 };

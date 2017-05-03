@@ -13,81 +13,80 @@
 </head>
 
 <body>
-    <div class="navbar-header">
-        <div class="navbar-brand pull-right">
-            <img src="/images/logo.png" alt="Brand Image">
+    <% if(member) {%>
+        <div class="navbar-header">
+            <div class="navbar-brand pull-right">
+                <img src="/images/logo.png" alt="Brand Image">
+            </div>
+            <div id="mySidenav" class="sidenav sidenav-hover">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <br>
+                <h3>&nbsp;&nbsp;&nbsp;&nbsp;<%= member.name %>, 您好!</h3>
+                <a href="/home"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;首頁</a>
+                <a href="/shopping_cart"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;&nbsp;購物車</a>
+                <a href="/purchase_rec"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;購買紀錄</a>
+                <a href="/personal_info"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;個人資料</a>
+                <a href="/"><span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;登出</a>
+            </div>
+            <div id="main">
+                <span style="font-size:30px;cursor:pointer;color:white" onclick="openNav()">&#9776;</span>
+            </div>
         </div>
-        <div id="mySidenav" class="sidenav sidenav-hover">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <br>
-            <h3> &nbsp;&nbsp;&nbsp;
-                <% if(member) {%>
-                    <%= member.name %>
-                      , 您好!</h3>
-            <a href="/home"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;首頁</a>
-            <a href="/shopping_cart"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;&nbsp;購物車</a>
-            <a href="/purchase_rec"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;購買紀錄</a>
-            <a href="/personal_info"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;個人資料</a>
-            <a href="/"><span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;登出</a>
-            <% } %>
-        </div>
-        <div id="main">
-            <span style="font-size:30px;cursor:pointer;color:white" onclick="openNav()">&#9776; 
-        </span>
-        </div>
-    </div>
-    <br>
-    <div class="container text-center">
-        <div class="row">
-            <div class="col-sm-12">
-                <% if(member) {%>
+        <br>
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-sm-12">
                     <h1><%= member.name %></h1>
                     <img class="img-thumbnail" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcR8zrE1DLads0mYqakFoa_ZeChcP39nQvkHOR7tVUlx5mBwnEQdLg">
                     <br>
                     <br>
-                    <div class="container">
+                    <div class="container text-left">
                         <table class="table" style="font-size: 20px">
                             <tbody>
-                                <tr>
-                                </tr>
                                 <tr>
                                     <td> <span class="glyphicon glyphicon-earphone" aria-hidden="true" style="color: #649965"></span></td>
                                     <td>
                                         <%= member.phonenum %>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td> <span class="glyphicon glyphicon-home" aria-hidden="true" style="color: #649965"></span></td>
-                                    <td>
-                                        <%= member.address %>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td> <span class="glyphicon glyphicon-credit-card" aria-hidden="true" style="color: #649965"></span></td>
-                                        <!-- <% if(member) {%> -->
-                                    <td>
-                                        <!-- <%= member.address %> -->
-                                        信用卡卡號
-                                    </td>
-                                    <!-- <% } %> -->
-                                </tr>
+                                <% if(member.email) {%>
+                                    <tr>
+                                        <td> <span class="glyphicon glyphicon-envelope" aria-hidden="true" style="color: #649965"></span></td>
+                                        <td>
+                                            <%= member.email %>
+                                        </td>
+                                    </tr>
+                                    <% } %>
+                                        <tr>
+                                            <td><span class="glyphicon glyphicon-home" aria-hidden="true" style="color: #649965"></span></td>
+                                            <td>
+                                                <%= member.city %>
+                                                    <%= member.hometown %>
+                                                        <%= member.address %>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="glyphicon glyphicon-credit-card" aria-hidden="true" style="color: #649965"></span></td>
+                                            <td>
+                                                ************<%= member.card4 %>
+                                            </td>
+                                        </tr>
                             </tbody>
                         </table>
                     </div>
-                    <% } %>
+                </div>
             </div>
         </div>
-    </div>
-    <br>
-    <script>
-    function openNav() {
-        document.getElementById("mySidenav").style.width = "250px";
-    }
+        <% } %>
+            <script>
+            function openNav() {
+                document.getElementById("mySidenav").style.width = "250px";
+            }
 
-    function closeNav() {
-        document.getElementById("mySidenav").style.width = "0";
-    }
-    </script>
+            function closeNav() {
+                document.getElementById("mySidenav").style.width = "0";
+            }
+            </script>
 </body>
 
 </html>

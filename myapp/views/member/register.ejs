@@ -2,10 +2,9 @@
 <html lang="en">
 
 <head>
-    <title>註冊</title>
+    <title>Elife</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel='stylesheet' href='/stylesheets/style.css' />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -27,19 +26,25 @@
                 <form name="sentMessage" action="/register" method="POST" id="contactForm" novalidate>
                     <div class="row control-group">
                         <div class="form-group col-xs-12 floating-label-form-group controls">
-                            <label for="name">姓名:</label>
+                            <label for="name">姓名(必填):</label>
                             <input type="text" placeholder="請輸入姓名" id="name" name="name">
                         </div>
                     </div>
                     <div class="row control-group">
                         <div class="form-group col-xs-12 floating-label-form-group controls">
-                            <label for="phonenum">電話:</label>
+                            <label for="phonenum">電話(必填):</label>
                             <input type="text" placeholder="請輸入電話" id="phonenum" name="phonenum">
                         </div>
                     </div>
                     <div class="row control-group">
                         <div class="form-group col-xs-12 floating-label-form-group controls">
-                            <label for="city">地址:</label>
+                            <label for="email">Email:</label>
+                            <input type="text" placeholder="請輸入Email" id="email" name="email">
+                        </div>
+                    </div>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label for="city">地址(必填):</label>
                             <select required="required" id="city" name="city">
                                 <option class="active">縣市</option>
                                 <% district.forEach(function(district) { %>
@@ -55,22 +60,25 @@
                     </div>
                     <div class="row control-group">
                         <div class="form-group col-xs-12 floating-label-form-group controls">
-                            <label for="account">帳號:</label>
-                            <input type="text" placeholder="請輸入帳號" id="account" name="account">
+                            <label for="card">信用卡號碼(必填):</label>
+                            <input type="text" placeholder="請輸入第一欄(4碼)" id="card" name="card1">
+                            <input type="text" placeholder="請輸入第二欄(4碼)" name="card2">
+                            <input type="text" placeholder="請輸入第三欄(4碼)" name="card3">
+                            <input type="text" placeholder="請輸入第四欄(4碼)" name="card4">
                         </div>
                     </div>
                     <div class="row control-group">
                         <div class="form-group col-xs-12 floating-label-form-group controls">
-                            <label for="password">密碼:</label>
-                            <input type="password" placeholder="請輸入密碼" id="password" name="password">
+                            <label for="account">帳號(必填):</label>
+                            <input type="text" placeholder="請設定帳號" id="account" name="account">
                         </div>
                     </div>
-                    <!-- <div class="row control-group">
-                            <div class="form-group col-xs-12 floating-label-form-group controls">
-                                <label for="photo">相片:</label>
-                                <input type="file" accept="image/*" capture="camera" name="photo" id="photo">
-                            </div>
-                        </div> -->
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label for="password">密碼(必填):</label>
+                            <input type="password" placeholder="請設定密碼" id="password" name="password">
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="form-group col-xs-12">
                             <button type="submit" class="btn btn-default btn-lg">確定</button>
