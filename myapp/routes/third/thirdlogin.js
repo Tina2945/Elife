@@ -4,7 +4,7 @@ var Third = require('../../models/thirdm');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    res.render('thirdlogin', {
+    res.render('third/thirdlogin', {
         member: null
     });
 });
@@ -12,11 +12,11 @@ router.get('/', function(req, res, next) {
 
 router.post('/', function(req, res, next) {
     Third.check(req.body.account, function(err, third) {
-        if (req.body.password != member.password) {
+        if (req.body.password != third.password) {
             res.send('Your password is incorrect!');
         } else {
             req.session.third = third;
-            res.redirect('/');
+            res.redirect('/third_order');
         }
     });
 });

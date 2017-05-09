@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <title>訂單</title>
     <meta charset="utf-8">
-	  <meta name="viewport" content="width=device-width, initial-scale=1">
-	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel='stylesheet' href='/stylesheets/style.css' />
@@ -12,312 +13,94 @@
     <link href="croppie.css" rel="stylesheet" />
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="croppie.min.js"></script>
-	<style>
-		body{
-			background-color: #DDDDDD;
-			
-      font-family: "Microsoft JhengHei";
-		}
+    <style>
+    body {
+        background-color: #CCFF99;
+        font-family: "Microsoft JhengHei";
+    }
+    
     h1 {
-    font-size: 15px;
-    font-family: "Microsoft JhengHei";/*malgun gothic, SimSun, Microsoft JhengHei*/
+        font-size: 15px;
+        font-family: "Microsoft JhengHei";
+        /*malgun gothic, SimSun, Microsoft JhengHei*/
     }
-		h2{
-      font-family: 'Gabriola', serif;
-      font-size: 70px;
-    }
-    h3{
-      font-size: 25px;
-      font-family: "Microsoft JhengHei";
-
-    }
-	</style>
-  </head>
-
-  <body>
-
-    <h2>
-      <div class="container">
-      <div class="row">
-      <div class="col-xs-4"><img src="/images/logo.png"></div>
-      <div class="col-xs-8"><p>Elife</p></div>
-   </div>
-   </div>
-
-    </h2>
-
-
-    <h1>
-
-
-  <div class="table-hover">
-  <table class ="table">
-  <caption><strong>訂單</strong></caption>
-  <thead>
-    <tr>
-      <th>編號</th>      
-      <th>訂購時間</th>      
-      <th>狀態</th>
-    </tr>
-  </thead>
-  <tbody>
     
-    <tr class="success">
-       <td>01</td>       
-       <td>10:20</td>       
-       <td>完成</td>
-       <td><button type="submit" class="btn btn-success btn-md" id="log">我要接單
-          <a data-toggle="modal" data-target="#order_list">
-                    <button type="button" class="btn btn-info btn-md"> 訂單詳情
-                    </button>
-                  </a>           
-                  
-          
-           <!-- Modal -->
-            <div class="modal fade" id="order_list" role="dialog">
-              <div class="modal-dialog modal-lg">
-                <div class="modal-content col-sm-12 text-center">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    
-                    </div>
-                    <div class="modal-body">
-                      
-                  
-                        <h3>
-                        <div class="table-hover">
-                      <table class ="table">
-                        <thead>
-                          
-                         <tr>
-                         <th>品項</th>      
-                         <th>單價</th>      
-                         <th>數量</th>
-                         <th>總金額</th>
-                         </tr>
-                         </thead>
-
-                         <tbody>
-
-                         <tr class="active">
-                         <td>阿里山檳榔</td>      
-                         <td>150元</td>      
-                         <td>2箱</td>
-                         <td>300元</td>
-                         </tr>   
-                       </tbody>   
-                     </table>
-                    
-                  </h3>
-                  
- 
-                      <br>
-                      <h4><span class="glyphicon glyphicon-user" aria-hidden="true"> </span> 訂購人:羅靖婷</h4>
-                      <h4><span class="glyphicon glyphicon-earphone" aria-hidden="true"> </span> 電話: 02-4444-9999</h4>
-                      <h4><span class="glyphicon glyphicon-home" aria-hidden="true"> </span> 地址: 台北市文山區指南路二段64號</h4>
-                      
-                      <h3 style="color: #EE4035">訂購總金額:300元</h3>
-                    </div>
-                    
-                  </div>
-                </div>
-              
-
-
-       </td>
-    </tr>
-
-    <tr class="danger">
-   
-      <td>02</td>      
-      <td>8:50</td>      
-      <td>已退貨</td>
-      <td><button type="submit" class="btn btn-success btn-md" id="log">我要接單
-        <a data-toggle="modal" data-target="#order_list2">
-                    <button type="button" class="btn btn-info btn-md"> 訂單詳情
-                    </button>
-                  </a>              
-                   
-            
-            <!-- <!-- Modal -->
-            <div class="modal fade" id="order_list2" role="dialog">
-              <div class="modal-dialog modal-lg">
-                <div class="modal-content col-sm-12 text-center">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    
-                    </div>
-                    <div class="modal-body">
-                      
-                     <h3>
-                        <div class="table-hover">
-                      <table class ="table">
-                        <thead>
-                          
-                         <tr>
-                         <th>品項</th>      
-                         <th>單價</th>      
-                         <th>數量</th>
-                         <th>總金額</th>
-                         </tr>
-                         </thead>
-
-                         <tbody>
-
-                         <tr class="active">
-                         <td>葡萄</td>      
-                         <td>150元</td>      
-                         <td>2箱</td>
-                         <td>300元</td>
-                         </tr>   
-                       </tbody>   
-                     </table>
-                    
-                  </h3>
-                  
-                      <br>
-                      <h4><span class="glyphicon glyphicon-earphone" aria-hidden="true"> </span> 電話: 02-4444-9999</h4>
-                      <h4><span class="glyphicon glyphicon-home" aria-hidden="true"> </span> 地址: 台北市文山區指南路二段64號</h4>
-                      <h4><span class="glyphicon glyphicon-user" aria-hidden="true"> </span> 訂購人: 水果王</h4>
-                      <h3 style="color: #EE4035">訂購總金額:300元</h3>
-                    </div>
-                    
-                  </div>
-                </div>
-              </div>
-      </td>   
-      </tr> 
+    h2 {
+        font-family: 'Gabriola', serif;
+        font-size: 70px;
+    }
     
-    <tr class="warning">
-      <td>03</td>
-      <td>13:50</td>
-      <td>未完成</td>
-      <td><button type="submit" class="btn btn-success btn-md" id="log">我要接單
-        <a data-toggle="modal" data-target="#order_list3">
-                    <button type="button" class="btn btn-info btn-md"> 訂單詳情
-                    </button>
-                  </a>                
-                   
-            
-            <!-- Modal -->
-            <div class="modal fade" id="order_list3" role="dialog">
-              <div class="modal-dialog modal-lg">
-                <div class="modal-content col-sm-12 text-center">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    
-                    </div>
-                    <div class="modal-body">
-                      
-                      <h3>
-                        <div class="table-hover">
-                      <table class ="table">
-                        <thead>
-                          
-                         <tr>
-                         <th>品項</th>      
-                         <th>單價</th>      
-                         <th>數量</th>
-                         <th>總金額</th>
-                         </tr>
-                         </thead>
+    h3 {
+        font-size: 25px;
+        font-family: "Microsoft JhengHei";
+    }
+    
+    .col-xs-8 {
+        font-family: "Gabriola", serif;
+        font-size: 80px;
+        text-align: center;
+        letter-spacing: 15px;
+    }
+    
+    strong {
+        font-size: 40px;
+        font-family: "Microsoft JhengHei";
+        color: black;
+    }
+    
+    .table {
+        font-size: 30px;
+    }
+    </style>
+</head>
 
-                         <tbody>
-
-                         <tr class="active">
-                         <td>葡萄</td>      
-                         <td>150元</td>      
-                         <td>2箱</td>
-                         <td>300元</td>
-                         </tr>   
-                       </tbody>   
-                     </table>
-                    
-                  </h3>
-                  
-                      <br>
-                      <h4><span class="glyphicon glyphicon-earphone" aria-hidden="true"> </span> 電話: 02-4444-9999</h4>
-                      <h4><span class="glyphicon glyphicon-home" aria-hidden="true"> </span> 地址: 台北市文山區指南路二段64號</h4>
-                      <h4><span class="glyphicon glyphicon-user" aria-hidden="true"> </span> 訂購人: 李聖經</h4>
-                      <h3 style="color: #EE4035">訂購總金額:300元</h3>
-                    </div>
-                    
-                  </div>
-                </div>
-              </div>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-4"><img src="/images/logo.png"></div>
+            <div class="col-xs-8">
+                <p>Elife</p>
             </div>
-
-      </td>
-    </tr>
-
-    <tr class="active">
-      <td>04</td>      
-      <td>13:50</td>      
-      <td>未完成</td>
-      <td><button type="submit" class="btn btn-success btn-md" id="log">我要接單
-        
-        
-                  <a data-toggle="modal" data-target="#order_list">
-                    <button type="button" class="btn btn-info btn-md"> 訂單詳情
-                    </button>
-                  </a>
-          
-                
-           
-            <!-- Modal -->
-            <div class="modal fade" id="order_list" role="dialog">
-              <div class="modal-dialog modal-lg">
-                <div class="modal-content col-sm-12 text-center">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    
-                    </div>
-                    <div class="modal-body">
-                      
-                     <h3>
-                        <div class="table-hover">
-                      <table class ="table">
-                        <thead>
-                          
-                         <tr>
-                         <th>品項</th>      
-                         <th>單價</th>      
-                         <th>數量</th>
-                         <th>總金額</th>
-                         </tr>
-                         </thead>
-
-                         <tbody>
-
-                         <tr class="active">
-                         <td>葡萄</td>      
-                         <td>150元</td>      
-                         <td>2箱</td>
-                         <td>300元</td>
-                         </tr>   
-                       </tbody>   
-                     </table>
-                    
-                  </h3>
-                  
-                  
-                      <br>
-                      <h4><span class="glyphicon glyphicon-earphone" aria-hidden="true"> </span> 電話: 02-4444-9999</h4>
-                      <h4><span class="glyphicon glyphicon-home" aria-hidden="true"> </span> 地址: 台北市文山區指南路二段64號</h4>
-                      <h4><span class="glyphicon glyphicon-user" aria-hidden="true"> </span> 訂購人: 朴寶英</h4>
-                      <h3 style="color: #EE4035">訂購總金額:300元</h3>
-                    </div>
-                    
-                  </div>
-                </div>
-              </div>
-      </td>
-    </tr>
-
-  </tbody>
-</table>
-</div>
-</h1>
-
+        </div>
+    </div>
+    <div class="table-hover">
+        <table class="table">
+            <caption><strong >訂單</strong></caption>
+            <thead>
+                <tr>
+                    <th class="text-center">買方編號</th>
+                    <th class="text-center">地區</th>
+                    <th class="text-center">狀態</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if(nameList) { %>
+                    <%  nameList.forEach(function(buy) {  %>
+                        <tr class="success">
+                            <td class="text-center">
+                                <%= buy.memberId %>
+                            </td>
+                            <td class="text-center">
+                                <%= buy.member.city %>
+                            </td>
+                            <% if(buy.status==0){ %>
+                                <td>尚未接單</td>
+                                <% } if(buy.status==1){ %>
+                                    <td>處理中</td>
+                                    <% } %>
+                                        <td>
+                                            
+                                            <a href="/third_order/<%= buy.memberId %>">
+                                                <button type="button" class="btn btn-primary" style="color:white"> 詳情
+                                                </button>
+                                            </a>
+                                        </td>
+                                        </td>
+                                        <% }) %>
+                        </tr>
+            </tbody>
+        </table>
+        <% } %>
 </body>
+
 </html>

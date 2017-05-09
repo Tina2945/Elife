@@ -10,13 +10,13 @@ var Third = function(options) {
   this.password = options.password;
   this.account = options.account;
   this.phonenum = options.phonenum;
-  this.bankaccount = options.bankaccount;
+  
 };
 
 //Class Function
 Third.get = function(memberId, cb) {
   db.select()
-    .from('third')
+    .from('thirdm')
     .where({
       id : memberId
     })
@@ -41,7 +41,7 @@ Third.prototype.save = function (cb) {
   console.log('this.id'+this.id);
   if (this.id) {
 
-    db("third")
+    db("thirdm")
       .where({
         id : this.id
       })
@@ -49,8 +49,8 @@ Third.prototype.save = function (cb) {
         name : this.name,
         account : this.account,
         password : this.password,
-        phonenum : this.phonenum,
-        bankaccount : this.bankaccount
+        phonenum : this.phonenum
+       
       })
       .then(function() {
         cb(null, this);
@@ -61,13 +61,13 @@ Third.prototype.save = function (cb) {
       });
   } else {
 
-    db("third")
+    db("thirdm")
       .insert({
         name: this.name,
         account: this.account,
         password: this.password,
-        phonenum : this.phonenum,
-        bankaccount : this.bankaccount
+        phonenum : this.phonenum
+        
       })
       .then(function(result) {
         var insertedId = result[0];
@@ -84,7 +84,7 @@ Third.prototype.save = function (cb) {
 
 Third.check = function(memberAccount, cb) {
   db.select()
-    .from('third')
+    .from('thirdm')
     .where({
       account : memberAccount
     })

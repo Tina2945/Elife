@@ -1,40 +1,132 @@
 var express = require('express');
 var router = express.Router();
 var Third = require('../../models/thirdm');
-
+var Record = require('../../models/Record');
+var SupplierMember = require('../../models/SupplierMember');
+var Product = require('../../models/Product');
+var Member = require('../../models/Member');
+var Buy = require('../../models/Buy');
+var District = require('../../models/District');
 var async = require('async');
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('third_order', {
-    member : null
-  });
+
+    Buy.getAll(function(err, nameList) {
+        if (err) {
+            next();
+        } else {
+            async.each(nameList, function(buy, cb) {
+                Member.get(buy.memberId, function(err, member) {
+                    if (err) {
+                        cb(err);
+                    } else {
+                        buy.member = member;
+                        cb(null);
+
+                    }
+                });
+            }, function(err) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    res.render('third/third_order', {
+                        
+                        nameList: nameList || null
+                    });
+
+                }
+
+
+
+            });
+        }
+
+    });
+
 });
+router.get('/:name', function(req, res, next) {
+    Buy.get(req.params.name, function(err, buyList) {
+        console.log(buyList)
+        if (err) {
+            next();
+        } else {
+            async.each(buyList, function(buy, cb) {
+                SupplierMember.get(buy.supplierId, function(err, supplier) {
+                    if (err) {
+                        cb(err);
+                    } else {
+                        buy.supplier = supplier;
+
+                        Product.get(buy.productId, function(err, product) {
+                            if (err) {
+                                cb(err);
+                            } else {
+                                buy.product = product;
+                                cb(null);
+                            }
+                        });
+                    }
+                });
+            }, function(err) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    Member.get(req.params.name, function(err, member) {
+                        res.render('third/third_detail', {
+                            third: req.session.third || null,
+                            buyList: buyList,
+                            member: member
+                        });
+                    });
+                }
+
+            });
+        }
+
+    });
+});
+
 router.post('/', function(req, res, next) {
 
-  //首先必須先產生出一個Member的物件在進行save
-  var newThird = new Third({
-    account : req.body.account,
-    password : req.body.password,
-    name : req.body.name,
-    phonenum : req.body.phonenum,
-    bankaccount : req.body.bankaccount
-  });
-  newThird.save(function(err) {
-    if(err) {
-      next(err);
-    } else {
-      //再重新導向之前，我們要讓使用者登入，因此我們需要使用到session
-      req.session.third = newThird;
-      res.redirect('/');
+    //首先必須先產生出一個Member的物件在進行save
+    var newBuy = new Buy({
+        member_id: req.body.id,
 
-    }
-  });
+        status: true
+    });
+    newBuy.check(req.body.id, function(err) {
+        if (err) {
+            res.status = err.code;
+            res.json(err);
+        } else {
+            res.redirect('/third_order');
+        }
+    });
+
+});
+router.post('/take', function(req, res, next) {
+
+    //首先必須先產生出一個Member的物件在進行save
+    var newBuy = new Buy({
+        member_id: req.body.id,
+        
+        received: true
+    });
+    newBuy.take(req.body.id, function(err) {
+        if (err) {
+            res.received = err.code;
+            res.json(err);
+        } else {
+            res.redirect('/third_order');
+        }
+    });
+
 });
 
 /* Log  Out*/
 router.post('/logout', function(req, res, next) {
-  req.session.third = null;
-  res.redirect('/');
+    req.session.third = null;
+    res.redirect('/');
 });
 
 

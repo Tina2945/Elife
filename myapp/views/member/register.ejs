@@ -45,10 +45,10 @@
                     <div class="row control-group">
                         <div class="form-group col-xs-12 floating-label-form-group controls">
                             <label for="city">地址(必填):</label>
-                            <select required="required" id="city" name="city">
-                                <option class="active">縣市</option>
+                            <select required="required" id="city" name="city" width="10">
+                                <option class="active" >縣市</option>
                                 <% district.forEach(function(district) { %>
-                                    <option>
+                                    <option style=" font-size: 20px width:50px">
                                         <%= district.city %>
                                             <%= district.town %>
                                     </option>

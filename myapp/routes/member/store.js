@@ -2,6 +2,10 @@ var express = require('express');
 var router = express.Router();
 var SupplierMember = require('../../models/SupplierMember');
 var Product = require('../../models/Product');
+var zmq = require('zeromq');
+var subscriber = zmq.socket('sub');
+subscriber.connect('tcp://localhost:5563');
+subscriber.subscribe("1");
 
 router.get('/:supplierId', function(req, res, next) {
     if (!req.session.member) {

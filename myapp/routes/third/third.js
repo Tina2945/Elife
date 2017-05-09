@@ -4,7 +4,7 @@ var Third = require('../../models/thirdm');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('third', {
+  res.render('third/third', {
     member : null
   });
 });
@@ -15,8 +15,8 @@ router.post('/', function(req, res, next) {
     account : req.body.account,
     password : req.body.password,
     name : req.body.name,
-    phonenum : req.body.phonenum,
-    bankaccount : req.body.bankaccount
+    phonenum : req.body.phonenum
+    
   });
   newThird.save(function(err) {
     if(err) {
