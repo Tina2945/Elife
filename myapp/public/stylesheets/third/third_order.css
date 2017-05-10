@@ -16,7 +16,7 @@ body {
     height: 100%; /* 100% Full-height */
     width: 0; /* 0 width - change this with JavaScript */
     position: fixed; /* Stay in place */
-    z-index: 5; /* Stay on top */
+    z-index: 1; /* Stay on top */
     top: 0;
     left: 0;
     background-color: #a8dba8; 
@@ -50,9 +50,8 @@ body {
     background-color: #6F916F;
 }
 
-.sidenav a:active {
+.sidenav a:active{
     padding: 20px 8px 20px 30px;
-    margin-top: 10px;
     color: #ffffff;
     background-color: #6F916F;
 }
@@ -66,8 +65,9 @@ body {
     margin-left: 50px;
 }
 
+
 .sidenav .closebtn:hover {
-    background-color: #a8dba8;
+    background-color: #A8DBA8;
     color: #3a5134;
 }
 
@@ -89,115 +89,33 @@ body {
     .sidenav a {font-size: 18px;}
 }
 
-.nav-tabs { 
-    border-bottom: 2px solid #DDD; 
-}
-
-.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover { 
-    border-width: 0; 
-}
-
-.nav-tabs > li > a { 
-    border: none; 
-    color: #666; 
-    font-size: 25px;
-}
-        
-.nav-tabs > li.active > a, .nav-tabs > li > a:hover { 
-    border: none; 
-    color: #5A9367 !important; 
-    background: transparent; 
-}
-
-.nav-tabs > li > a::after { 
-    content: ""; 
-    background: #67B868 ; 
-    height: 4px; 
-    position: absolute; 
-    width: 100%; 
-    left: 0px; 
-    bottom: -1px; 
-    transition: all 250ms ease 0s; 
-    transform: scale(0); 
-}
-
-.nav-tabs > li.active > a::after, .nav-tabs > li:hover > a::after { 
-    transform: scale(1); 
-}
-
-.tab-nav > li > a::after { 
-    background: #21527d none repeat scroll 0% 0%; color: #fff; 
-}
-
-.tab-pane { 
-    padding-top: 10px; 
-}
-
-.card {
-    background: #FFF none repeat scroll 0% 0%; 
-}
-
-#shopping {
-    display: inline-block;
-    margin-left: 20px;
-}
-
-#unfollow {
-    display: inline-block;
-    float: right;
-    margin-right:33px;
-}
-
-/*iphone 5*/
-@media screen and (max-width: 320px) {
-
-.nav-tabs > li > a { 
-    border: none; 
-    color: #666; 
+table {
     font-size: 20px;
 }
 
-#shopping {
-    display: inline-block;
-    margin-left: 5px;
+th {
+    text-align: center;
 }
 
-#unfollow {
-    display: inline-block;
-    float: right;
-    margin-right:5px;
+/*iphone5*/
+@media screen and (max-width: 320px){
+
+table {
+    font-size: 15px;
 }
 
 }
 
 /*ipad*/
-@media screen and (min-width: 760px) and (max-width: 1024px){
+@media screen and (min-width: 768px){
 
-#shopping {
-    display: inline-block;
-    margin-left: -10px;
+th {
+    white-space:nowrap;
+    word-spacing: -6px;
 }
 
-#unfollow {
-    display: inline-block;
-    float: right;
-    margin-right:-10px;
-}
-
-}
-
-@media screen and (min-width: 1024px) {
-
-#shopping {
-    display: inline-block;
-    margin-left: 24px;
-}
-
-#unfollow {
-    display: inline-block;
-    float: right;
-    margin-right:33px;
+#status {
+   word-spacing: -5px; 
 }
 
 }
-

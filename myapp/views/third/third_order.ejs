@@ -2,105 +2,89 @@
 <html>
 
 <head>
-    <title>訂單</title>
+    <title>Elife</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <!-- Main Content -->
-    <link href="croppie.css" rel="stylesheet" />
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="croppie.min.js"></script>
-    <style>
-    body {
-        background-color: #CCFF99;
-        font-family: "Microsoft JhengHei";
-    }
-    
-    h1 {
-        font-size: 15px;
-        font-family: "Microsoft JhengHei";
-        /*malgun gothic, SimSun, Microsoft JhengHei*/
-    }
-    
-    h2 {
-        font-family: 'Gabriola', serif;
-        font-size: 70px;
-    }
-    
-    h3 {
-        font-size: 25px;
-        font-family: "Microsoft JhengHei";
-    }
-    
-    .col-xs-8 {
-        font-family: "Gabriola", serif;
-        font-size: 80px;
-        text-align: center;
-        letter-spacing: 15px;
-    }
-    
-    strong {
-        font-size: 40px;
-        font-family: "Microsoft JhengHei";
-        color: black;
-    }
-    
-    .table {
-        font-size: 30px;
-    }
-    </style>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/stylesheets/third/third_order.css">
 </head>
 
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-4"><img src="/images/logo.png"></div>
-            <div class="col-xs-8">
-                <p>Elife</p>
+    <% if(third) { %>
+        <div class="navbar-header">
+            <div class="navbar-brand pull-right">
+                <img src="/images/logo.png" alt="Brand Image">
+            </div>
+            <div id="mySidenav" class="sidenav sidenav-hover">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <br>
+                <h3> &nbsp;&nbsp;&nbsp;&nbsp;<%= third.name %>, 您好!</h3>
+                <a href="/third_order"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp; 首頁</a>
+                <form action="/supplier/logout" method="POST">
+                    <a><span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;<input id="logout" type="submit" value="登出"></a>
+                </form>
+            </div>
+            <div id="main">
+                <span style="font-size:30px;cursor:pointer;color:white" onclick="openNav()">&#9776;</span>
             </div>
         </div>
-    </div>
-    <div class="table-hover">
-        <table class="table">
-            <caption><strong >訂單</strong></caption>
-            <thead>
-                <tr>
-                    <th class="text-center">買方編號</th>
-                    <th class="text-center">地區</th>
-                    <th class="text-center">狀態</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% if(nameList) { %>
-                    <%  nameList.forEach(function(buy) {  %>
-                        <tr class="success">
-                            <td class="text-center">
-                                <%= buy.memberId %>
-                            </td>
-                            <td class="text-center">
-                                <%= buy.member.city %>
-                            </td>
-                            <% if(buy.status==0){ %>
-                                <td>尚未接單</td>
-                                <% } if(buy.status==1){ %>
-                                    <td>處理中</td>
-                                    <% } %>
-                                        <td>
-                                            
-                                            <a href="/third_order/<%= buy.memberId %>">
-                                                <button type="button" class="btn btn-primary" style="color:white"> 詳情
-                                                </button>
-                                            </a>
-                                        </td>
-                                        </td>
-                                        <% }) %>
-                        </tr>
-            </tbody>
-        </table>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <h1>訂單紀錄</h1>
+                    <hr>
+                    <div class="container">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>買方 編號</th>
+                                    <th>地區</th>
+                                    <th>狀態</th>
+                                    <th>&nbsp;</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% if(nameList) { %>
+                                    <%  nameList.forEach(function(buy) {  %>
+                                        <tr>
+                                            <td>
+                                                <%= buy.memberId %>
+                                            </td>
+                                            <td>
+                                                <%= buy.member.city %>
+                                            </td>
+                                            <% if(buy.status==0){ %>
+                                                <td id="status">尚未 接單</td>
+                                                <% } if(buy.status==1){ %>
+                                                    <td id="status">處理 中</td>
+                                                    <% } %>
+                                                        <td>
+                                                            <a href="/third_order/<%= buy.memberId %>">
+                                                                <button type="button" class="btn btn-lg btn-success"> 詳情
+                                                                </button>
+                                                            </a>
+                                                        </td>
+                                                        <% }) %>
+                                                            <% } %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
         <% } %>
+            <script>
+            function openNav() {
+                document.getElementById("mySidenav").style.width = "250px";
+            }
+
+            function closeNav() {
+                document.getElementById("mySidenav").style.width = "0";
+            }
+            </script>
 </body>
 
 </html>

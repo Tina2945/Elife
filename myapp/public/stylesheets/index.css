@@ -12,9 +12,6 @@ body {
 
 #elife {
     background-color: #6E8F6E;
-    /*padding: 30px;*/
-    /*width:85%;*/
-   /* border:5px solid #ffffff ;*/
 }
 
 .logo img {
@@ -26,22 +23,13 @@ body {
     /*border:5px solid #ffffff ;*/
 }
 
-/*.name> p {
-    font-family: "Gabriola", serif;
-    font-size: 200px;
-    letter-spacing: 8px;
-    color:#ffffff;
-    text-align: center; 
-}*/
-
-
 .btn {
     width: 100%;
     height: 170px;
     font-size: 100px;
     font-weight: bold ;
     margin: 10px;
-    border-radius: 85px;
+    border-radius: 50px;
     color:  #3F4B3B;
     text-align: center;
     background-color: #a8dba8;
@@ -72,8 +60,43 @@ body {
 
 #third {
     /*background-color: #88dba3;*/
-    padding: 20px 30px 20px 55px;
-    letter-spacing: 15px;
+    padding: 20px 30px 20px 70px;
+    letter-spacing: 20px;
 }
 
+
+@media screen and (min-width:991px) {
+
+.btn {
+    width: 100%;
+    height: 170px;
+    font-size: 85px;
+    font-weight: bold ;
+    margin: 10px;
+    border-radius: 50px;
+    color:  #3F4B3B;
+    text-align: center;
+    background-color: #a8dba8;
+    border: 1px solid #a8dba8;
+}
+
+#member {
+    /*background-color: #C5E99B;*/
+    padding: 24px 30px 20px 55px;
+    letter-spacing: 20px;
+}
+
+#supplier {
+    /*background-color: #a8dba8;*/
+    padding: 24px 30px 20px 55px;
+    letter-spacing: 20px;
+}
+
+#third {
+    /*background-color: #88dba3;*/
+    padding: 21px 30px 20px 47px;
+    letter-spacing: 10px;
+}
+ 
+}
 

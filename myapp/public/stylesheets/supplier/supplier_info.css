@@ -1,6 +1,5 @@
 body {
     font-family: "Microsoft JhengHei", sans-serif;
-    background-color: #FBFFEF;
 }
 .navbar-header {
     background-color: #6F916F;
@@ -67,7 +66,7 @@ body {
 }
 
 .sidenav .closebtn:hover {
-    background-color: #cff09e;
+    background-color: #A8DBA8;
     color: #3a5134;
 }
 
@@ -89,3 +88,7 @@ body {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
 }
+
+/*img {
+
+}*/

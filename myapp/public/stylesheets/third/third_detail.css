@@ -1,0 +1,47 @@
+body {
+    font-family: "Microsoft JhengHei", sans-serif;
+}
+.navbar-header {
+    background-color: #6F916F;
+    width:100%;
+}
+
+.navbar-brand>img {
+    width: 50%;
+    float:right;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+    transition: margin-left .5s;
+    padding: 20px;
+}
+
+table {
+	font-size: 20px;
+}
+
+th {
+    text-align: center;
+}
+
+/*iphone5*/
+@media screen and (max-width: 320px){
+
+table {
+    font-size: 18px;
+}
+
+}
+
+/*ipad*/
+@media screen and (min-width: 768px){
+
+th {
+    white-space:nowrap;
+    word-spacing: -6px;
+}
+
+
+
+}

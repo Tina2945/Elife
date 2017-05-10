@@ -1,6 +1,5 @@
 body {
-    font-family: "Lato", sans-serif;
-    background-color: #FBFFEF;
+    font-family: "Microsoft JhengHei", sans-serif;
 }
 .navbar-header {
     background-color: #6F916F;
@@ -61,7 +60,7 @@ body {
 }
 
 .sidenav .closebtn:hover {
-    background-color: #cff09e;
+    background-color: #a8dba8;
     color: #3a5134;
 }
 
@@ -86,4 +85,8 @@ body {
 @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
+}
+
+a:hover {
+    text-decoration: none;
 }

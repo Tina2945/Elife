@@ -2,6 +2,7 @@
 <html lang="zh">
 
 <head>
+    <!-- Theme Made By www.w3schools.com - No Copyright -->
     <title>Elife</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,13 +11,6 @@
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script type='text/javascript', src="/socket.io/socket.io.js"></script>
-            <script>
-            var socket = io.connect();
-            socket.on('msg', function(data) {
-                $('#name').append(" " + data.name);
-            });
-            </script>
     <link rel="stylesheet" href="/stylesheets/member/store.css">
 </head>
 
@@ -43,22 +37,21 @@
                 </span>
             </div>
         </div>
-
         <div class="container">
             <div class="row col-sm-12">
                 <div class="text-center">
                     <h1><%= supplier.storeName %></h1>
                 </div>
-                 <h4>最新消息:</h4>
- <marquee>
- <h3 id="name"></h3>
- </marquee>
                 <hr>
+                <h4>最新消息:</h4>
+                <marquee scrollamount="4">
+                    <h3 id="name"></h3>
+                </marquee>
                 <form action="/store/<%= supplier.id %>/search" method="GET">
-                    <div class="input-group">
+                    <div class="input-group col-sm-12">
                         <input type="text" class="form-control" placeholder="搜尋商品名稱" name="name">
                         <div class="input-group-btn">
-                            <button class="btn btn-default" type="submit">
+                            <button class="btn btn-success" type="submit">
                                 <i class="glyphicon glyphicon-search"></i>
                             </button>
                         </div>
@@ -85,8 +78,8 @@
                                                 <input type="hidden" name="id" value="<%= product.id %>">
                                                 <input type="hidden" name="name" value="<%= product.name %>">
                                                 <input type="hidden" name="price" value="<%= product.price %>">
-                                                <div class="form-group-lg col-xs-6" style="display: inline-block; vertical-align: top;">
-                                                    <select class="form-control" name="quantity">
+                                                <div class="form-group-lg col-xs-6" style="display: inline-block;">
+                                                    <select class="form-control" name="quantity" id="quantity">
                                                         <option class="active">數量</option>
                                                         <option>1</option>
                                                         <option>2</option>
@@ -95,7 +88,7 @@
                                                         <option>5</option>
                                                     </select>
                                                 </div>
-                                                <button type="submit" class="btn btn-default btn-lg col-xs-6" style="display:inline-block; vertical-align:top;"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;加入購物車</button>
+                                                <button type="submit" class="btn btn-success btn-lg col-xs-6" style="display:inline-block; vertical-align:top;" id="add">加入購物車</button>
                                             </form>
                                         </div>
                                     </div>
@@ -121,7 +114,7 @@
                                 </div>
                                 <%  }); } else { %>
                                     <div>
-                                        <h4>目前無商品資料</h4>
+                                        <h3>目前無商品資料</h3>
                                     </div>
                                     <% } %>
                         </div>
@@ -137,6 +130,13 @@
             function closeNav() {
                 document.getElementById("mySidenav").style.width = "0";
             }
+            </script>
+            <script type='text/javascript' , src="/socket.io/socket.io.js"></script>
+            <script>
+            var socket = io.connect();
+            socket.on('msg', function(data) {
+                $('#name').append(data.name + ", ");
+            });
             </script>
 </body>
 

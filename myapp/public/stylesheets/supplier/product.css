@@ -50,11 +50,11 @@ body {
     background-color: #6F916F;
 }
 
-/*.sidenav a:active{
+.sidenav a:active{
     padding: 20px 8px 20px 30px;
     color: #ffffff;
     background-color: #6F916F;
-}*/
+}
 
 /* Position and style the close button (top right corner) */
 .sidenav .closebtn {
@@ -65,8 +65,9 @@ body {
     margin-left: 50px;
 }
 
+
 .sidenav .closebtn:hover {
-    background-color: #cff09e;
+    background-color: #A8DBA8;
     color: #3a5134;
 }
 

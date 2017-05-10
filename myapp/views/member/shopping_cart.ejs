@@ -76,34 +76,33 @@
                                                         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                                                     </a>
                                                 </td>
-                                            </tr>
-                                            <!-- deleteProduct Modal -->
-                                            <div class="modal fade" id="deleteProduct_<%= cart.id %>" role="dialog">
-                                                <div class="modal-dialog modal-sm">
-                                                    <div class="modal-content col-sm-12">
-                                                        <div class="modal-header">
-                                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                            <div class="modal-title">
-                                                                <h2>Elife</h2>
+                                                <!-- deleteProduct Modal -->
+                                                <div class="modal fade" id="deleteProduct_<%= cart.id %>" role="dialog">
+                                                    <div class="modal-dialog modal-sm">
+                                                        <div class="modal-content col-sm-12">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                <div class="modal-title">
+                                                                    <h2>Elife</h2>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <h3>確定刪除此項商品?</h3>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <a href="/shopping_cart/<%= cart.id %>">
-                                                                <button type="button" class="btn btn-default btn-lg">確定</button>
-                                                            </a>
+                                                            <div class="modal-body">
+                                                                <h3>確定刪除此項商品?</h3>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <a href="/shopping_cart/<%= cart.id %>">
+                                                                    <button type="button" class="btn btn-default btn-lg">確定</button>
+                                                                </a>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </tr>
                                             <% }); %>
                                     </tbody>
                                 </table>
                                 <hr>
                                 <h3>總金額: <%= sum %>元</h3>
-                                <br>
                                 <br>
                                 <div class="col-xs-6 text-left">
                                     <a href="/home">
@@ -115,7 +114,7 @@
                                 </div>
                             </form>
                             <% } else { %>
-                                <h2>購物車內無商品</h2>
+                                <h3>購物車內無商品</h3>
                                 <br>
                                 <div>
                                     <a href="/home">
@@ -124,7 +123,6 @@
                                 </div>
                                 <% } %>
                     </div>
-                    <br>
                 </div>
             </div>
         </div>

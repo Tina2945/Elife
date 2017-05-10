@@ -1,20 +1,27 @@
 body {
-    font-family: "Microsoft JhengHei";
-    font-size: 48px;
+    font-family: "Microsoft JhengHei", sans-serif;
 }
 
-.col-xs-8 {
-    font-size: 60px;
+.navbar-header {
+    background-color: #6F916F;
+    width:100%;
+}
+
+.navbar-brand> img {
+    width: 50%;
+    float:right;
+} 
+
+#main {
+    padding: 20px;
+}
+
+h1 {
     text-align: center;
 }
 
-img {
-    width: 100%;
-    margin-bottom: 10px;
-}
-
 label {
-    font-size: 35px;
+    font-size: 30px;
 }
 
 input {
@@ -22,9 +29,24 @@ input {
     height: 50px;
     padding: 5px 10px;
     margin: 8px 0;
-    font-size: 30px;
+    font-size: 25px;
     box-sizing: border-box;
-    border: 1px solid;
+    border: 1px solid #6F916F;
+    border-radius: 6px;
+    outline: none;
+}
+
+input:focus {
+    outline:2px solid #6F916F;
+    border-radius: 6px;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px #E8F5E9 inset;
+}
+
+#photo:focus {
+    outline:2px solid #6F916F;
     border-radius: 6px;
 }
 
@@ -34,7 +56,13 @@ input {
     font-size: 35px;
     padding: 10px;
     border-radius: 10px;
-    background-color: #37dc94;
+    background-color: #6F916F;
+    color: #ffffff;
+}
+
+.btn:hover {
+    background-color: #88dba3;
+    border: 1px solid #88dba3;
 }
 
 #city {
@@ -42,8 +70,15 @@ input {
     height: 50px;
     padding: 5px 10px;
     margin: 8px 0;
-    font-size: 30px;
+    font-size: 25px;
     box-sizing: border-box;
-    border: 1px solid;
+    border: 1px solid #6F916F;
     border-radius: 6px;
+    outline: none;
 }
+
+#city:focus {
+    outline:2px solid #6F916F;
+    border-radius: 6px; 
+}
+

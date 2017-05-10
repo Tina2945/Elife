@@ -1,6 +1,5 @@
 body {
     font-family: "Microsoft JhengHei", sans-serif;
-    background-color: #FBFFEF;
 }
 
 .navbar-header {
@@ -129,4 +128,18 @@ body {
     .sidenav a {
         font-size: 18px;
     }
+}
+
+th {
+    text-align: center;
+    font-size: 20px;
+}
+
+@media screen and (max-width:320px) {
+
+th {
+    font-size: 13px;
+}
+
+
 }

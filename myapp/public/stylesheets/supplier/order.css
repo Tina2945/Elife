@@ -1,6 +1,5 @@
 body {
     font-family: "Microsoft JhengHei", sans-serif;
-    background-color: #FBFFEF;
 }
 
 .navbar-header {
@@ -58,8 +57,7 @@ body {
 
 /* When you mouse over the navigation links, change their color */
 
-.sidenav a:hover,
-.offcanvas a:focus {
+.sidenav a:hover,.offcanvas a:focus {
     padding: 20px 8px 20px 30px;
     /*margin-top: 10px;*/
     /*margin-bottom: 10px;*/
@@ -85,7 +83,7 @@ body {
 }
 
 .sidenav .closebtn:hover {
-    background-color: #cff09e;
+    background-color: #A8DBA8;
     color: #3a5134;
 }
 

@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Elife</title>
+    <title>登入</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -14,15 +14,16 @@
 </head>
 
 <body>
-    <div class="container">
+   <div class="container">
         <div class="row">
-            <div class="col-xs-4"><img src="/images/logo.png"></div>
-            <div class="col-xs-8">
-                <p>登入</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <div class="logo">
+                    <img src="/images/logo_big.png">
+                </div>
+                <div class="name">
+                    <h1>買家登入</h1>
+                </div>
                 <form action="/login" method="POST" novalidate>
                     <div class="row control-group">
                         <div class="form-group col-xs-12 floating-label-form-group controls">
@@ -30,15 +31,15 @@
                             <input type="text" class="text" placeholder="請輸入帳號" id="account" name="account">
                         </div>
                     </div>
-                    <div class="row control-group">
-                        <div class="form-group col-xs-12 floating-label-form-group controls">
-                            <label for="password">密碼:</label>
-                            <input type="password" class="text" placeholder="請輸入密碼" id="password" name="password">
+                    <div class="row control-group" id="password">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label for="password">密碼:</label>
+                                <input type="password" class="text" placeholder="請輸入密碼" id="password" name="password">
                         </div>
                     </div>
                     <div class="row control-group">
                         <div class="form-group col-xs-12">
-                            <button type="submit" class="btn btn-default btn-lg">登入</button>
+                                <button type="submit" class="btn btn-default btn-lg">登入</button>
                         </div>
                     </div>
                 </form>
@@ -51,8 +52,8 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-2"></div>
         </div>
-    </div>
 </body>
 
 </html>

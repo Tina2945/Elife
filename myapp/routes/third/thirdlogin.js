@@ -2,13 +2,9 @@ var express = require('express');
 var router = express.Router();
 var Third = require('../../models/thirdm');
 
-/* GET home page. */
 router.get('/', function(req, res, next) {
-    res.render('third/thirdlogin', {
-        member: null
-    });
+    res.render('third/thirdlogin');
 });
-
 
 router.post('/', function(req, res, next) {
     Third.check(req.body.account, function(err, third) {
@@ -25,6 +21,5 @@ router.post('/logout', function(req, res, next) {
     req.session.third = null;
     res.redirect('/');
 });
-
 
 module.exports = router;

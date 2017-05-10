@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <% if(member) {%>
+    <% if(member) { %>
         <div class="navbar-header">
             <div class="navbar-brand pull-right">
                 <img src="/images/logo.png" alt="Brand Image">
@@ -26,57 +26,71 @@
                 <a href="/shopping_cart"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;&nbsp;購物車</a>
                 <a href="/purchase_rec"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;購買紀錄</a>
                 <a href="/personal_info"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;個人資料</a>
-                <a href="/"><span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;登出</a>
+                <form action="/register/logout" method="POST">
+                    <a><span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;<input id="logout" type="submit" value="登出"></a>
+                </form>
             </div>
             <div id="main">
-                <span style="font-size:30px;cursor:pointer;color:white" onclick="openNav()">&#9776;</span>
+                <span style="font-size:30px;cursor:pointer;color:white" onclick="openNav()">&#9776; 
+        </span>
             </div>
         </div>
-        <br>
         <div class="container text-center">
             <div class="row">
-                <div class="col-sm-12">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
                     <h1><%= member.name %></h1>
                     <img class="img-thumbnail" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcR8zrE1DLads0mYqakFoa_ZeChcP39nQvkHOR7tVUlx5mBwnEQdLg">
                     <br>
                     <br>
-                    <div class="container text-left">
-                        <table class="table" style="font-size: 20px">
-                            <tbody>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-left">
+                    <table class="table" style="font-size: 20px">
+                        <tbody>
+                            <tr>
+                                <td><span class="glyphicon glyphicon-earphone" aria-hidden="true" style="color: #649965"></span></td>
+                                <td>
+                                    <%= member.phonenum %>
+                                </td>
+                            </tr>
+                            <% if(member.email) {%>
                                 <tr>
-                                    <td> <span class="glyphicon glyphicon-earphone" aria-hidden="true" style="color: #649965"></span></td>
+                                    <td> <span class="glyphicon glyphicon-envelope" aria-hidden="true" style="color: #649965"></span></td>
                                     <td>
-                                        <%= member.phonenum %>
+                                        <%= member.email %>
                                     </td>
                                 </tr>
-                                <% if(member.email) {%>
+                                <% } %>
                                     <tr>
-                                        <td> <span class="glyphicon glyphicon-envelope" aria-hidden="true" style="color: #649965"></span></td>
+                                        <td><span class="glyphicon glyphicon-home" aria-hidden="true" style="color: #649965"></span></td>
                                         <td>
-                                            <%= member.email %>
+                                            <%= member.city %>
+                                                <%= member.hometown %>
+                                                    <%= member.address %>
                                         </td>
                                     </tr>
-                                    <% } %>
-                                        <tr>
-                                            <td><span class="glyphicon glyphicon-home" aria-hidden="true" style="color: #649965"></span></td>
-                                            <td>
-                                                <%= member.city %>
-                                                    <%= member.hometown %>
-                                                        <%= member.address %>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><span class="glyphicon glyphicon-credit-card" aria-hidden="true" style="color: #649965"></span></td>
-                                            <td>
-                                                ************<%= member.card4 %>
-                                            </td>
-                                        </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                                    <tr>
+                                        <td><span class="glyphicon glyphicon-credit-card" aria-hidden="true" style="color: #649965"></span></td>
+                                        <td>
+                                             ************<%= member.card4 %>
+                                        </td>
+                                    </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <a href="/personal_edit" class="btn btn-success btn-lg" role="button" id="member">修改資料</a>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
         </div>
+        <br>
         <% } %>
             <script>
             function openNav() {

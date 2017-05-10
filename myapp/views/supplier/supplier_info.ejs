@@ -36,7 +36,8 @@
         </div>
         <div class="container text-center">
             <div class="row">
-                <div class="col-sm-12">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
                     <h1><%= supplierm.storeName %></h1>
                     <% if(supplierm.photo == null) {%>
                         <img class="img-thumbnail" src="http://www.newdesignfile.com/postpic/2012/05/store-icon_281737.png">
@@ -45,41 +46,51 @@
                             <% }%>
                                 <br>
                                 <br>
-                                <div class="container text-left">
-                                    <table class="table" style="font-size: 20px">
-                                        <tbody>
-                                            <tr>
-                                                <td><span class="glyphicon glyphicon-user" aria-hidden="true" style="color: #649965"></span></td>
-                                                <td>
-                                                    <%= supplierm.name %>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><span class="glyphicon glyphicon-earphone" aria-hidden="true" style="color: #649965"></span></td>
-                                                <td>
-                                                    <%= supplierm.phonenum %>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><span class="glyphicon glyphicon-home" aria-hidden="true" style="color: #649965"></span></td>
-                                                <td>
-                                                    <%= supplierm.city %>
-                                                        <%= supplierm.hometown %>
-                                                            <%= supplierm.address %>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><span class="glyphicon glyphicon-credit-card" aria-hidden="true" style="color: #649965"></span></td>
-                                                <td>
-                                                    ************
-                                                    <%= supplierm.card4 %>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-left">
+                    <table class="table" style="font-size: 20px">
+                        <tbody>
+                            <tr>
+                                <td><span class="glyphicon glyphicon-user" aria-hidden="true" style="color: #649965"></span></td>
+                                <td>
+                                    <%= supplierm.name %>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span class="glyphicon glyphicon-earphone" aria-hidden="true" style="color: #649965"></span></td>
+                                <td>
+                                    <%= supplierm.phonenum %>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span class="glyphicon glyphicon-home" aria-hidden="true" style="color: #649965"></span></td>
+                                <td>
+                                    <%= supplierm.city %>
+                                        <%= supplierm.hometown %>
+                                            <%= supplierm.address %>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span class="glyphicon glyphicon-credit-card" aria-hidden="true" style="color: #649965"></span></td>
+                                <td>
+                                    ************<%= supplierm.card4 %>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <a href="/supplier_edit" class="btn btn-success btn-lg" role="button" id="member">修改資料</a>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+            <br>
         </div>
         <% } %>
             <script>

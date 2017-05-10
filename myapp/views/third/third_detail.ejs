@@ -9,110 +9,100 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="/stylesheets/shopping_cart.css">
+    <link rel="stylesheet" href="/stylesheets/third/third_detail.css">
 </head>
-<style type="text/css">
-h4 {
-    text-align: center;
-}
-
-body {
-    font-family: "Microsoft JhengHei";
-    font-size: 25px;
-    background-color: #CCFF99;
-}
-
-.col-xs-8 {
-    font-family: "Gabriola", serif;
-    font-size: 80px;
-    text-align: center;
-    letter-spacing: 15px;
-}
-
-button {
-    display: center;
-}
-
-h4 {
-    font-size: 25px;
-}
-</style>
 
 <body>
-    <br>
+    <div class="navbar-header">
+        <div class="navbar-brand pull-right">
+            <img src="/images/logo.png" alt="Brand Image">
+        </div>
+        <div id="main">
+            <span style="font-size:30px;cursor:pointer;color:#6F916F" onclick="openNav()">&#9776;</span>
+        </div>
+    </div>
     <div class="container">
         <div class="row content">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-4"><img src="/images/logo.png"></div>
-                    <div class="col-xs-8">
-                        <p>Elife</p>
-                    </div>
+            <div class="col-sm-12 text-center">
+                <h1>訂單資料</h1>
+                <hr>
+                <div class="container">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>店名/品項</th>
+                                <th>單價</th>
+                                <th>數量</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% buyList.forEach(function(buy) { %>
+                                <tr>
+                                    <td>
+                                        <%=buy.supplier.storeName %>
+                                            <br>
+                                            <%=buy.product.name %>
+                                    </td>
+                                    <td>
+                                        <%=buy.price %>元
+                                    </td>
+                                    <td>
+                                        <%=buy.quantity %>
+                                    </td>
+                                </tr>
+                                <% }) %>
+                        </tbody>
+                    </table>
                 </div>
-            </div>
-            <div class="table-hover">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>店名/品項</th>
-                            <th>單價</th>
-                            <th>數量</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <% buyList.forEach(function(buy) { %>
-                            <tr class="active">
+                <h3 style="color: #EE4035">訂購總金額: <%= sum %>元</h3>
+                <div class="container">
+                    <table class="table text-left" style="font-size: 20px">
+                        <tbody>
+                            <tr>
+                                <td> <span class="glyphicon glyphicon-user" aria-hidden="true" style="color: #649965"></span></td>
                                 <td>
-                                    <%=buy.supplier.storeName %>
-                                        <br>/
-                                        <%=buy.product.name %>
-                                </td>
-                                <td>
-                                    <%=buy.product.price %>元</td>
-                                <td>
-                                    <%=buy.quantity %>
+                                    <%=member.name %>
                                 </td>
                             </tr>
-                            <% }) %>
-                    </tbody>
-                </table>
-                <h4><span class="glyphicon glyphicon-user" aria-hidden="true"> </span> 訂購人:<%=member.name %></h4>
-                <h4><span class="glyphicon glyphicon-earphone" aria-hidden="true"> </span> 電話: <%=member.phonenum %></h4>
-                <h4><span class="glyphicon glyphicon-home" aria-hidden="true"> </span> 地址: <%=member.city %><%=member.hometown %><%=member.address%></h4>
-                <!-- <h3 style="color: #EE4035">訂購總金額:300元</h3> -->
-                <br>
-                
-                    <div class="text-center">
-                        <!-- <a href="/order_suc"> -->
-                         <% if (buyList[0].status==0) { %>
-                            <form action="/third_order" method="POST">
-                                <input type="hidden" name="id" value="<%= member.id %>">
-                                <button type="submit" class="btn btn-success btn-lg">
-                                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>我要接單
-                                </button>
-                            </form>
-                           <% } %> 
-                    </div>
-                    <div class="text-center">
-                        <!-- <a href="/order_suc"> -->
-                         <% if (buyList[0].status==1) { %>
-                            <form action="/third_order/take" method="POST">
-                                <input type="hidden" name="id" value="<%= member.id %>">
-                                <button type="submit" class="btn btn-success btn-lg">
-                                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>簽收
-                                </button>
-                            </form>
-                             <% } %> 
-                    </div>
-            </div>
-            
-                <div class="text-center">
-                    <a href="/third_order">
-                        <button type="button" class="btn btn-success btn-lg ">
-                            <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> 返回
-                        </button>
-                    </a>
+                            <tr>
+                                <td> <span class="glyphicon glyphicon-earphone" aria-hidden="true" style="color: #649965"></span></td>
+                                <td>
+                                    <%=member.phonenum %>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span class="glyphicon glyphicon-home" aria-hidden="true" style="color: #649965"></span></td>
+                                <td>
+                                    <%=member.city %>
+                                        <%=member.hometown %>
+                                            <%=member.address%>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
+                <div class="text-center">
+                    <% if (buyList[0].status==0) { %>
+                        <form action="/third_order" method="POST">
+                            <input type="hidden" name="id" value="<%= member.id %>">
+                            <button type="submit" class="btn btn-success btn-lg">
+                                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>我要接單
+                            </button>
+                        </form>
+                        <% } %>
+                </div>
+                <div class="text-center">
+                    <% if (buyList[0].status==1) { %>
+                        <form action="/third_order/take" method="POST">
+                            <input type="hidden" name="id" value="<%= member.id %>">
+                            <button type="submit" class="btn btn-success btn-lg">
+                                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>簽收
+                            </button>
+                        </form>
+                        <% } %>
+                </div>
+                <br>
+            </div>
         </div>
     </div>
 </body>

@@ -2,15 +2,25 @@ var express = require('express');
 var router = express.Router();
 var SupplierMember = require('../../models/SupplierMember');
 var Product = require('../../models/Product');
+
 var zmq = require('zeromq');
 var subscriber = zmq.socket('sub');
 subscriber.connect('tcp://localhost:5563');
-subscriber.subscribe("1");
 
 router.get('/:supplierId', function(req, res, next) {
     if (!req.session.member) {
         res.redirect('/login');
     }
+
+    // subscriber.subscribe("1");
+    // subscriber.on('message', function(data) {
+    //     console.log("receive");
+    //     var msg = [];
+    //     Array.prototype.slice.call(arguments).forEach(function(arg) {
+    //         msg.push(arg.toString());
+    //     });
+    //     res.json(msg[1]);
+    // });
 
     Product.getAll(req.params.supplierId, function(err, productList) {
         if (err) {

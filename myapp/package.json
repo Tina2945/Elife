@@ -23,7 +23,9 @@
     "nodemailer": "^4.0.1",
     "nodemailer-smtp-transport": "^2.7.4",
     "serve-favicon": "~2.3.0",
+    "socket.io": "^1.7.4",
     "thunkify": "^2.1.2",
-    "util": "^0.10.3"
+    "util": "^0.10.3",
+    "zeromq": "^4.2.1"
   }
 }

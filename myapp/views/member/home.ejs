@@ -38,16 +38,16 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
-                    <div class="container">
-                        <ul class="nav nav-tabs text-center" style="font-size: 25px">
-                            <li class="active col-xs-6"><a data-toggle="tab" href="#contact-store">追蹤店家</a></li>
-                            <li class="col-xs-6"><a data-toggle="tab" href="#all-store">全部店家</a></li>
+                    <!-- Nav tabs -->
+                    <div class="card">
+                        <ul class="nav nav-tabs text-center" role="tablist">
+                            <li role="presentation" class="active col-xs-6"><a href="#contact-store" aria-controls="home" role="tab" data-toggle="tab">追蹤店家</a></li>
+                            <li role="presentation" class="col-xs-6"><a href="#all-store" aria-controls="profile" role="tab" data-toggle="tab">全部店家</a></li>
                         </ul>
-                        <br>
-                        <br>
+                        <!-- Tab panes -->
                         <div class="tab-content">
                             <!-- contact-store -->
-                            <div id="contact-store" class="tab-pane fade in active">
+                            <div role="tabpanel" class="tab-pane active" id="contact-store">
                                 <% if(followList) { %>
                                     <% followList.forEach(function(follow) { %>
                                         <div class="col-sm-4">
@@ -66,9 +66,9 @@
                                                 </div>
                                                 <div class="panel-footer text-center">
                                                     <a href="/store/<%= follow.supplier.id %>">
-                                                        <button type="button" class="btn btn-info btn-lg">購物去</button>
+                                                        <button type="button" class="btn btn-info btn-lg" id="shopping">購物去</button>
                                                     </a>
-                                                    <form action="/home/unfollow" method="POST">
+                                                    <form action="/home/unfollow" method="POST" id="unfollow">
                                                         <input type="hidden" name="id" value="<%= follow.id %>">
                                                         <button type="submit" class="btn btn-success btn-lg">取消追蹤</button>
                                                     </form>
@@ -89,12 +89,12 @@
                                                             <% } else { %>
                                                                 <img src="<%= follow.supplier.photo %>" style="width:100%">
                                                                 <% } %>
-                                                                    <h3><span class="glyphicon glyphicon-user" aria-hidden="true"></span> 聯絡人: <%= follow.supplier.name %></h3>
-                                                                    <h3><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span> 電話: <%= follow.supplier.phonenum %></h3>
-                                                                    <h3><span class="glyphicon glyphicon-home" aria-hidden="true"></span> 地址: 
+                                                                    <h4><span class="glyphicon glyphicon-user" aria-hidden="true"></span> 聯絡人: <%= follow.supplier.name %></h4>
+                                                                    <h4><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span> 電話: <%= follow.supplier.phonenum %></h4>
+                                                                    <h4><span class="glyphicon glyphicon-home" aria-hidden="true"></span> 地址: 
                                                                         <%= follow.supplier.city %>
                                                                         <%= follow.supplier.hometown %>
-                                                                        <%= follow.supplier.address %></h3>
+                                                                        <%= follow.supplier.address %></h4>
                                                     </div>
                                                 </div>
                                             </div>
@@ -105,7 +105,7 @@
                                                 <% } %>
                             </div>
                             <!-- all-store -->
-                            <div id="all-store" class="tab-pane fade">
+                            <div role="tabpanel" class="tab-pane" id="all-store">
                                 <% if(supplierList) { %>
                                     <% supplierList.forEach(function(supplierm) { %>
                                         <div class="col-sm-4">
@@ -144,12 +144,11 @@
                                                             <% } else { %>
                                                                 <img src="<%= supplierm.photo %>" style="width:100%">
                                                                 <% } %>
-                                                                    <h3><span class="glyphicon glyphicon-user" aria-hidden="true"> </span> 聯絡人: <%= supplierm.name %></h3>
-                                                                    <h3><span class="glyphicon glyphicon-earphone" aria-hidden="true"> </span> 電話: <%= supplierm.phonenum %></h3>
-                                                                    <h3><span class="glyphicon glyphicon-home" aria-hidden="true"> </span> 地址: 
-                                                                        <%= supplierm.city %>
+                                                                    <h4><span class="glyphicon glyphicon-user" aria-hidden="true"> </span> 聯絡人: <%= supplierm.name %></h4>
+                                                                    <h4><span class="glyphicon glyphicon-earphone" aria-hidden="true"> </span> 電話: <%= supplierm.phonenum %></h4>
+                                                                    <h4><span class="glyphicon glyphicon-home" aria-hidden="true"> </span> 地址: <%= supplierm.city %>
                                                                         <%= supplierm.hometown %>
-                                                                        <%= supplierm.address %></h3>
+                                                                        <%= supplierm.address %></h4>
                                                     </div>
                                                 </div>
                                             </div>

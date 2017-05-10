@@ -45,11 +45,6 @@ input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0px 1000px #E8F5E9 inset;
 }
 
-#photo:focus {
-    outline:2px solid #6F916F;
-    border-radius: 6px;
-}
-
 .btn {
     width: 100%;
     height: 60px;
@@ -65,20 +60,9 @@ input:-webkit-autofill {
     border: 1px solid #88dba3;
 }
 
-#city {
-    width: 100%;
-    height: 50px;
-    padding: 5px 10px;
-    margin: 8px 0;
-    font-size: 25px;
-    box-sizing: border-box;
-    border: 1px solid #6F916F;
-    border-radius: 6px;
-    outline: none;
+.btn:active {
+    background-color: #88dba3;
+    border: 1px solid #88dba3;
 }
 
-#city:focus {
-    outline:2px solid #6F916F;
-    border-radius: 6px; 
-}
 

@@ -1,6 +1,5 @@
 body {
-    font-family: "Lato", sans-serif;
-    background-color: #FBFFEF;
+    font-family: "Microsoft JhengHei", sans-serif;
 }
 .navbar-header {
     background-color: #6F916F;
@@ -21,7 +20,7 @@ body {
     top: 0;
     left: 0;
     /*background-color: #cff09e;*/
-    background-color:  #cff09e;
+    background-color:  #a8dba8;
     overflow-x: hidden; /* Disable horizontal scroll */
     padding-top: 60px; /* Place content 60px from the top */
     transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
@@ -78,7 +77,7 @@ body {
 }
 
 .sidenav .closebtn:hover {
-    background-color: #cff09e;
+    background-color: #a8dba8;
     color: #3a5134;
 }
 

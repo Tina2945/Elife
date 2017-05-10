@@ -14,15 +14,16 @@ body {
 }
 
 .logo img {
-    width: 100%;
-    margin-top: 20px;
+    width: 100%; 
+    margin-top: 20px ;
     padding: 70px;
-    text-align: center;
+    text-align: center;  
 }
 
 .name {
     margin-top: -105px;
 }
+
 
 h1 {
     text-align: center;
@@ -47,7 +48,7 @@ input {
 }
 
 input:focus {
-    outline: 3px solid #6F916F;
+    outline:3px solid #6F916F;
     border-radius: 6px;
 }
 
@@ -75,66 +76,83 @@ input:-webkit-autofill {
 }
 
 @media screen and (max-width:320px) {
-    .container {
-        width: 85%;
-        margin-top: -60px;
-    }
-    .logo img {
-        width: 100%;
-        margin-top: 20px;
-        padding: 55px;
-        text-align: center;
-    }
-    .name {
-        margin-top: -90px;
-    }
-    h1 {
-        text-align: center;
-        color: #ffffff;
-        font-size: 35px;
-    }
-    label {
-        font-size: 30px;
-    }
-    .btn {
-        height: 55px;
-        font-size: 30px;
-        padding: 10px;
-    }
+
+.container {
+    width: 85%;
+    margin-top: -60px;
+}
+
+.logo img {
+    width: 100%; 
+    margin-top: 20px ;
+    padding: 55px;
+    text-align: center;  
+}
+
+.name {
+    margin-top: -90px;
+}
+
+h1 {
+    text-align: center;
+    color: #ffffff;
+    font-size: 35px;
+}
+
+label {
+    font-size: 30px;
+}
+
+.btn {
+    height: 55px;
+    font-size: 30px;
+    padding: 10px;
+}
+
 }
 
 @media screen and (min-width:768px) and (max-width: 1024px) {
-    .logo img {
-        width: 100%;
-        margin-top: 20px;
-        padding: 120px;
-        text-align: center;
-    }
-    .name {
-        margin-top: -180px;
-    }
-    h1 {
-        text-align: center;
-        color: #ffffff;
-        font-size: 70px;
-        letter-spacing: 15px;
-    }
+
+.logo img {
+    width: 100%; 
+    margin-top: 20px ;
+    padding: 120px;
+    text-align: center;  
+}
+
+.name {
+    margin-top: -180px;
+}
+
+
+h1 {
+    text-align: center;
+    color: #ffffff;
+    font-size: 70px;
+    letter-spacing: 15px;
+}
+
 }
 
 @media screen and (min-width:1024px) {
-    .logo img {
-        width: 100%;
-        margin-top: 20px;
-        padding: 80px;
-        text-align: center;
-    }
-    .name {
-        margin-top: -120px;
-    }
-    h1 {
-        text-align: center;
-        color: #ffffff;
-        font-size: 60px;
-        letter-spacing: 5px;
-    }
+
+.logo img {
+    width: 100%; 
+    margin-top: 20px ;
+    padding: 80px;
+    text-align: center;  
+}
+
+.name {
+    margin-top: -120px;
+}
+
+
+h1 {
+    text-align: center;
+    color: #ffffff;
+    font-size: 60px;
+    letter-spacing: 5px;
+}
+
 }

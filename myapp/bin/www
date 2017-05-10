@@ -8,7 +8,6 @@ var app = require('../app');
 var debug = require('debug')('myapp:server');
 var http = require('http');
 
-
 /**
  * Get port from environment and store in Express.
  */
@@ -89,6 +88,7 @@ function onListening() {
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }
+
 var io = require('socket.io').listen(server);
 var zmq = require('zeromq');
 var subscriber = zmq.socket('sub');
@@ -106,7 +106,7 @@ io.sockets.on('connection', function (socket) {
         });
         socket.emit('msg', {
             'id': msg[0],
-            'name': msg[1]+" "+"hi"
+            'name': msg[1]
         });
     });
 });

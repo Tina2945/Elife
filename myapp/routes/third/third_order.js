@@ -10,6 +10,9 @@ var District = require('../../models/District');
 var async = require('async');
 /* GET home page. */
 router.get('/', function(req, res, next) {
+    if (!req.session.third) {
+        res.redirect('/thirdlogin');
+    }
 
     Buy.getAll(function(err, nameList) {
         if (err) {
@@ -30,7 +33,7 @@ router.get('/', function(req, res, next) {
                     console.log(err);
                 } else {
                     res.render('third/third_order', {
-                        
+                        third: req.session.third,
                         nameList: nameList || null
                     });
 
@@ -46,7 +49,6 @@ router.get('/', function(req, res, next) {
 });
 router.get('/:name', function(req, res, next) {
     Buy.get(req.params.name, function(err, buyList) {
-        console.log(buyList)
         if (err) {
             next();
         } else {
@@ -72,17 +74,22 @@ router.get('/:name', function(req, res, next) {
                     console.log(err);
                 } else {
                     Member.get(req.params.name, function(err, member) {
-                        res.render('third/third_detail', {
-                            third: req.session.third || null,
-                            buyList: buyList,
-                            member: member
+                        Buy.sum(req.params.name, function(err, sum) {
+                            if (err) {
+                                console.log(err);
+                            } else {
+                                res.render('third/third_detail', {
+                                    third: req.session.third || null,
+                                    buyList: buyList,
+                                    member: member,
+                                    sum: sum
+                                });
+                            }
                         });
                     });
                 }
-
             });
         }
-
     });
 });
 
@@ -109,7 +116,7 @@ router.post('/take', function(req, res, next) {
     //首先必須先產生出一個Member的物件在進行save
     var newBuy = new Buy({
         member_id: req.body.id,
-        
+
         received: true
     });
     newBuy.take(req.body.id, function(err) {

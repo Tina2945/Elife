@@ -9,6 +9,7 @@ router.get('/', function(req, res, next) {
     res.render('member/personal_info', {
         member: req.session.member
     });
+
 });
 
 module.exports = router;

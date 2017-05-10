@@ -35,9 +35,7 @@ router.get('/:dateTime', function(req, res, next) {
             next();
         } else {
             async.each(recordList, function(record, cb) {
-                SupplierMember.get(record.supplierId, function(err, supplier) {
-                    console.log(supplier);
-                    
+                SupplierMember.get(record.supplierId, function(err, supplier) {                    
                     if (err) {
                         cb(err);
                     } else {

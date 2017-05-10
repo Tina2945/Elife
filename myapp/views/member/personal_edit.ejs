@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <title>Elife</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/stylesheets/member/personal_edit.css">
+</head>
+
+<body>
+    <div class="navbar-header">
+        <div class="navbar-brand pull-right">
+            <img src="/images/logo.png" alt="Brand Image">
+        </div>
+        <div id="main">
+            <span style="font-size:30px;cursor:pointer;color:#6F916F" onclick="openNav()">&#9776; 
+        </span>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h1>修改資料</h1>
+                <hr>
+                <form action="personal_edit/edit" method="POST">
+                    <input type="hidden" name="id" value="<%= member.id %>">
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label for="name">姓名:</label>
+                            <input type="text" placeholder="請輸入姓名" id="name" name="name" value="<%= member.name %>">
+                        </div>
+                    </div>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label for="phonenum">電話:</label>
+                            <input type="text" placeholder="請輸入電話" id="phonenum" name="phonenum" value="<%= member.phonenum %>">
+                        </div>
+                    </div>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label for="email">Email:</label>
+                            <input type="text" placeholder="請輸入Email" id="email" name="email" value="<%= member.email %>">
+                        </div>
+                    </div>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label for="city">地址:</label>
+                            <select required="required" id="city" name="city">
+                                <option class="active" style="width: 200px;">
+                                    <%= member.city %>
+                                </option>
+                                <% district.forEach(function(district) { %>
+                                    <option>
+                                        <%= district.city %>
+                                            <%= district.town %>
+                                    </option>
+                                    <%  }); %>
+                            </select>
+                            <input type="text" required="required" placeholder="請輸入村里" id="hometown" name="hometown" value="<%= member.hometown %>">
+                            <input type="text" required="required" placeholder="請輸入地址" id="address" name="address" value="<%= member.address %>">
+                        </div>
+                    </div>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label for="card">信用卡號碼:</label>
+                            <input type="text" placeholder="請輸入第一欄 (4位數)" id="card" name="card1" value="<%= member.card1 %>">
+                            <input type="text" placeholder="請輸入第二欄 (4位數)" name="card2" value="<%= member.card2 %>">
+                            <input type="text" placeholder="請輸入第三欄 (4位數)" name="card3" value="<%= member.card3 %>">
+                            <input type="text" placeholder="請輸入第四欄 (4位數)" name="card4" value="<%= member.card4 %>">
+                        </div>
+                    </div>
+                    <div class="row control-group text-center" style="float:left">
+                        <div class="form-group col-md-12">
+                            <button type="submit" class="btn btn-success btn-lg">儲存</button>
+                        </div>
+                    </div>
+                </form>
+                <div style="padding-left:75px">
+                    <a href="/personal_info">
+                        <button class="btn btn-success btn-lg">取消</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

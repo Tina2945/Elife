@@ -1,6 +1,5 @@
 body {
-    font-family: "Lato", sans-serif;
-    background-color: #FBFFEF;
+    font-family: "Microsoft JhengHei", sans-serif;
 }
 .navbar-header {
     background-color: #6F916F;
@@ -17,7 +16,7 @@ body {
     height: 100%; /* 100% Full-height */
     width: 0; /* 0 width - change this with JavaScript */
     position: fixed; /* Stay in place */
-    z-index: 1; /* Stay on top */
+    z-index: 5; /* Stay on top */
     top: 0;
     left: 0;
     background-color:  #a8dba8;
@@ -65,6 +64,7 @@ body {
     color: #3a5134;
 }
 
+
 .form-group-lg>label {
   font-size: 25px;
   color: #6F916F;
@@ -86,8 +86,45 @@ body {
     padding: 20px;
 }
 
+#add {
+    padding-left: -150px;
+}
+
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
+}
+
+/*iphone5*/
+@media screen and (max-width: 320px){
+
+.container h3 {
+    font-size: 20px;
+}
+
+#quantity {
+    padding: 0px 3px;
+}
+
+#add {
+    padding: 12px 1px;
+    font-size: 15px;
+}
+
+}
+
+/*ipad*/
+@media screen and (min-width: 760px) and (max-width: 1024px){
+
+#quantity {
+    padding: 0px 3px;
+    font-size: 15px;
+}
+
+#add {
+    padding: 12px 0px;
+    font-size: 15px;
+}
+
 }
