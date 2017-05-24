@@ -1,13 +1,11 @@
 body {
     font-family: "Microsoft JhengHei";
     background-color: #6E8F6E;
-   /* font-size: 48px;*/
-   margin: auto;
 }
 
 .container-fluid {
     width: 85%;
-    margin-top: -55px;
+    margin-top: -70px;
 }
 
 #elife {
@@ -17,19 +15,18 @@ body {
 .logo img {
     width: 100%; 
     margin-top: 20px ;
-    padding: 20px;
+    padding: 25px;
     text-align: center;  
-   /* background-color: #ffffff;*/
-    /*border:5px solid #ffffff ;*/
+    margin-bottom: -15px;
 }
 
 .btn {
     width: 100%;
-    height: 170px;
-    font-size: 100px;
+    height: 75px;
+    font-size: 45px;
     font-weight: bold ;
-    margin: 10px;
-    border-radius: 50px;
+    border-radius: 20px;
+    margin: 10px 5px 10px 3px;
     color:  #3F4B3B;
     text-align: center;
     background-color: #a8dba8;
@@ -48,54 +45,109 @@ body {
 
 #member {
     /*background-color: #C5E99B;*/
-    padding: 20px 30px 20px 70px;
+    padding: 7px 30px 10px 68px;
     letter-spacing: 30px;
 }
 
 #supplier {
     /*background-color: #a8dba8;*/
-    padding: 20px 30px 20px 70px;
+    padding: 7px 30px 10px 65px;
     letter-spacing: 30px;
 }
 
 #third {
     /*background-color: #88dba3;*/
-    padding: 20px 30px 20px 70px;
-    letter-spacing: 20px;
+    padding: 7px 30px 10px 55px;
+    letter-spacing: 15px;
 }
 
-
-@media screen and (min-width:991px) {
+/*iphone5*/
+@media screen and (max-width:320px){
 
 .btn {
-    width: 100%;
-    height: 170px;
-    font-size: 85px;
-    font-weight: bold ;
-    margin: 10px;
-    border-radius: 50px;
-    color:  #3F4B3B;
-    text-align: center;
-    background-color: #a8dba8;
-    border: 1px solid #a8dba8;
+    font-size: 40px;
+    height: 65px;
+    border-radius: 15px;
 }
 
 #member {
-    /*background-color: #C5E99B;*/
-    padding: 24px 30px 20px 55px;
-    letter-spacing: 20px;
+    padding: 5px 30px 10px 60px;
+    letter-spacing: 25px;
 }
 
 #supplier {
-    /*background-color: #a8dba8;*/
-    padding: 24px 30px 20px 55px;
-    letter-spacing: 20px;
+    padding: 5px 30px 10px 60px;
+    letter-spacing: 25px;
 }
 
 #third {
-    /*background-color: #88dba3;*/
-    padding: 21px 30px 20px 47px;
-    letter-spacing: 10px;
+    padding: 5px 35px 10px 48px;
+    letter-spacing: 15px;
+}
+
+}
+
+/*ipad*/
+@media screen and (min-width:768px) and (max-width:1024px) {
+
+.logo img {
+    margin-top: -5px ;
+    padding: 120px;
+    margin-bottom: -100px;
+}
+
+.btn {
+    height: 110px;
+    font-size: 65px;
+    border-radius: 30px;
+    margin: 20px 5px 20px 3px;
+}
+
+#member {
+    padding: 10px 25px 10px 67px;
+    letter-spacing: 35px;
+}
+
+#supplier {
+    padding: 10px 25px 10px 67px;
+    letter-spacing: 35px;
+}
+
+#third {
+    padding: 10px 25px 10px 67px;
+    letter-spacing: 25px;
+}
+ 
+}
+
+@media screen and (min-width:1024px) {
+
+.logo img {
+    margin-top: 50px ;
+    padding: 30px;
+    margin-bottom: 0px;
+}
+
+.btn {
+    height: 130px;
+    font-size: 80px;
+    border-radius: 40px;
+    margin: 30px 5px 30px 3px;
+}
+
+#member {
+    padding: 10px 30px 10px 60px;
+    letter-spacing: 25px;
+}
+
+#supplier {
+    padding: 10px 30px 10px 60px;
+    letter-spacing: 25px;
+}
+
+#third {
+    padding: 10px 30px 10px 60px;
+    letter-spacing: 20px;
 }
  
 }
