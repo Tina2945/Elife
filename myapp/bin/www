@@ -89,24 +89,5 @@ function onListening() {
   debug('Listening on ' + bind);
 }
 
-var io = require('socket.io').listen(server);
-var zmq = require('zeromq');
-var subscriber = zmq.socket('sub');
-subscriber.connect('tcp://localhost:5563');
-subscriber.subscribe("1");
-
-io.sockets.on('connection', function (socket) {
-    console.log('connected!');
-
-    subscriber.on('message', function(data) {
-        console.log("receive");
-        var msg = [];
-        Array.prototype.slice.call(arguments).forEach(function(arg) {
-            msg.push(arg.toString());
-        });
-        socket.emit('msg', {
-            'id': msg[0],
-            'name': msg[1]
-        });
-    });
-});
+//ZMQ subscribe
+app.ready(server);

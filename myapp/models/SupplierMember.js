@@ -21,6 +21,8 @@ var SupplierMember = function(options) {
 SupplierMember.getAll = function(city, hometown, cb) {
     db.select()
         .from('supplierm')
+        .leftOuterJoin('follow', 'supplierm.id', 'follow.supplier_id')
+        .whereNull('follow.supplier_id')
         .where({
             city: city,
             hometown: hometown

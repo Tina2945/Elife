@@ -19,21 +19,30 @@ var Order = function(options) {
 };
 
 Order.getAll = function(supplierId, cb) {
-    db.distinct("date")
+    db.groupBy("member_id")
+        .groupBy("supplier_id")
+        .groupBy("date")
+        .groupBy("time")
         .select()
         .from("buylist")
         .where({
             supplier_id: supplierId,
-            paid: 1,
-            received: 0
+            paid: 1
         })
         .orderBy("date", "desc")
+        .orderBy("time", "desc")
         .map(function(row) {
-            return row.date;
+            return new Order({
+                memberId: row.member_id,
+                date: row.date,
+                time: row.time,
+                status: row.status,
+                received: row.received
+            });
         })
-        .then(function(dateList) {
-            if (dateList.length) {
-                cb(null, dateList);
+        .then(function(orderList) {
+            if (orderList.length) {
+                cb(null, orderList);
             } else {
                 cb(null, null);
             }
@@ -44,16 +53,16 @@ Order.getAll = function(supplierId, cb) {
         });
 };
 
-Order.get = function(supplierId, date, cb) {
+Order.get = function(memberId, supplierId, date, time, cb) {
     db.select()
         .from("buylist")
         .where({
+            member_id: memberId,
             supplier_id: supplierId,
             paid: 1,
-            received: 0,
-            date: date
+            date: date,
+            time: time
         })
-        .orderBy("time", "desc")
         .map(function(row) {
             return new Order({
                 id: row.id,

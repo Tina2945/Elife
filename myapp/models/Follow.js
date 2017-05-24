@@ -2,7 +2,7 @@ var db = require('../libs/db');
 var GeneralErrors = require('../errors/GeneralErrors');
 
 var Follow = function(options) {
-    this.id = options.id;
+    this.followId = options.followId;
     this.memberId = options.memberId;
     this.supplierId = options.supplierId;
 };
@@ -15,7 +15,7 @@ Follow.getAll = function(memberId, cb) {
         })
         .map(function(row) {
             return new Follow({
-                id: row.id,
+                followId: row.follow_id,
                 memberId: row.member_id,
                 supplierId: row.supplier_id
             });
@@ -41,7 +41,7 @@ Follow.prototype.save = function(cb) {
         })
         .then(function(result) {
             var insertedId = result[0];
-            this.id = insertedId;
+            this.followId = insertedId;
             cb(null, this);
         }.bind(this))
         .catch(function(err) {
@@ -51,10 +51,10 @@ Follow.prototype.save = function(cb) {
 };
 
 Follow.prototype.delete = function(cb) {
-    if (this.id) {
+    if (this.followId) {
         db("follow")
             .where({
-                id: this.id
+                follow_id: this.followId
             })
             .del()
             .then(function() {

@@ -84,25 +84,4 @@ Record.get = function(memberId, date, time, cb) {
         });
 };
 
-Record.sum = function(memberId, date, time, cb) {
-    db("buylist")
-        .sum("total as sum")
-        .where({
-            member_id: memberId,
-            paid: 1,
-            date: date,
-            time: time
-        })
-        .map(function(row) {
-            return row.sum;
-        })
-        .then(function(sum) {
-            cb(null, sum);
-        })
-        .catch(function(err) {
-            console.log(err);
-            cb(new GeneralErrors.Database());
-        });
-};
-
 module.exports = Record;
