@@ -22,10 +22,10 @@
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                 <br>
                 <h3>&nbsp;&nbsp;&nbsp;&nbsp;<%= member.name %>, 您好!</h3>
-                <a href="/home"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;首頁</a>
-                <a href="/shopping_cart"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;&nbsp;購物車</a>
-                <a href="/purchase_rec"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;購買紀錄</a>
-                <a href="/personal_info"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;個人資料</a>
+                <a href="/home"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;&nbsp;首頁</a>
+                <a href="/shopping_cart"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;&nbsp;&nbsp;購物車</a>
+                <a href="/purchase_rec"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;&nbsp;購買紀錄</a>
+                <a href="/personal_info"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;&nbsp;個人資料</a>
                 <form action="/register/logout" method="POST">
                     <a><span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;<input id="logout" type="submit" value="登出"></a>
                 </form>
@@ -40,57 +40,63 @@
                 <div class="col-sm-12 text-center">
                     <h1><%= date %> 紀錄</h1>
                     <h3>訂購時間 <%= time %></h3>
-                    <hr>
-                    <div class="container">
-                        <table class="table" style="font-size: 20px">
-                            <thead>
+                    <br>
+                    <table class="table text-center">
+                        <thead>
+                            <tr>
+                                <th>店名/品項</th>
+                                <th>單價</th>
+                                <th>數量</th>
+                                <th>小計</th>
+                                <th>狀態</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% recordList.forEach(function(record) { %>
                                 <tr>
-                                    <th style="text-align:center">商品</th>
-                                    <th style="text-align:center">單價</th>
-                                    <th style="text-align:center">數量</th>
-                                    <th style="text-align:center">小計</th>
-                                    <th style="text-align:center">狀態</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <% recordList.forEach(function(record) { %>
-                                    <tr>
-                                        <td>
-                                            <%= record.supplier.storeName %>
-                                                <br>
-                                                <%= record.name %>
-                                        </td>
-                                        <td>
-                                            <%= record.price %>
-                                        </td>
-                                        <td>
-                                            <%= record.quantity %>
-                                        </td>
-                                        <td>
-                                            <%= record.total %>
-                                        </td>
-                                        <td>
-                                            <% if(record.received) { %>
+                                    <td>
+                                        <%= record.supplier.storeName %>
+                                            <br>
+                                            <%= record.name %>
+                                    </td>
+                                    <td>
+                                        <%= record.price %>
+                                    </td>
+                                    <td>
+                                        <%= record.quantity %>
+                                    </td>
+                                    <td>
+                                        <%= record.total %>
+                                    </td>
+                                    <td>
+                                        <% if(record.status == 1) { %>
+                                            <% if(record.received == 1) { %>
                                                 完成
                                                 <% } else { %>
-                                                    未完成
+                                                    處理中
                                                     <% } %>
-                                        </td>
+                                                        <% } else { %>
+                                                            待處理
+                                                            <% } %>
+                                    </td>
+                                </tr>
+                                <% }); %>
+                                    <tr style="color:red">
+                                        <td><strong>總金額(元):</strong></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td><strong><%= sum %></strong></td>
+                                        <td></td>
                                     </tr>
-                                    <% }); %>
-                            </tbody>
-                        </table>
-                        <hr>
-                        <h3>總金額: <%= sum %>元</h3>
-                        <br>
-                        <br>
-                        <div>
-                            <a href="/purchase_rec">
-                                <button type="button" class="btn btn-success btn-lg">返回</button>
-                            </a>
-                        </div>
-                        <br>
+                        </tbody>
+                    </table>
+                    <br>
+                    <div>
+                        <a href="/purchase_rec">
+                            <button type="button" class="btn btn-success btn-lg">返回</button>
+                        </a>
                     </div>
+                    <br>
                 </div>
             </div>
         </div>

@@ -8,27 +8,35 @@ router.get('/', function(req, res, next) {
         res.redirect('/supplierlogin');
     }
 
-    Order.getAll(req.session.supplierm.id, function(err, dateList) {
+    Order.getAll(req.session.supplierm.id, function(err, nameList) {
         if (err) {
             next();
         } else {
             res.render('supplier/order', {
                 supplierm: req.session.supplierm,
-                dateList: dateList || null
+                nameList: nameList || null
             });
+
         }
     });
 });
 
-router.get('/:date', function(req, res, next) {
-    Order.get(req.session.supplierm.id, req.params.date, function(err, orderList) {
+router.get('/:memberId/:date/:time', function(req, res, next) {
+    var sum = 0;
+    Order.get(req.params.memberId, req.session.supplierm.id, req.params.date, req.params.time, function(err, orderList) {
         if (err) {
             next();
         } else {
+            async.each(orderList, function(order) {
+                sum += order.total;
+            });
+
             res.render('supplier/order_detail', {
                 supplierm: req.session.supplierm,
                 date: req.params.date,
-                orderList: orderList
+                time: req.params.time,
+                orderList: orderList,
+                sum: sum
             });
         }
     });

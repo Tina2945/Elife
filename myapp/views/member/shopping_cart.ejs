@@ -22,10 +22,10 @@
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                 <br>
                 <h3>&nbsp;&nbsp;&nbsp;&nbsp;<%= member.name %>, 您好!</h3>
-                <a href="/home"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;首頁</a>
-                <a href="/shopping_cart"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;&nbsp;購物車</a>
-                <a href="/purchase_rec"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;購買紀錄</a>
-                <a href="/personal_info"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;個人資料</a>
+                <a href="/home"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;&nbsp;首頁</a>
+                <a href="/shopping_cart"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;&nbsp;&nbsp;購物車</a>
+                <a href="/purchase_rec"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;&nbsp;購買紀錄</a>
+                <a href="/personal_info"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;&nbsp;個人資料</a>
                 <form action="/register/logout" method="POST">
                     <a><span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;<input id="logout" type="submit" value="登出"></a>
                 </form>
@@ -40,89 +40,92 @@
                 <div class="col-sm-12 text-center">
                     <h1>購物車</h1>
                     <hr>
-                    <div class="container">
-                        <% if(cartList) { %>
-                            <form action="/shopping_cart" method="POST">
-                                <table class="table" style="font-size: 20px">
-                                    <thead>
+                    <% if(cartList) { %>
+                        <form action="/shopping_cart" method="POST">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>店名/品項</th>
+                                        <th>單價</th>
+                                        <th>數量</th>
+                                        <th>小計</th>
+                                        <th> </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% cartList.forEach(function(cart) { %>
+                                        <input type="hidden" name="cartId" value="<%= cart.id %>">
                                         <tr>
-                                            <th style="text-align:center">商品</th>
-                                            <th style="text-align:center">單價</th>
-                                            <th style="text-align:center">數量</th>
-                                            <th style="text-align:center">小計</th>
-                                            <th> </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <% cartList.forEach(function(cart) { %>
-                                            <input type="hidden" name="cartId" value="<%= cart.id %>">
-                                            <tr>
-                                                <td>
-                                                    <%= cart.supplier.storeName %>
-                                                        <br>
-                                                        <%= cart.name %>
-                                                </td>
-                                                <td>
-                                                    <%= cart.price %>
-                                                </td>
-                                                <td>
-                                                    <%= cart.quantity %>
-                                                </td>
-                                                <td>
-                                                    <span id="subtotal_<cart.id>"><%= cart.total %></span>
-                                                </td>
-                                                <td>
-                                                    <a data-toggle="modal" data-target="#deleteProduct_<%= cart.id %>">
-                                                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                                                    </a>
-                                                </td>
-                                                <!-- deleteProduct Modal -->
-                                                <div class="modal fade" id="deleteProduct_<%= cart.id %>" role="dialog">
-                                                    <div class="modal-dialog modal-sm">
-                                                        <div class="modal-content col-sm-12">
-                                                            <div class="modal-header">
-                                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                                <div class="modal-title">
-                                                                    <h2>Elife</h2>
-                                                                </div>
+                                            <td>
+                                                <%= cart.supplier.storeName %>
+                                                    <br>
+                                                    <%= cart.name %>
+                                            </td>
+                                            <td>
+                                                <%= cart.price %>
+                                            </td>
+                                            <td>
+                                                <%= cart.quantity %>
+                                            </td>
+                                            <td>
+                                                <%= cart.total %>
+                                            </td>
+                                            <td>
+                                                <a data-toggle="modal" data-target="#deleteProduct_<%= cart.id %>">
+                                                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                                </a>
+                                            </td>
+                                            <!-- deleteProduct Modal -->
+                                            <div class="modal fade" id="deleteProduct_<%= cart.id %>" role="dialog">
+                                                <div class="modal-dialog modal-lg">
+                                                    <div class="modal-content col-sm-12">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                            <div class="modal-title">
+                                                                <h2>Elife</h2>
                                                             </div>
-                                                            <div class="modal-body">
-                                                                <h3>確定刪除此項商品?</h3>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <a href="/shopping_cart/<%= cart.id %>">
-                                                                    <button type="button" class="btn btn-default btn-lg">確定</button>
-                                                                </a>
-                                                            </div>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <h3>確定刪除此項商品?</h3>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <a href="/shopping_cart/<%= cart.id %>">
+                                                                <button type="button" class="btn btn-default btn-lg">確定</button>
+                                                            </a>
                                                         </div>
                                                     </div>
                                                 </div>
+                                            </div>
+                                        </tr>
+                                        <% }); %>
+                                            <tr style="color:red">
+                                                <td><strong>總金額(元):</strong></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td><strong><%= sum %></strong></td>
+                                                <td></td>
                                             </tr>
-                                            <% }); %>
-                                    </tbody>
-                                </table>
-                                <hr>
-                                <h3>總金額: <%= sum %>元</h3>
-                                <br>
-                                <div class="col-xs-6 text-left">
-                                    <a href="/home">
-                                        <button type="button" class="btn btn-success btn-lg">繼續選購</button>
-                                    </a>
-                                </div>
-                                <div class="col-xs-6 text-right">
-                                    <button type="submit" class="btn btn-success btn-lg">送出訂單</button>
-                                </div>
-                            </form>
-                            <% } else { %>
-                                <h3>購物車內無商品</h3>
-                                <br>
-                                <div>
-                                    <a href="/home">
-                                        <button type="button" class="btn btn-success btn-lg">繼續選購</button>
-                                    </a>
-                                </div>
-                                <% } %>
-                    </div>
+                                </tbody>
+                            </table>
+                            <br>
+                            <div class="col-xs-6 text-left">
+                                <a href="/home">
+                                    <button type="button" class="btn btn-success btn-lg">繼續選購</button>
+                                </a>
+                            </div>
+                            <div class="col-xs-6 text-right">
+                                <button type="submit" class="btn btn-success btn-lg">送出訂單</button>
+                            </div>
+                        </form>
+                        <% } else { %>
+                            <h3>購物車內無商品</h3>
+                            <br>
+                            <div>
+                                <a href="/home">
+                                    <button type="button" class="btn btn-success btn-lg">繼續選購</button>
+                                </a>
+                            </div>
+                            <% } %>
                 </div>
             </div>
         </div>

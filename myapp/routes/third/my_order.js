@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
         res.redirect('/thirdlogin');
     }
 
-    Buy.getAll(function(err, nameList) {
+    Buy.getMine(req.session.third.id, function(err, nameList) {
         if (err) {
             next();
         } else {
@@ -27,7 +27,7 @@ router.get('/', function(req, res, next) {
                 if (err) {
                     console.log(err);
                 } else {
-                    res.render('third/third_order', {
+                    res.render('third/my_order', {
                         third: req.session.third,
                         nameList: nameList || null
                     });
@@ -43,7 +43,7 @@ router.get('/:memberId/:date/:time', function(req, res, next) {
     }
 
     var sum = 0;
-    Buy.get(req.params.memberId, req.params.date, req.params.time, function(err, buyList) {
+    Buy.getOrder(req.params.memberId, req.params.date, req.params.time, req.session.third.id, function(err, buyList) {
         if (err) {
             next();
         } else {
@@ -68,7 +68,7 @@ router.get('/:memberId/:date/:time', function(req, res, next) {
                             if (err) {
                                 console.log(err);
                             } else {
-                                res.render('third/third_detail', {
+                                res.render('third/my_detail', {
                                     third: req.session.third,
                                     date: req.params.date,
                                     time: req.params.time,
@@ -94,15 +94,14 @@ router.post('/', function(req, res) {
     }
 
     var newBuy = new Buy({
-        status: true,
-        thirdId: req.session.third.id
+        received: true
     });
 
     newBuy.update(id, function(err) {
         if (err) {
             next();
         } else {
-            res.redirect('/third_order');
+            res.redirect('/my_order');
         }
     });
 });

@@ -61,7 +61,7 @@ router.post('/follow', function(req, res) {
 
 router.post('/unfollow', function(req, res) {
     var newFollow = new Follow({
-        id: req.body.id
+        followId: req.body.id
     });
 
     newFollow.delete(function(err) {

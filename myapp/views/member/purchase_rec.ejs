@@ -22,10 +22,10 @@
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                 <br>
                 <h3>&nbsp;&nbsp;&nbsp;&nbsp;<%= member.name %>, 您好!</h3>
-                <a href="/home"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;首頁</a>
-                <a href="/shopping_cart"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;&nbsp;購物車</a>
-                <a href="/purchase_rec"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;購買紀錄</a>
-                <a href="/personal_info"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;個人資料</a>
+                <a href="/home"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;&nbsp;首頁</a>
+                <a href="/shopping_cart"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;&nbsp;&nbsp;購物車</a>
+                <a href="/purchase_rec"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;&nbsp;購買紀錄</a>
+                <a href="/personal_info"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;&nbsp;個人資料</a>
                 <form action="/register/logout" method="POST">
                     <a><span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;<input id="logout" type="submit" value="登出"></a>
                 </form>
@@ -40,20 +40,18 @@
                 <div class="col-sm-12 text-middle">
                     <h1>購買紀錄</h1>
                     <hr>
-                    <div class="container">
-                        <% if(dateList) { %>
-                            <% for(i in dateList) { %>
-                                <a href="/purchase_rec/<%= dateList[i] %>">
-                                    <button type="button" class="btn btn-success btn-lg btn-block">
-                                        <%= dateList[i] %>
-                                    </button>
-                                </a>
-                                <br>
-                                <% } %>
-                                    <% } else { %>
-                                        <h3 class="text-center">目前無購物紀錄</h3>
-                                        <% } %>
-                    </div>
+                    <% if(dateList) { %>
+                        <% for(i in dateList) { %>
+                            <a href="/purchase_rec/<%= dateList[i] %>">
+                                <button type="button" class="btn btn-success btn-lg btn-block">
+                                    <%= dateList[i] %>
+                                </button>
+                            </a>
+                            <br>
+                            <% } %>
+                                <% } else { %>
+                                    <h3 class="text-center">目前無購物紀錄</h3>
+                                    <% } %>
                 </div>
             </div>
             <% } %>

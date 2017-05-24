@@ -22,7 +22,7 @@ router.get('/', function(req, res, next) {
 router.post('/edit', upload.single('photo'), function(req, res) {
     if (req.file) {
         var tmpPath = req.file.path;
-        var albumId = 'Bna6j';
+        var albumId = 'FnnFs';
 
         imgur.uploadFile(tmpPath, albumId)
             .then(function(json) {

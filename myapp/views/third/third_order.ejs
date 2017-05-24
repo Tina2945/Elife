@@ -22,8 +22,10 @@
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                 <br>
                 <h3> &nbsp;&nbsp;&nbsp;&nbsp;<%= third.name %>, 您好!</h3>
-                <a href="/third_order"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp; 首頁</a>
-                <form action="/supplier/logout" method="POST">
+                <a href="/third_order"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;&nbsp;首頁</a>
+                <a href="/my_order"><span class="glyphicon glyphicon-heart"></span>&nbsp;&nbsp;&nbsp;我的訂單</a>
+                <a href="/history"><span class="glyphicon glyphicon-book"></span>&nbsp;&nbsp;&nbsp;歷史紀錄</a>
+                <form action="/third/logout" method="POST">
                     <a><span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;<input id="logout" type="submit" value="登出"></a>
                 </form>
             </div>
@@ -34,44 +36,47 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 text-center">
-                    <h1>訂單紀錄</h1>
-                    <hr>
-                    <div class="container">
+                    <div class="title">
+                        <span class="caption"><span class="line line-l"></span>
+                        <h1>所有訂單</h1><span class="line line-r"></span></span>
+                    </div>
+                    <% if(nameList) { %>
+                        <h3>狀態: 待處理</h3>
                         <table class="table">
                             <thead>
                                 <tr>
                                     <th>買方 編號</th>
+                                    <th>時間</th>
                                     <th>地區</th>
-                                    <th>狀態</th>
                                     <th>&nbsp;</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <% if(nameList) { %>
-                                    <%  nameList.forEach(function(buy) {  %>
-                                        <tr>
-                                            <td>
-                                                <%= buy.memberId %>
-                                            </td>
-                                            <td>
-                                                <%= buy.member.city %>
-                                            </td>
-                                            <% if(buy.status==0){ %>
-                                                <td id="status">尚未 接單</td>
-                                                <% } if(buy.status==1){ %>
-                                                    <td id="status">處理 中</td>
-                                                    <% } %>
-                                                        <td>
-                                                            <a href="/third_order/<%= buy.memberId %>">
-                                                                <button type="button" class="btn btn-lg btn-success"> 詳情
-                                                                </button>
-                                                            </a>
-                                                        </td>
-                                                        <% }) %>
-                                                            <% } %>
+                                <% nameList.forEach(function(buy) { %>
+                                    <tr>
+                                        <td>
+                                            <%= buy.memberId %>
+                                        </td>
+                                        <!--  <td id="status">尚未 接單</td> -->
+                                        <td>
+                                            <%= buy.date %>
+                                                <%= buy.time %>
+                                        </td>
+                                        <td>
+                                            <%= buy.member.city %>
+                                        </td>
+                                        <td>
+                                            <a href="/third_order/<%= buy.memberId %>/<%= buy.date %>/<%= buy.time %>">
+                                                <button type="button" class="btn btn-lg btn-info">詳情
+                                                </button>
+                                            </a>
+                                        </td>
+                                        <% }) %>
                             </tbody>
                         </table>
-                    </div>
+                        <% } else { %>
+                            <h3 class="text-center">目前無訂單</h3>
+                            <% } %>
                 </div>
             </div>
         </div>

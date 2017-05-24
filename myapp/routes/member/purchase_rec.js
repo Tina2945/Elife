@@ -30,12 +30,15 @@ router.get('/:dateTime', function(req, res, next) {
     date = dt[0];
     time = dt[1];
 
+    var sum = 0;
     Record.get(req.session.member.id, date, time, function(err, recordList) {
         if (err) {
             next();
         } else {
             async.each(recordList, function(record, cb) {
-                SupplierMember.get(record.supplierId, function(err, supplier) {                    
+                sum += record.total;
+
+                SupplierMember.get(record.supplierId, function(err, supplier) {
                     if (err) {
                         cb(err);
                     } else {
@@ -47,19 +50,17 @@ router.get('/:dateTime', function(req, res, next) {
                 if (err) {
                     next();
                 } else {
-                    Record.sum(req.session.member.id, date, time, function(err, sum) {
-                        if (err) {
-                            console.log(err);
-                        } else {
-                            res.render('member/record_detail', {
-                                member: req.session.member,
-                                date: date,
-                                time: time,
-                                recordList: recordList,
-                                sum: sum
-                            });
-                        }
-                    });
+                    if (err) {
+                        console.log(err);
+                    } else {
+                        res.render('member/record_detail', {
+                            member: req.session.member,
+                            date: date,
+                            time: time,
+                            recordList: recordList,
+                            sum: sum
+                        });
+                    }
                 }
             });
         }

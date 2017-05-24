@@ -9,7 +9,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="/stylesheets/supplier/order_detail.css">
+    <link rel="stylesheet" href="/stylesheets/third/history_detail.css">
 </head>
 
 <body>
@@ -18,7 +18,8 @@
             <img src="/images/logo.png" alt="Brand Image">
         </div>
         <div id="main">
-            <span style="font-size:30px;cursor:pointer;color:#6F916F" onclick="openNav()">&#9776;</span>
+            <span style="font-size:30px;cursor:pointer;color:#6F916F" onclick="openNav()">&#9776; 
+        </span>
         </div>
     </div>
     <div class="container">
@@ -26,30 +27,33 @@
             <div class="col-sm-12 text-center">
                 <h1>訂單明細</h1>
                 <h3><%= date %> <%= time %></h3>
+                <h3>經手人: <%= third.name %></h3>
                 <br>
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>商品</th>
+                            <th>店名/品項</th>
                             <th>單價</th>
                             <th>數量</th>
                             <th>小計</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <% orderList.forEach(function(order) { %>
+                        <% buyList.forEach(function(buy) { %>
                             <tr>
                                 <td>
-                                    <%= order.name %>
+                                    <%=buy.supplier.storeName %>
+                                        <br>
+                                        <%=buy.name %>
                                 </td>
                                 <td>
-                                    <%= order.price %>
+                                    <%=buy.price %>
                                 </td>
                                 <td>
-                                    <%= order.quantity %>
+                                    <%=buy.quantity %>
                                 </td>
                                 <td>
-                                    <%= order.total %>
+                                    <%= buy.total %>
                                 </td>
                             </tr>
                             <% }) %>
@@ -61,14 +65,36 @@
                                 </tr>
                     </tbody>
                 </table>
-                <br>
+                <table class="table text-left" style="font-size: 20px">
+                    <tbody>
+                        <tr>
+                            <td> <span class="glyphicon glyphicon-user" aria-hidden="true" style="color: #649965"></span></td>
+                            <td>
+                                <%=member.name %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td> <span class="glyphicon glyphicon-earphone" aria-hidden="true" style="color: #649965"></span></td>
+                            <td>
+                                <%=member.phonenum %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="glyphicon glyphicon-home" aria-hidden="true" style="color: #649965"></span></td>
+                            <td>
+                                <%=member.city %>
+                                    <%=member.hometown %>
+                                        <%=member.address%>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
                 <div>
-                    <a href="/order">
-                        <button type="button" class="btn btn-success btn-lg">
-                            返回
-                        </button>
+                    <a href="/history">
+                        <button type="button" class="btn btn-success btn-lg">返回</button>
                     </a>
                 </div>
+                <br>
             </div>
         </div>
     </div>

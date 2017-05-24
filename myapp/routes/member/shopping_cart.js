@@ -9,12 +9,14 @@ router.get('/', function(req, res, next) {
         res.redirect('/login');
     }
 
+    var sum = 0;
     Cart.getAll(req.session.member.id, function(err, cartList) {
         if (err) {
             next();
         } else {
             if (cartList) {
                 async.each(cartList, function(cart, cb) {
+                    sum += cart.total;
                     SupplierMember.get(cart.supplierId, function(err, supplier) {
                         if (err) {
                             cb(err);
@@ -27,17 +29,15 @@ router.get('/', function(req, res, next) {
                     if (err) {
                         next();
                     } else {
-                        Cart.sum(req.session.member.id, function(err, sum) {
-                            if (err) {
-                                console.log(err);
-                            } else {
-                                res.render('member/shopping_cart', {
-                                    member: req.session.member,
-                                    cartList: cartList,
-                                    sum: sum
-                                });
-                            }
-                        })
+                        if (err) {
+                            console.log(err);
+                        } else {
+                            res.render('member/shopping_cart', {
+                                member: req.session.member,
+                                cartList: cartList,
+                                sum: sum
+                            });
+                        }
                     }
                 });
             } else {
@@ -51,6 +51,10 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/:cartId', function(req, res, next) {
+    if (!req.session.member) {
+        res.redirect('/login');
+    }
+
     var newCart = new Cart({
         id: req.params.cartId
     });
@@ -70,22 +74,26 @@ router.post('/', function(req, res) {
     date = d.toLocaleDateString();
     time = d.toLocaleTimeString();
 
-    for (i in req.body.cartId) {
-        var newCart = new Cart({
-            id: req.body.cartId[i],
-            paid: true,
-            date: date,
-            time: time
-        });
-
-        newCart.save(function(err) {
-            if (err) {
-                next(err);
-            }
-        });
+    var id = [];
+    if (typeof(req.body.cartId) == "object") {
+        id = req.body.cartId;
+    } else {
+        id.push(req.body.cartId);
     }
 
-    res.redirect('/order_suc');
+    var newCart = new Cart({
+        paid: true,
+        date: date,
+        time: time
+    });
+
+    newCart.update(id, function(err, cartList) {
+        if (err) {
+            next(err);
+        } else {
+            res.redirect('/order_suc');
+        }
+    });
 });
 
 router.post('/add', function(req, res) {

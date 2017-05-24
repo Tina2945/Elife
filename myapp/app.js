@@ -33,7 +33,10 @@ var supplier_edit = require('./routes/supplier/supplier_edit');
 //third
 var third = require('./routes/third/third');
 var thirdlogin = require('./routes/third/thirdlogin');
+var thirdlogin_error = require('./routes/third/thirdlogin_error');
 var third_order = require('./routes/third/third_order');
+var my_order = require('./routes/third/my_order');
+var history = require('./routes/third/history');
 
 var app = express();
 
@@ -77,8 +80,10 @@ app.use('/supplier_edit', supplier_edit);
 //third
 app.use('/third', third);
 app.use('/thirdlogin', thirdlogin);
+app.use('/thirdlogin_error', thirdlogin_error);
 app.use('/third_order', third_order);
-
+app.use('/my_order', my_order);
+app.use('/history', history);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -97,5 +102,11 @@ app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     res.render('error');
 });
+
+//ZMQ subscribe
+app.ready = function(server) {
+    store.prepareSocketIO(server);
+};
+
 
 module.exports = app;

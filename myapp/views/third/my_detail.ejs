@@ -9,7 +9,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="/stylesheets/third/third_detail.css">
+    <link rel="stylesheet" href="/stylesheets/third/my_detail.css">
 </head>
 
 <body>
@@ -25,10 +25,10 @@
     <div class="container">
         <div class="row content">
             <div class="col-sm-12 text-center">
-                <h1>接單明細</h1>
+                <h1>簽收明細</h1>
                 <h3><%= date %> <%= time %></h3>
                 <br>
-                <form action="/third_order" method="POST">
+                <form action="/my_order" method="POST">
                     <table class="table">
                         <thead>
                             <tr>
@@ -43,15 +43,15 @@
                                 <input type="hidden" name="buyId" value="<%= buy.id %>">
                                 <tr>
                                     <td>
-                                        <%=buy.supplier.storeName %>
+                                        <%= buy.supplier.storeName %>
                                             <br>
                                             <%=buy.name %>
                                     </td>
                                     <td>
-                                        <%=buy.price %>
+                                        <%= buy.price %>
                                     </td>
                                     <td>
-                                        <%=buy.quantity %>
+                                        <%= buy.quantity %>
                                     </td>
                                     <td>
                                         <%= buy.total %>
@@ -66,7 +66,8 @@
                                     </tr>
                         </tbody>
                     </table>
-                    <table class="table text-left" style="font-size: 20px">
+                    <br>
+                    <table class="table text-left">
                         <tbody>
                             <tr>
                                 <td> <span class="glyphicon glyphicon-user" aria-hidden="true" style="color: #649965"></span></td>
@@ -91,13 +92,22 @@
                         </tbody>
                     </table>
                     <div class="text-center">
-                        <button type="submit" class="btn btn-success btn-lg">我要接單</button>
+                        <button type="submit" class="btn btn-success btn-lg">我要簽收</button>
                     </div>
                 </form>
                 <br>
             </div>
         </div>
     </div>
+    <script>
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+    }
+    </script>
 </body>
 
 </html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html>
 
 <head>
     <title>Elife</title>
@@ -9,11 +9,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="/stylesheets/supplier/order.css">
+    <link rel="stylesheet" href="/stylesheets/third/history.css">
 </head>
 
 <body>
-    <% if(supplierm) {%>
+    <% if(third) { %>
         <div class="navbar-header">
             <div class="navbar-brand pull-right">
                 <img src="/images/logo.png" alt="Brand Image">
@@ -21,12 +21,11 @@
             <div id="mySidenav" class="sidenav sidenav-hover">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                 <br>
-                <h3> &nbsp;&nbsp;&nbsp;&nbsp;<%= supplierm.storeName %>, 您好!</h3>
-                <a href="/product"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;&nbsp;首頁</a>
-                <a href="/product/add"><span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;&nbsp;新增商品</a>
-                <a href="/order"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;&nbsp;查看訂單</a>
-                <a href="/supplier_info"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;&nbsp;商家資料</a>
-                <form action="/supplier/logout" method="POST">
+                <h3> &nbsp;&nbsp;&nbsp;&nbsp;<%= third.name %>, 您好!</h3>
+                <a href="/third_order"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;&nbsp;首頁</a>
+                <a href="/my_order"><span class="glyphicon glyphicon-heart"></span>&nbsp;&nbsp;&nbsp;我的訂單</a>
+                <a href="/history"><span class="glyphicon glyphicon-book"></span>&nbsp;&nbsp;&nbsp;歷史紀錄</a>
+                <form action="/third/logout" method="POST">
                     <a><span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;<input id="logout" type="submit" value="登出"></a>
                 </form>
             </div>
@@ -37,43 +36,40 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 text-center">
-                    <h1>所有訂單</h1>
-                    <hr>
+                    <div class="title">
+                        <span class="caption"><span class="line line-l"></span>
+                        <h1>歷史紀錄</h1><span class="line line-r"></span></span>
+                    </div>
                     <% if(nameList) { %>
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>買方<br>編號</th>
+                                    <th>買方 編號</th>
                                     <th>時間</th>
                                     <th>狀態</th>
                                     <th>&nbsp;</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <% nameList.forEach(function(order) { %>
+                                <% nameList.forEach(function(buy) { %>
                                     <tr>
                                         <td>
-                                            <%= order.memberId %>
+                                            <%= buy.memberId %>
                                         </td>
                                         <td>
-                                            <%= order.date %>
-                                                <br>
-                                                <%= order.time %>
+                                            <%= buy.date %>
+                                                <%= buy.time %>
                                         </td>
                                         <td>
-                                            <% if(order.status == 1) { %>
-                                                <% if(order.received == 1) { %>
+                                            <% if(buy.received == 0) { %>
+                                                處理中
+                                                <% } else { %>
                                                     完成
-                                                    <% } else { %>
-                                                        處理中
-                                                        <% } %>
-                                                            <% } else { %>
-                                                                待處理
-                                                                <% } %>
+                                                    <% } %>
                                         </td>
                                         <td>
-                                            <a href="/order/<%= order.memberId %>/<%= order.date %>/<%= order.time %>">
-                                                <button type="button" class="btn btn-lg btn-info">詳情
+                                            <a href="/history/<%= buy.memberId %>/<%= buy.date %>/<%= buy.time %>/<%= buy.thirdId %>">
+                                                <button type="button" class="btn btn-lg btn-primary">詳情
                                                 </button>
                                             </a>
                                         </td>
@@ -81,12 +77,12 @@
                             </tbody>
                         </table>
                         <% } else { %>
-                            <h3 class="text-center">目前無訂單</h3>
+                            <h3 class="text-center">目前無紀錄</h3>
                             <% } %>
                 </div>
             </div>
         </div>
-        <% }%>
+        <% } %>
             <script>
             function openNav() {
                 document.getElementById("mySidenav").style.width = "250px";

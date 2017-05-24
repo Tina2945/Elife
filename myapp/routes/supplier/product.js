@@ -34,7 +34,7 @@ router.get('/add', function(req, res) {
 
 router.post('/add/save', upload.single('photo'), function(req, res) {
     var tmpPath = req.file.path;
-    var albumId = 'fZS2i';
+    var albumId = '3A5mz';
 
     imgur.uploadFile(tmpPath, albumId)
         .then(function(json) {
@@ -75,7 +75,7 @@ router.post('/edit', function(req, res) {
 router.post('/edit/save', upload.single('photo'), function(req, res) {
     if (req.file) {
         var tmpPath = req.file.path;
-        var albumId = 'fZS2i';
+        var albumId = '3A5mz';
 
         imgur.uploadFile(tmpPath, albumId)
             .then(function(json) {

@@ -95,7 +95,7 @@ body {
 }
 
 .sidenav .closebtn:hover {
-    background-color: #cff09e;
+    background-color: #a8dba8;
     color: #3a5134;
 }
 
@@ -130,16 +130,15 @@ body {
     }
 }
 
-th {
+th,
+td {
     text-align: center;
     font-size: 20px;
 }
 
 @media screen and (max-width:320px) {
-
-th {
-    font-size: 13px;
-}
-
-
+    th,
+    td {
+        font-size: 13px;
+    }
 }

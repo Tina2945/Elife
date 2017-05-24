@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var Third = require('../../models/thirdm');
+var Third = require('../../models/Third');
+var crypto = require('crypto');
 
 router.get('/', function(req, res, next) {
     res.render('third/thirdlogin');
@@ -8,18 +9,16 @@ router.get('/', function(req, res, next) {
 
 router.post('/', function(req, res, next) {
     Third.check(req.body.account, function(err, third) {
-        if (req.body.password != third.password) {
-            res.send('Your password is incorrect!');
+        var md5 = crypto.createHash('md5');
+        var password = md5.update(req.body.password).digest('hex');
+
+        if (password != third.password) {
+            res.redirect('/thirdlogin_error');
         } else {
             req.session.third = third;
             res.redirect('/third_order');
         }
     });
-});
-
-router.post('/logout', function(req, res, next) {
-    req.session.third = null;
-    res.redirect('/');
 });
 
 module.exports = router;
