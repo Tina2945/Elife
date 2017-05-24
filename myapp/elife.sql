@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2017-05-10 10:35:19
+-- 產生時間： 2017-05-24 11:02:32
 -- 伺服器版本: 10.1.10-MariaDB-log
 -- PHP 版本： 5.6.19
 
@@ -48,10 +48,19 @@ CREATE TABLE `buylist` (
 --
 
 INSERT INTO `buylist` (`id`, `member_id`, `supplier_id`, `product_id`, `name`, `price`, `quantity`, `total`, `paid`, `date`, `time`, `status`, `third_id`, `received`) VALUES
-(3, 1, 1, 9, '白玫瑰', 555, 1, 555, 1, '2017-04-08', '15:11:02', 1, NULL, 1),
-(4, 1, 1, 10, '紅玫瑰', 555, 1, 555, 1, '2017-04-08', '15:11:02', 1, NULL, 1),
-(7, 1, 1, 13, 'annie', 520, 2, 1040, 1, '2017-5-10', '16:14:12', 1, NULL, 1),
-(9, 1, 1, 9, '白玫瑰', 500, 2, 1000, 1, '2017-5-10', '16:14:12', 1, NULL, 1);
+(3, 1, 1, 9, '白玫瑰', 555, 1, 555, 1, '2017-4-8', '15:11:02', 1, 2, 1),
+(4, 1, 1, 10, '紅玫瑰', 555, 1, 555, 1, '2017-4-8', '15:11:02', 1, 2, 1),
+(7, 1, 1, 13, 'annie', 520, 2, 1040, 1, '2017-5-10', '16:14:12', 0, NULL, 0),
+(9, 1, 1, 9, '白玫瑰', 500, 2, 1000, 1, '2017-5-10', '16:14:12', 0, NULL, 0),
+(10, 4, 1, 4, 'nick', 1500, 1, 1500, 1, '2017-5-18', '19:19:19', 1, 2, 0),
+(11, 1, 1, 4, 'nick', 1500, 2, 3000, 1, '2017-5-19', '18:31:28', 1, 2, 0),
+(12, 1, 1, 11, '星光熠熠', 100, 1, 100, 1, '2017-5-19', '18:31:28', 1, 2, 0),
+(13, 1, 1, 11, '星光熠熠', 100, 2, 200, 1, '2017-5-20', '19:41:16', 0, NULL, 0),
+(14, 4, 2, 6, '貓咪拉花咖啡', 400, 2, 800, 1, '2017-5-20', '17:19:30', 0, NULL, 0),
+(15, 4, 1, 13, 'annie', 520, 1, 520, 1, '2017-5-20', '17:19:30', 0, NULL, 0),
+(16, 1, 1, 13, 'annie', 520, 3, 1560, 1, '2017-5-20', '19:41:16', 0, NULL, 0),
+(20, 1, 1, 22, '蛋糕', 99, 2, 198, 0, '2017-5-21', '15:59:57', 0, NULL, 0),
+(21, 1, 1, 10, '紅玫瑰', 555, 2, 1110, 0, '2017-5-21', '15:59:57', 0, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -8009,7 +8018,7 @@ INSERT INTO `district` (`id`, `city`, `town`, `hometown`) VALUES
 --
 
 CREATE TABLE `follow` (
-  `id` int(11) NOT NULL,
+  `follow_id` int(11) NOT NULL,
   `member_id` int(11) NOT NULL,
   `supplier_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -8018,8 +8027,8 @@ CREATE TABLE `follow` (
 -- 資料表的匯出資料 `follow`
 --
 
-INSERT INTO `follow` (`id`, `member_id`, `supplier_id`) VALUES
-(7, 1, 1);
+INSERT INTO `follow` (`follow_id`, `member_id`, `supplier_id`) VALUES
+(9, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -8049,7 +8058,7 @@ CREATE TABLE `member` (
 
 INSERT INTO `member` (`id`, `name`, `phonenum`, `email`, `city`, `hometown`, `address`, `card1`, `card2`, `card3`, `card4`, `account`, `password`) VALUES
 (1, '謝小庭', '0911222333', 'a23305760@yahoo.com.tw', '臺中市 霧峰區', '中正村', '振興街21號3樓之一', '1111', '2222', '3333', '0102', '1227', 'c4851e8e264415c4094e4e85b0baa7cc'),
-(4, '羅靖婷', '0911111111', '', '臺北市 松山區', '安平里', '南京東路32號', '2222', '3333', '4444', '5555', 'tina', 'ef2afe0ea76c76b6b4b1ee92864c4d5c');
+(4, '羅靖婷', '0911111111', '', '臺中市 霧峰區', '中正村', '四德路32號', '2222', '3333', '4444', '5555', 'tina', 'ef2afe0ea76c76b6b4b1ee92864c4d5c');
 
 -- --------------------------------------------------------
 
@@ -8078,7 +8087,10 @@ INSERT INTO `product` (`id`, `name`, `price`, `description`, `photo`, `supplier_
 (10, '紅玫瑰', '555', '很紅', 'http://imgur.com/5gtluX3.jpg', 1),
 (11, '星光熠熠', '100', '我好帥!', 'http://imgur.com/JaGliiN.jpg', 1),
 (13, 'annie', '520', '最Q室友', 'http://imgur.com/VsNeems.jpg', 1),
-(21, 'Jessica', '900', '女神\r\n                ', 'http://i.imgur.com/lODM3yN.jpg', 1);
+(21, 'Jessica', '900', '女神\r\n                ', 'http://i.imgur.com/lODM3yN.jpg', 1),
+(22, '蛋糕', '99', '好吃', 'http://i.imgur.com/NK9DJVn.jpg', 1),
+(23, 'Mike', '50', '吊飾', 'http://i.imgur.com/AoSZ8uu.png', 1),
+(24, '徽章', '50', '可愛實用', 'http://i.imgur.com/0UoyFZD.png', 1);
 
 -- --------------------------------------------------------
 
@@ -8111,7 +8123,7 @@ INSERT INTO `supplierm` (`id`, `storeName`, `photo`, `name`, `phonenum`, `city`,
 (1, '581生活館', 'http://imgur.com/2YLC3yz.jpg', 'Eating', '0930222', '臺中市 霧峰區', '中正村', '振興街21號3樓之一', '1111', '2222', '3333', '4444', 'alice', '6384e2b2184bcbf58eccf10ca7a6563c'),
 (2, '屈臣氏', NULL, '王先生', '99999999', '臺中市 西屯區', '何成里', '中正路25號', '', '', '', '', '123', '202cb962ac59075b964b07152d234b70'),
 (3, '康是美', NULL, '張益菕', '11111', '臺中市 霧峰區', '中正村', '中正路15號', '', '', '', '', 'nick', 'e2e42a07550863f8b67f5eb252581f6d'),
-(4, '111', 'http://imgur.com/XQHY32y.jpg', '111', '111', '臺北市 大同區', '111', '111', '1111', '1111', '1111', '1111', 'www', '4eae35f1b35977a00ebd8086c259d4c9');
+(4, '111', 'http://imgur.com/XQHY32y.jpg', '111', '111', '臺中市 霧峰區', '中正村', '111', '1111', '1111', '1111', '1111', 'www', '4eae35f1b35977a00ebd8086c259d4c9');
 
 -- --------------------------------------------------------
 
@@ -8132,7 +8144,7 @@ CREATE TABLE `thirdm` (
 --
 
 INSERT INTO `thirdm` (`id`, `name`, `phonenum`, `account`, `password`) VALUES
-(1, ' 洪翊慈', '111111111', 'sky', 'sky');
+(2, '葉大雄', '0988123456', 'bear', '893b56e3cfe153fb770a120b83bac20c');
 
 --
 -- 已匯出資料表的索引
@@ -8158,7 +8170,7 @@ ALTER TABLE `district`
 -- 資料表索引 `follow`
 --
 ALTER TABLE `follow`
-  ADD PRIMARY KEY (`id`),
+  ADD PRIMARY KEY (`follow_id`),
   ADD KEY `member_id` (`member_id`),
   ADD KEY `supplier_id` (`supplier_id`);
 
@@ -8197,7 +8209,7 @@ ALTER TABLE `thirdm`
 -- 使用資料表 AUTO_INCREMENT `buylist`
 --
 ALTER TABLE `buylist`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- 使用資料表 AUTO_INCREMENT `district`
 --
@@ -8207,7 +8219,7 @@ ALTER TABLE `district`
 -- 使用資料表 AUTO_INCREMENT `follow`
 --
 ALTER TABLE `follow`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `follow_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- 使用資料表 AUTO_INCREMENT `member`
 --
@@ -8217,7 +8229,7 @@ ALTER TABLE `member`
 -- 使用資料表 AUTO_INCREMENT `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- 使用資料表 AUTO_INCREMENT `supplierm`
 --
@@ -8227,7 +8239,7 @@ ALTER TABLE `supplierm`
 -- 使用資料表 AUTO_INCREMENT `thirdm`
 --
 ALTER TABLE `thirdm`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- 已匯出資料表的限制(Constraint)
 --
