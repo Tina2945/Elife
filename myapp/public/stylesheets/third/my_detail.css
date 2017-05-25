@@ -34,6 +34,12 @@ th {
     font-size: 25px;
 }
 
+#return {
+    width: 100%;
+    font-size: 25px;
+    margin-top: 20px;
+}
+
 /*iphone5*/
 
 @media screen and (max-width: 320px) {
@@ -55,6 +61,12 @@ th {
     width: 50%;
     font-size: 25px;
     margin: auto;
+}
+
+#return {
+    width: 50%;
+    font-size: 25px;
+    margin-top: 20px;
 }
 
 }
