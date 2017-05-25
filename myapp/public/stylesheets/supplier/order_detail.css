@@ -136,9 +136,24 @@ td {
     font-size: 20px;
 }
 
+#return {
+    width: 100%;
+    font-size: 25px;
+}
+
 @media screen and (max-width:320px) {
     th,
     td {
         font-size: 13px;
     }
 }
+
+@media screen and (min-width:768px) {
+
+#return {
+    width: 50%;
+    font-size: 25px;
+    margin: auto;
+}
+}
+

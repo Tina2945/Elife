@@ -37,13 +37,14 @@
         </div>
         <div class="container text-center">
             <div class="row content">
-                <div class="col-sm-12 text-middle">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-10 text-middle">
                     <h1>購買紀錄</h1>
                     <hr>
                     <% if(dateList) { %>
                         <% for(i in dateList) { %>
                             <a href="/purchase_rec/<%= dateList[i] %>">
-                                <button type="button" class="btn btn-success btn-lg btn-block">
+                                <button type="button" class="btn btn-success btn-lg btn-block" id="record">
                                     <%= dateList[i] %>
                                 </button>
                             </a>
@@ -53,6 +54,7 @@
                                     <h3 class="text-center">目前無購物紀錄</h3>
                                     <% } %>
                 </div>
+                <div class="col-sm-1"></div>
             </div>
             <% } %>
                 <script>

@@ -37,7 +37,8 @@
         </div>
         <div class="container">
             <div class="row content">
-                <div class="col-sm-12 text-center">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-10 text-center">
                     <h1>購物車</h1>
                     <hr>
                     <% if(cartList) { %>
@@ -108,13 +109,13 @@
                                 </tbody>
                             </table>
                             <br>
-                            <div class="col-xs-6 text-left">
+                            <div class="col-xs-12" >
                                 <a href="/home">
-                                    <button type="button" class="btn btn-success btn-lg">繼續選購</button>
+                                    <button type="button" class="btn btn-success btn-lg" id="btn1">繼續選購</button>
                                 </a>
                             </div>
-                            <div class="col-xs-6 text-right">
-                                <button type="submit" class="btn btn-success btn-lg">送出訂單</button>
+                            <div class="col-xs-12" >
+                                <button type="submit" class="btn btn-success btn-lg" id="btn2">送出訂單</button>
                             </div>
                         </form>
                         <% } else { %>
@@ -122,11 +123,12 @@
                             <br>
                             <div>
                                 <a href="/home">
-                                    <button type="button" class="btn btn-success btn-lg">繼續選購</button>
+                                    <button type="button" class="btn btn-success btn-lg" id="btn3">繼續選購</button>
                                 </a>
                             </div>
                             <% } %>
                 </div>
+                <div class="col-sm-1"></div>
             </div>
         </div>
         <% } %>

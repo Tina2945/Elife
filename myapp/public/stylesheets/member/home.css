@@ -140,12 +140,24 @@ body {
 #shopping {
     display: inline-block;
     margin-left: 20px;
+    margin-right: 3px;
+    font-size: 20px;
 }
 
 #unfollow {
     display: inline-block;
     float: right;
-    margin-right:33px;
+    margin-left: 3px;
+    margin-right:30px;
+    font-size: 20px;
+}
+
+#unfollow button {
+    font-size: 20px;
+}
+
+#follow {
+    font-size: 25px;
 }
 
 /*iphone 5*/
@@ -170,12 +182,34 @@ body {
 
 }
 
+@media screen and (min-width: 321px) and (max-width: 360px){
+
+.nav-tabs > li > a { 
+    border: none; 
+    color: #666; 
+    font-size: 20px;
+}
+
+#shopping {
+    display: inline-block;
+    margin-left: 4px;
+}
+
+#unfollow {
+    display: inline-block;
+    float: right;
+    margin-right:10px;
+}
+
+}
+
 /*ipad*/
 @media screen and (min-width: 760px) and (max-width: 1024px){
 
 #shopping {
     display: inline-block;
-    margin-left: -10px;
+    margin-left: -13px;
+    font-size: 17px;
 }
 
 #unfollow {
@@ -184,19 +218,24 @@ body {
     margin-right:-10px;
 }
 
+#unfollow button {
+    font-size: 17px;
+}
+
 }
 
 @media screen and (min-width: 1024px) {
 
 #shopping {
     display: inline-block;
-    margin-left: 24px;
+    margin-left: 25px;
+    margin-right:5px;
 }
 
 #unfollow {
     display: inline-block;
     float: right;
-    margin-right:33px;
+    margin-right:30px;
 }
 
 }

@@ -47,38 +47,44 @@
             </div>
         </div>
         <div class="container">
-            <h1 class="text-center">新增商品</h1>
-            <hr>
-            <form action="/product/add/save" method="POST" enctype="multipart/form-data">
-                <input type="hidden" name="id">
-                <div class="form-group">
-                    <h4><label for="name">商品名稱:</label></h4>
-                    <input type="text" name="name" id="name" placeholder="請輸入商品名稱">
+            <div class="row">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-10 text-left">
+                    <h1 class="text-center">新增商品</h1>
+                    <hr>
+                    <form action="/product/add/save" method="POST" enctype="multipart/form-data">
+                        <input type="hidden" name="id">
+                        <div class="form-group">
+                            <h4><label for="name">商品名稱:</label></h4>
+                            <input type="text" name="name" id="name" placeholder="請輸入商品名稱">
+                        </div>
+                        <div class="form-group">
+                            <h4><label for="price">商品價格:</label></h4>
+                            <input type="text" name="price" id="price" placeholder="請輸入商品價格">
+                        </div>
+                        <div class="form-group">
+                            <h4><label for="description">商品簡介:</label></h4>
+                            <textarea rows="3" name="description" id="description" placeholder="請輸入商品簡介"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <h4><label for="photo">商品圖片:</label></h4>
+                            <input type="file" accept="image/*" capture="camera" name="photo" id="photo">
+                        </div>
+                        <div>
+                            <img id="preview" src="#" class="img-responsive" alt="圖片" style="width:200px;height:200px;border:1px solid;border-radius:6px;">
+                        </div>
+                        <br>
+                        <div class="form-group text-center">
+                            <button type="submit" class="btn btn-lg btn-success" id="save">儲存</button>
+                        </div>
+                    </form>
+                    <div class="text-center">
+                        <a href="/product">
+                            <button class="btn btn-lg btn-success" id="cancel">取消</button>
+                        </a>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <h4><label for="price">商品價格:</label></h4>
-                    <input type="text" name="price" id="price" placeholder="請輸入商品價格">
-                </div>
-                <div class="form-group">
-                    <h4><label for="description">商品簡介:</label></h4>
-                    <textarea rows="3" name="description" id="description" placeholder="請輸入商品簡介"></textarea>
-                </div>
-                <div class="form-group">
-                    <h4><label for="photo">商品圖片:</label></h4>
-                    <input type="file" accept="image/*" capture="camera" name="photo" id="photo">
-                </div>
-                <div>
-                    <img id="preview" src="#" class="img-responsive" alt="圖片" style="width:200px;height:200px;border:1px solid;border-radius:6px;">
-                </div>
-                <br>
-                <div class="form-group" style="float:left">
-                    <button type="submit" class="btn btn-lg btn-success">儲存</button>
-                </div>
-            </form>
-            <div style="padding-left:75px">
-                <a href="/product">
-                    <button class="btn btn-lg btn-success">取消</button>
-                </a>
+                <div class="col-sm-1"></div>
             </div>
         </div>
         <% } %>

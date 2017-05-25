@@ -83,8 +83,23 @@ body {
     padding: 20px;
 }
 
+#modify {
+     display: inline-block;
+     font-size: 20px;
+}
+
+#delete {
+    display: inline-block; 
+    margin-left:10px;
+}
+
+#delete button {
+    font-size: 20px;
+}
+
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
 }
+

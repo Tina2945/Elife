@@ -29,6 +29,11 @@ th {
 }
 
 
+#sign {
+    width: 100%;
+    font-size: 25px;
+}
+
 /*iphone5*/
 
 @media screen and (max-width: 320px) {
@@ -45,4 +50,11 @@ th {
         white-space: nowrap;
         word-spacing: -6px;
     }
+
+    #sign {
+    width: 50%;
+    font-size: 25px;
+    margin: auto;
+}
+
 }

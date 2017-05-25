@@ -67,3 +67,45 @@ input:-webkit-autofill {
     outline:2px solid #6F916F;
     border-radius: 6px; 
 }
+
+#save {
+    width: 92%;
+    font-size: 25px;
+}
+
+#cancel {
+    width: 100%;
+    font-size: 25px;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px){
+
+#save {
+    width: 45%;
+    margin-left: -380px;
+}
+
+#cancel {
+    width: 45%;
+    margin-left: 380px;
+    margin-top: -108px;  
+   
+}
+
+}
+
+@media screen and (min-width: 1024px){
+
+#save {
+    width: 45%;
+    margin-left: -400px;
+
+}
+
+#cancel {
+    width: 45%;
+    margin-left: 400px;
+    margin-top: -108px;     
+}
+
+}

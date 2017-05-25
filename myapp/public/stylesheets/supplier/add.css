@@ -173,3 +173,50 @@ input:-webkit-autofill {
     outline: 2px solid #6F916F;
     border-radius: 6px;
 }
+
+#save {
+    width: 100%;
+    font-size: 25px;
+}
+
+#cancel {
+    width: 100%;
+    font-size: 25px;
+}
+
+@media screen and (min-width:768px) and  (max-width:1024px){
+
+
+#save {
+    width: 45%;
+    margin-left: -350px;
+
+
+}
+
+#cancel {
+    width: 45%;
+    margin-right: -350px;
+    margin-top: -108px;  
+   
+}
+
+}
+
+@media screen and (min-width:1024px){
+
+#save {
+    width: 45%;
+    margin-left: -490px;
+
+}
+
+#cancel {
+    width: 45%;
+    margin-right: -490px;
+    margin-top: -108px;     
+}
+
+}
+
+ 

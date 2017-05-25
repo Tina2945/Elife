@@ -118,7 +118,18 @@ body {
     padding: 20px;
 }
 
+table {
+    font-size: 20px;
+}
 
+th {
+    text-align: center;
+}
+
+#return {
+    width: 100%;
+    font-size: 25px;
+}
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 
 @media screen and (max-height: 450px) {
@@ -130,10 +141,12 @@ body {
     }
 }
 
-table {
-    font-size: 20px;
+@media screen and (min-width: 768px) {
+
+    #return {
+    width: 50%;
+    font-size: 25px;
 }
 
-th {
-    text-align: center;
 }
+

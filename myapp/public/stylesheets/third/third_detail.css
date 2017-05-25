@@ -28,6 +28,10 @@ th {
     text-align: center;
 }
 
+#pick {
+    width: 100%;
+    font-size: 25px;
+}
 
 /*iphone5*/
 
@@ -45,4 +49,11 @@ th {
         white-space: nowrap;
         word-spacing: -6px;
     }
+
+    #pick {
+    width: 50%;
+    font-size: 25px;
+    margin: auto;
 }
+}
+
