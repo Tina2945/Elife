@@ -13,105 +13,82 @@
 </head>
 
 <body>
-    <% if(member) { %>
-        <div class="navbar-header">
-            <div class="navbar-brand pull-right">
-                <img src="/images/logo.png" alt="Brand Image">
-            </div>
-            <div id="mySidenav" class="sidenav sidenav-hover">
-                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                <br>
-                <h3>&nbsp;&nbsp;&nbsp;&nbsp;<%= member.name %>, 您好!</h3>
-                <a href="/home"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;&nbsp;首頁</a>
-                <a href="/shopping_cart"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;&nbsp;&nbsp;購物車</a>
-                <a href="/purchase_rec"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;&nbsp;購買紀錄</a>
-                <a href="/personal_info"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;&nbsp;個人資料</a>
-                <form action="/register/logout" method="POST">
-                    <a><span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;<input id="logout" type="submit" value="登出"></a>
-                </form>
-            </div>
-            <div id="main">
-                <span style="font-size:30px;cursor:pointer;color:white" onclick="openNav()">&#9776; 
+    <div class="navbar-header">
+        <div class="navbar-brand pull-right">
+            <img src="/images/logo.png" alt="Brand Image">
+        </div>
+        <div id="main">
+            <span style="font-size:30px;cursor:pointer;color:#6F916F">&#9776; 
                 </span>
-            </div>
         </div>
-        <div class="container">
-            <div class="row content">
-                <div class="col-sm-1"></div>
-                <div class="col-sm-10 text-center">
-                    <h1><%= date %> 紀錄</h1>
-                    <h3>訂購時間 <%= time %></h3>
-                    <br>
-                    <table class="table text-center">
-                        <thead>
-                            <tr>
-                                <th>店名&nbsp;品項</th>
-                                <th>單價</th>
-                                <th>數量</th>
-                                <th>小計</th>
-                                <th>狀態</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <% recordList.forEach(function(record) { %>
-                                <tr>
-                                    <td>
-                                        <%= record.supplier.storeName %>
-                                            <br>
-                                            <%= record.name %>
-                                    </td>
-                                    <td>
-                                        <%= record.price %>
-                                    </td>
-                                    <td>
-                                        <%= record.quantity %>
-                                    </td>
-                                    <td>
-                                        <%= record.total %>
-                                    </td>
-                                    <td>
-                                        <% if(record.status == 1) { %>
-                                            <% if(record.received == 1) { %>
-                                                完成
-                                                <% } else { %>
-                                                    處理中
-                                                    <% } %>
-                                                        <% } else { %>
-                                                            待處理
-                                                            <% } %>
-                                    </td>
-                                </tr>
-                                <% }); %>
-                                    <tr style="color:red">
-                                        <td><strong>總金額(元):</strong></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td><strong><%= sum %></strong></td>
-                                        <td></td>
-                                    </tr>
-                        </tbody>
-                    </table>
-                    <br>
-                    <div class="text-center">
-                        <a href="/purchase_rec">
-                            <button type="button" class="btn btn-success btn-lg" id="return">返回</button>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-sm-1"></div>
+    </div>
+    <div class="container">
+        <div class="row content">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10 text-center">
+                <h1><%= date %> 紀錄</h1>
+                <h3>訂購時間 <%= time %></h3>
                 <br>
+                <table class="table text-center">
+                    <thead>
+                        <tr>
+                            <th>店名&nbsp;品項</th>
+                            <th>單價</th>
+                            <th>數量</th>
+                            <th>小計</th>
+                            <th>狀態</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% recordList.forEach(function(record) { %>
+                            <tr>
+                                <td>
+                                    <%= record.supplier.storeName %>
+                                        <br>
+                                        <%= record.name %>
+                                </td>
+                                <td>
+                                    <%= record.price %>
+                                </td>
+                                <td>
+                                    <%= record.quantity %>
+                                </td>
+                                <td>
+                                    <%= record.total %>
+                                </td>
+                                <td>
+                                    <% if(record.status == 1) { %>
+                                        <% if(record.received == 1) { %>
+                                            完成
+                                            <% } else { %>
+                                                處理中
+                                                <% } %>
+                                                    <% } else { %>
+                                                        待處理
+                                                        <% } %>
+                                </td>
+                            </tr>
+                            <% }); %>
+                                <tr style="color:red">
+                                    <td><strong>總金額(元):</strong></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td><strong><%= sum %></strong></td>
+                                    <td></td>
+                                </tr>
+                    </tbody>
+                </table>
+                <br>
+                <div class="text-center">
+                    <a href="/purchase_rec">
+                        <button type="button" class="btn btn-success btn-lg" id="return">返回</button>
+                    </a>
+                </div>
             </div>
+            <div class="col-sm-1"></div>
+            <br>
         </div>
-        <% } %>
-            <script>
-            function openNav() {
-                document.getElementById("mySidenav").style.width = "250px";
-            }
-
-            function closeNav() {
-                document.getElementById("mySidenav").style.width = "0";
-            }
-            </script>
+    </div>
 </body>
 
 </html>

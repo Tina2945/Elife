@@ -30,7 +30,7 @@
             <img src="/images/logo.png" alt="Brand Image">
         </div>
         <div id="main">
-            <span style="font-size:30px;cursor:pointer;color:#6F916F" onclick="openNav()">&#9776;</span>
+            <span style="font-size:30px;cursor:pointer;color:#6F916F">&#9776;</span>
         </div>
     </div>
     <div class="container">
@@ -59,10 +59,10 @@
                 <img id="preview" src="<%= product.photo %>" class="img-responsive" alt="圖片" style="width:200px;height:200px;border:1px solid;border-radius:6px;">
             </div>
             <br>
-            <div class="form-group" style="float:left">
-                <button type="submit" class="btn btn-lg btn-success">儲存</button>
+            <div class="form-group col-sm-12">
+                <button type="submit" class="btn btn-lg btn-success" id="save">儲存</button>
                 <a href="/product">
-                    <button class="btn btn-lg btn-success">取消</button>
+                    <button class="btn btn-lg btn-success" id="cancel">取消</button>
                 </a>
             </div>
         </form>
