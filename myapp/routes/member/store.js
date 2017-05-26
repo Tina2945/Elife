@@ -6,7 +6,7 @@ var socket_io = require('socket.io');
 var zmq = require('zeromq');
 var subscriber = zmq.socket('sub');
 
-function zeropad(num) {
+var zeropad = function(num) {
     while (num.length < 4) {
         num = "0" + num;
     }
@@ -35,7 +35,7 @@ router.get('/:supplierId', function(req, res, next) {
         res.redirect('/login');
     }
 
-    subscriber.connect('tcp://localhost:5563');
+    subscriber.connect('tcp://140.119.19.17:5563');
     subscriber.subscribe(zeropad(req.params.supplierId));
 
     Product.getAll(req.params.supplierId, function(err, productList) {

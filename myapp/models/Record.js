@@ -19,7 +19,8 @@ var Record = function(options) {
 };
 
 Record.getAll = function(memberId, cb) {
-    db.distinct("date", "time")
+    db.groupBy("date")
+        .groupBy("time")
         .select()
         .from("buylist")
         .where({
@@ -29,8 +30,10 @@ Record.getAll = function(memberId, cb) {
         .orderBy("date", "desc")
         .orderBy("time", "desc")
         .map(function(row) {
-            var result = row.date + " " + row.time;
-            return result;
+            return new Record({
+                date: row.date,
+                time: row.time
+            })
         })
         .then(function(dateList) {
             if (dateList.length) {

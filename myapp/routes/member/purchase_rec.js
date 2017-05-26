@@ -21,17 +21,13 @@ router.get('/', function(req, res, next) {
     });
 });
 
-router.get('/:dateTime', function(req, res, next) {
+router.get('/:date/:time', function(req, res, next) {
     if (!req.session.member) {
         res.redirect('/login');
     }
 
-    var dt = (req.params.dateTime).split(" ");
-    date = dt[0];
-    time = dt[1];
-
     var sum = 0;
-    Record.get(req.session.member.id, date, time, function(err, recordList) {
+    Record.get(req.session.member.id, req.params.date, req.params.time, function(err, recordList) {
         if (err) {
             next();
         } else {
@@ -55,8 +51,8 @@ router.get('/:dateTime', function(req, res, next) {
                     } else {
                         res.render('member/record_detail', {
                             member: req.session.member,
-                            date: date,
-                            time: time,
+                            date: req.params.date,
+                            time: req.params.time,
                             recordList: recordList,
                             sum: sum
                         });

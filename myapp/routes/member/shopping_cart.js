@@ -3,6 +3,13 @@ var router = express.Router();
 var Cart = require('../../models/Cart');
 var SupplierMember = require('../../models/SupplierMember');
 var async = require('async');
+var dateFormat = require('dateformat');
+
+var DateTimezone = function(offset) {
+    d = new Date();
+    utc = d.getTime() + (d.getTimezoneOffset() * 60000);
+    return new Date(utc + (3600000 * offset));
+}
 
 router.get('/', function(req, res, next) {
     if (!req.session.member) {
@@ -70,9 +77,12 @@ router.get('/:cartId', function(req, res, next) {
 });
 
 router.post('/', function(req, res) {
-    var d = new Date();
-    date = d.toLocaleDateString();
-    time = d.toLocaleTimeString();
+    dateFormat.masks.date = 'yyyy-mm-dd';
+    dateFormat.masks.time = 'HH:MM:ss';
+
+    var taipei = DateTimezone(8);
+    var date = dateFormat(taipei, "date");
+    var time = dateFormat(taipei, "time");
 
     var id = [];
     if (typeof(req.body.cartId) == "object") {

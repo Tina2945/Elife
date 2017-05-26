@@ -31,7 +31,7 @@
                 </form>
             </div>
             <div id="main">
-               <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true" style="font-size:30px;cursor:pointer;color:white;" onclick="openNav()"></span>
+                <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true" style="font-size:30px;cursor:pointer;color:white;" onclick="openNav()"></span>
             </div>
         </div>
         <div class="container">
@@ -72,7 +72,8 @@
                                             </td>
                                             <td>
                                                 <a data-toggle="modal" data-target="#deleteProduct_<%= cart.id %>">
-                                                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                                    <!-- <span class="glyphicon glyphicon-remove"></span> -->
+                                                    <button id="exit">&times;</button>
                                                 </a>
                                             </td>
                                             <!-- deleteProduct Modal -->
@@ -108,12 +109,12 @@
                                 </tbody>
                             </table>
                             <br>
-                            <div class="col-xs-12" >
+                            <div class="col-xs-12">
                                 <a href="/home">
                                     <button type="button" class="btn btn-success btn-lg" id="btn1">繼續選購</button>
                                 </a>
                             </div>
-                            <div class="col-xs-12" >
+                            <div class="col-xs-12">
                                 <button type="submit" class="btn btn-success btn-lg" id="btn2">送出訂單</button>
                             </div>
                         </form>

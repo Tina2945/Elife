@@ -108,6 +108,13 @@ td {
     font-size: 20px;
 }
 
+#exit {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-size: 30px;
+}
+
 #btn1 {
     width: 100%;
     font-size: 25px;
@@ -125,6 +132,7 @@ td {
     width: 100%;
     font-size: 25px;
 }
+
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 
@@ -145,52 +153,41 @@ td {
     td {
         font-size: 13px;
     }
+    #exit{
+        font-size: 20px;
+    }
 }
 
-
-@media screen and (min-width:768px) and  (max-width:1024px){
-
-
-#btn1 {
-    width: 40%;
-    margin-right: 400px;
-
-}
-
-#btn2 {
-    width: 40%;
-    margin-left: 345px;
-    margin-top: -78px; 
-   
-}
-
-#btn3 {
-    width: 50%;
-    font-size: 25px;
-    margin: auto;
-}
-
+@media screen and (min-width:768px) and (max-width:1024px) {
+    #btn1 {
+        width: 40%;
+        margin-right: 400px;
+    }
+    #btn2 {
+        width: 40%;
+        margin-left: 345px;
+        margin-top: -78px;
+    }
+    #btn3 {
+        width: 50%;
+        font-size: 25px;
+        margin: auto;
+    }
 }
 
 @media screen and (min-width:1024px) {
-
-
-#btn1 {
-    width: 40%;
-    margin-right: 450px;
-
-}
-
-#btn2 {
-    width: 40%;
-    margin-left: 450px;
-    margin-top: -78px;   
-}
-
-#btn3 {
-    width: 50%;
-    font-size: 25px;
-    margin: auto;
-}
-
+    #btn1 {
+        width: 40%;
+        margin-right: 450px;
+    }
+    #btn2 {
+        width: 40%;
+        margin-left: 450px;
+        margin-top: -78px;
+    }
+    #btn3 {
+        width: 50%;
+        font-size: 25px;
+        margin: auto;
+    }
 }

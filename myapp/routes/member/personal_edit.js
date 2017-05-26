@@ -4,6 +4,10 @@ var Member = require('../../models/Member');
 var District = require('../../models/District');
 
 router.get('/', function(req, res, next) {
+    if (!req.session.member) {
+        res.redirect('/login');
+    }
+
     District.get(function(err, district) {
         res.render('member/personal_edit', {
             member: req.session.member,

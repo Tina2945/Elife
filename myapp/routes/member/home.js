@@ -26,7 +26,7 @@ router.get('/', function(req, res, next) {
                 if (err) {
                     console.log(err);
                 } else {
-                    SupplierMember.getAll(req.session.member.city, req.session.member.hometown, function(err, supplierList) {
+                    SupplierMember.getAll(req.session.member.id, req.session.member.city, req.session.member.hometown, function(err, supplierList) {
                         if (err) {
                             next();
                         } else {

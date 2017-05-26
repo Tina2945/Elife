@@ -13,46 +13,40 @@
 </head>
 
 <body>
-    <% if(member) { %>
-        <div class="navbar-header">
-            <div class="navbar-brand pull-right">
-                <img src="/images/logo.png" alt="Brand Image">
-            </div>
-            <div id="mySidenav" class="sidenav sidenav-hover">
-                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <div class="navbar-header">
+        <div class="navbar-brand pull-right">
+            <img src="/images/logo.png" alt="Brand Image">
+        </div>
+        <div id="main">
+            <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true" style="font-size:30px;color:#6F916F;"></span>
+        </div>
+    </div>
+    <div class="container-fluid text-center">
+        <div class="row content">
+            <div class="col-sm-12 text-middle">
                 <br>
-                <h3>&nbsp;&nbsp;&nbsp;&nbsp;<%= member.name %>, 您好!</h3>
-                <a href="/home"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;&nbsp;首頁</a>
-                <a href="/shopping_cart"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;&nbsp;&nbsp;購物車</a>
-                <a href="/purchase_rec"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;&nbsp;購買紀錄</a>
-                <a href="/personal_info"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;&nbsp;個人資料</a>
-                <form action="/register/logout" method="POST">
-                    <a><span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;<input id="logout" type="submit" value="登出"></a>
-                </form>
-            </div>
-            <div id="main">
-                <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true" style="font-size:30px;cursor:pointer;color:white;" onclick="openNav()"></span>
+                <h1 style="color: #56B949">成功!</h1>
+                <h2>您已完成了一筆交易，請於購買紀錄中查看!</h2>
             </div>
         </div>
-        <div class="container-fluid text-center">
-            <div class="row content">
-                <div class="col-sm-12 text-middle">
-                    <br>
-                    <h1 style="color: #56B949">成功!</h1>
-                    <h2>您已完成了一筆交易，請於購買紀錄中查看!</h2>
-                </div>
+        <br>
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10">
+                <a href="/purchase_rec" class="btn btn-success btn-lg" role="button" id="record">確定</a>
             </div>
+            <div class="col-sm-1"></div>
         </div>
-        <% } %>
-            <script>
-            function openNav() {
-                document.getElementById("mySidenav").style.width = "250px";
-            }
+    </div>
+        <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
 
-            function closeNav() {
-                document.getElementById("mySidenav").style.width = "0";
-            }
-            </script>
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+        </script>
 </body>
 
 </html>

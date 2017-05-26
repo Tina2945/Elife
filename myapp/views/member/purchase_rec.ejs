@@ -41,14 +41,14 @@
                     <h1>購買紀錄</h1>
                     <hr>
                     <% if(dateList) { %>
-                        <% for(i in dateList) { %>
-                            <a href="/purchase_rec/<%= dateList[i] %>">
+                        <% dateList.forEach(function(list) { %>
+                            <a href="/purchase_rec/<%= list.date %>/<%= list.time %>">
                                 <button type="button" class="btn btn-success btn-lg btn-block" id="record">
-                                    <%= dateList[i] %>
+                                    <%= list.date + " " + list.time %>
                                 </button>
                             </a>
                             <br>
-                            <% } %>
+                            <% }); %>
                                 <% } else { %>
                                     <h3 class="text-center">目前無購物紀錄</h3>
                                     <% } %>
