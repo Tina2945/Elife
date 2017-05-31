@@ -12,7 +12,6 @@ var users = require('./routes/users');
 //member
 var register = require('./routes/member/register');
 var login = require('./routes/member/login');
-var login_error = require('./routes/member/login_error');
 var home = require('./routes/member/home');
 var personal_info = require('./routes/member/personal_info');
 var purchase_rec = require('./routes/member/purchase_rec');
@@ -24,7 +23,6 @@ var personal_edit = require('./routes/member/personal_edit');
 //supplier
 var supplier = require('./routes/supplier/supplier');
 var supplierlogin = require('./routes/supplier/supplierlogin');
-var supplierlogin_error = require('./routes/supplier/supplierlogin_error');
 var product = require('./routes/supplier/product');
 var supplier_info = require('./routes/supplier/supplier_info');
 var order = require('./routes/supplier/order');
@@ -33,7 +31,6 @@ var supplier_edit = require('./routes/supplier/supplier_edit');
 //third
 var third = require('./routes/third/third');
 var thirdlogin = require('./routes/third/thirdlogin');
-var thirdlogin_error = require('./routes/third/thirdlogin_error');
 var third_order = require('./routes/third/third_order');
 var my_order = require('./routes/third/my_order');
 var history = require('./routes/third/history');
@@ -59,7 +56,6 @@ app.use('/users', users);
 //member
 app.use('/register', register);
 app.use('/login', login);
-app.use('/login_error', login_error);
 app.use('/home', home);
 app.use('/personal_info', personal_info);
 app.use('/purchase_rec', purchase_rec);
@@ -71,7 +67,6 @@ app.use('/personal_edit', personal_edit);
 //supplier
 app.use('/supplier', supplier);
 app.use('/supplierlogin', supplierlogin);
-app.use('/supplierlogin_error', supplierlogin_error);
 app.use('/product', product);
 app.use('/supplier_info', supplier_info);
 app.use('/order', order);
@@ -80,7 +75,6 @@ app.use('/supplier_edit', supplier_edit);
 //third
 app.use('/third', third);
 app.use('/thirdlogin', thirdlogin);
-app.use('/thirdlogin_error', thirdlogin_error);
 app.use('/third_order', third_order);
 app.use('/my_order', my_order);
 app.use('/history', history);
@@ -105,8 +99,7 @@ app.use(function(err, req, res, next) {
 
 //ZMQ subscribe
 app.ready = function(server) {
-    store.prepareSocketIO(server);
+    home.prepareSocketIO(server);
 };
-
 
 module.exports = app;
