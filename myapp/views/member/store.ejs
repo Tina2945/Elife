@@ -11,7 +11,6 @@
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script type='text/javascript' , src="/socket.io/socket.io.js"></script>
     <link rel="stylesheet" href="/stylesheets/member/store.css">
 </head>
 
@@ -43,9 +42,6 @@
                     <h1><%= supplier.storeName %></h1>
                     <hr>
                 </div>
-                <marquee scrollamount="4">
-                    <h3 id="product"></h3>
-                </marquee>
                 <% if(productList) { %>
                     <form action="/store/<%= supplier.id %>/search" method="GET">
                         <div class="input-group col-sm-12">
@@ -128,11 +124,6 @@
             function closeNav() {
                 document.getElementById("mySidenav").style.width = "0";
             }
-
-            var socket = io.connect();
-            socket.on('msg', function(data) {
-                $('#product').append(data.product + ", ");
-            });
             </script>
 </body>
 

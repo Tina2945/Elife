@@ -4,6 +4,12 @@ var Cart = require('../../models/Cart');
 var SupplierMember = require('../../models/SupplierMember');
 var async = require('async');
 var dateFormat = require('dateformat');
+var fs = require('fs');
+var ejs = require('ejs');
+var transporter = require('../../libs/mail');
+
+dateFormat.masks.date = 'yyyy-mm-dd';
+dateFormat.masks.time = 'HH:MM:ss';
 
 var DateTimezone = function(offset) {
     d = new Date();
@@ -54,7 +60,7 @@ router.get('/', function(req, res, next) {
                 });
             }
         }
-    })
+    });
 });
 
 router.get('/:cartId', function(req, res, next) {
@@ -76,10 +82,7 @@ router.get('/:cartId', function(req, res, next) {
 
 });
 
-router.post('/', function(req, res) {
-    dateFormat.masks.date = 'yyyy-mm-dd';
-    dateFormat.masks.time = 'HH:MM:ss';
-
+router.post('/', function(req, res, next) {
     var taipei = DateTimezone(8);
     var date = dateFormat(taipei, "date");
     var time = dateFormat(taipei, "time");
@@ -91,15 +94,65 @@ router.post('/', function(req, res) {
         id.push(req.body.cartId);
     }
 
+    if (req.session.member.email) {
+        var sum = 0;
+        Cart.get(id, function(err, cartList) {
+            if (err) {
+                next(err);
+            } else {
+                async.each(cartList, function(cart, cb) {
+                    sum += cart.total;
+                    SupplierMember.get(cart.supplierId, function(err, supplier) {
+                        if (err) {
+                            cb(err);
+                        } else {
+                            cart.supplier = supplier;
+                            cb(null);
+                        }
+                    });
+                }, function(err) {
+                    if (err) {
+                        next(err);
+                    } else {
+                        fs.readFile('./views/member/mailContent.ejs', 'utf8', function(err, template) {
+                            if (err) {
+                                console.log(err);
+                            }
+                            var compiledTemplate = ejs.render(template, {
+                                customer: req.session.member.name,
+                                cartList: cartList,
+                                sum: sum
+                            });
+                            var options = {
+                                from: '"Elife" <nccumis.elife@gmail.com>',
+                                to: req.session.member.email,
+                                subject: 'Elife系統通知',
+                                html: compiledTemplate
+                            }
+                            transporter.sendMail(options, function(error, info) {
+                                if (error) {
+                                    console.log(error);
+                                } else {
+                                    console.log('訊息發送: ' + info.response);
+                                }
+                            });
+                        });
+                    }
+                });
+            }
+        });
+    }
+
     var newCart = new Cart({
         paid: true,
         date: date,
         time: time
     });
-
+    
     newCart.update(id, function(err, cartList) {
         if (err) {
-            next(err);
+            res.status = err.code;
+            res.json(err);
         } else {
             res.redirect('/order_suc');
         }
@@ -119,7 +172,8 @@ router.post('/add', function(req, res) {
 
     newCart.save(function(err) {
         if (err) {
-            next(err);
+            res.status = err.code;
+            res.json(err);
         } else {
             res.redirect('/store/' + req.body.supplierId);
         }

@@ -49,6 +49,9 @@
                             <!-- contact-store -->
                             <div role="tabpanel" class="tab-pane active" id="contact-store">
                                 <% if(followList) { %>
+                                    <marquee scrollamount="4">
+                                        <h3 id="product"></h3>
+                                    </marquee>
                                     <% followList.forEach(function(follow) { %>
                                         <div class="col-sm-4">
                                             <div class="panel panel-default">
@@ -164,6 +167,7 @@
             </div>
         </div>
         <% } %>
+            <script type='text/javascript' , src="/socket.io/socket.io.js"></script>
             <script>
             function openNav() {
                 document.getElementById("mySidenav").style.width = "250px";
@@ -172,6 +176,11 @@
             function closeNav() {
                 document.getElementById("mySidenav").style.width = "0";
             }
+
+            var socket = io.connect();
+            socket.on('msg', function(data) {
+                $('#product').append(data.product + ", ");
+            });
             </script>
 </body>
 

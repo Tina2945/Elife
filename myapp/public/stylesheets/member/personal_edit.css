@@ -4,12 +4,12 @@ body {
 
 .navbar-header {
     background-color: #6F916F;
-    width:100%;
+    width: 100%;
 }
 
 .navbar-brand> img {
     width: 50%;
-    float:right;
+    float: right;
 }
 
 #main {
@@ -38,7 +38,7 @@ input {
 }
 
 input:focus {
-    outline:2px solid #6F916F;
+    outline: 2px solid #6F916F;
     border-radius: 6px;
 }
 
@@ -47,7 +47,7 @@ input:-webkit-autofill {
 }
 
 #photo:focus {
-    outline:2px solid #6F916F;
+    outline: 2px solid #6F916F;
     border-radius: 6px;
 }
 
@@ -64,8 +64,8 @@ input:-webkit-autofill {
 }
 
 #city:focus {
-    outline:2px solid #6F916F;
-    border-radius: 6px; 
+    outline: 2px solid #6F916F;
+    border-radius: 6px;
 }
 
 #save {
@@ -77,38 +77,27 @@ input:-webkit-autofill {
     width: 100%;
     font-size: 25px;
 }
-@media screen and (min-width:768px) and  (max-width:1024px){
 
-
-#save {
-    width: 45%;
-    margin-right: 400px;
-
-}
-
-#cancel {
-    width: 45%;
-    margin-left: 400px;
-    margin-top: -108px; 
-   
-}
-
-
+@media screen and (min-width:768px) and (max-width:1024px) {
+    #save {
+        width: 45%;
+        margin-right: 400px;
+    }
+    #cancel {
+        width: 45%;
+        margin-left: 400px;
+        margin-top: -108px;
+    }
 }
 
 @media screen and (min-width:1024px) {
-
-
-#save {
-    width: 45%;
-    margin-right: 400px;
-
-}
-
-#cancel {
-    width: 45%;
-    margin-left: 400px;
-    margin-top: -108px;   
-}
-
+    #save {
+        width: 45%;
+        margin-right: 400px;
+    }
+    #cancel {
+        width: 45%;
+        margin-left: 400px;
+        margin-top: -108px;
+    }
 }

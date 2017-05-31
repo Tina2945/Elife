@@ -1,34 +1,47 @@
 body {
     font-family: "Microsoft JhengHei", sans-serif;
 }
+
 .navbar-header {
     background-color: #6F916F;
-    width:100%;
+    width: 100%;
 }
 
 .navbar-brand>img {
     width: 50%;
-    float:right;
+    float: right;
 }
 
+
 /* The side navigation menu */
+
 .sidenav {
-    height: 100%; /* 100% Full-height */
-    width: 0; /* 0 width - change this with JavaScript */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Stay on top */
+    height: 100%;
+    /* 100% Full-height */
+    width: 0;
+    /* 0 width - change this with JavaScript */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Stay on top */
     top: 0;
     left: 0;
-    background-color: #a8dba8; 
-    overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 60px; /* Place content 60px from the top */
-    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+    background-color: #a8dba8;
+    overflow-x: hidden;
+    /* Disable horizontal scroll */
+    padding-top: 60px;
+    /* Place content 60px from the top */
+    transition: 0.5s;
+    /* 0.5 second transition effect to slide in the sidenav */
 }
+
 .sidenav h3 {
     color: #3a5134;
 }
 
+
 /* The navigation menu links */
+
 .sidenav a {
     padding: 20px 8px 20px 30px;
     text-decoration: none;
@@ -41,8 +54,11 @@ body {
     /*height: 25%;*/
 }
 
+
 /* When you mouse over the navigation links, change their color */
-.sidenav a:hover, .offcanvas a:focus{
+
+.sidenav a:hover,
+.offcanvas a:focus {
     padding: 20px 8px 20px 30px;
     /*margin-top: 10px;*/
     /*margin-bottom: 10px;*/
@@ -50,7 +66,9 @@ body {
     background-color: #6F916F;
 }
 
+
 /* Position and style the close button (top right corner) */
+
 .sidenav .closebtn {
     position: absolute;
     top: 0;
@@ -72,6 +90,7 @@ body {
 
 
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+
 #main {
     transition: margin-left .5s;
     padding: 20px;
@@ -82,23 +101,25 @@ body {
     font-size: 25px;
 }
 
+
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+
 @media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
+    .sidenav {
+        padding-top: 15px;
+    }
+    .sidenav a {
+        font-size: 18px;
+    }
 }
 
 @media screen and (min-width: 768px) {
-
-#picture {
-    margin-top: 80px;
+    #picture {
+        margin-top: 80px;
+    }
+    #member {
+        width: 50%;
+        font-size: 25px;
+        margin: auto;
+    }
 }
-
-#member {
-    width: 50%;
-    font-size: 25px;
-    margin: auto;
-}
-}
-
-

@@ -2,41 +2,11 @@ var express = require('express');
 var router = express.Router();
 var SupplierMember = require('../../models/SupplierMember');
 var Product = require('../../models/Product');
-var socket_io = require('socket.io');
-var zmq = require('zeromq');
-var subscriber = zmq.socket('sub');
-
-var zeropad = function(num) {
-    while (num.length < 4) {
-        num = "0" + num;
-    }
-    return num;
-};
-
-//ZMQ subscribe
-router.prepareSocketIO = function(server) {
-    var io = socket_io.listen(server);
-    io.sockets.on('connection', function(socket) {
-        subscriber.on('message', function(data) {
-            //console.log("receive");
-            var msg = [];
-            Array.prototype.slice.call(arguments).forEach(function(arg) {
-                msg.push(arg.toString());
-            });
-            socket.emit('msg', {
-                'product': msg[1]
-            });
-        });
-    });
-};
 
 router.get('/:supplierId', function(req, res, next) {
     if (!req.session.member) {
         res.redirect('/login');
     }
-
-    subscriber.connect('tcp://140.119.19.17:5563');
-    subscriber.subscribe(zeropad(req.params.supplierId));
 
     Product.getAll(req.params.supplierId, function(err, productList) {
         if (err) {
@@ -57,7 +27,7 @@ router.get('/:supplierId', function(req, res, next) {
     });
 });
 
-router.get('/:supplierId/search', function(req, res) {
+router.get('/:supplierId/search', function(req, res, next) {
     if (!req.session.member) {
         res.redirect('/login');
     }

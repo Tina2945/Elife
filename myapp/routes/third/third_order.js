@@ -100,7 +100,8 @@ router.post('/', function(req, res) {
 
     newBuy.update(id, function(err) {
         if (err) {
-            next();
+            res.status = err.code;
+            res.json(err);
         } else {
             res.redirect('/third_order');
         }

@@ -43,7 +43,8 @@ router.post('/add/save', upload.single('photo'), function(req, res) {
                 price: req.body.price,
                 description: req.body.description,
                 photo: json.data.link,
-                supplierId: req.session.supplierm.id
+                supplierId: req.session.supplierm.id,
+                storeName: req.session.supplierm.storeName
             });
             newProduct.save(function(err) {
                 if (err) {
@@ -84,8 +85,7 @@ router.post('/edit/save', upload.single('photo'), function(req, res) {
                     name: req.body.name,
                     price: req.body.price,
                     description: req.body.description,
-                    photo: json.data.link,
-                    supplierId: req.session.supplierm.id
+                    photo: json.data.link
                 });
                 newProduct.save(function(err) {
                     if (err) {
@@ -107,7 +107,6 @@ router.post('/edit/save', upload.single('photo'), function(req, res) {
             price: req.body.price,
             description: req.body.description,
             photo: req.body.url,
-            supplierId: req.session.supplierm.id
         });
         newProduct.save(function(err) {
             if (err) {

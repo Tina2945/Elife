@@ -9,14 +9,24 @@ router.get('/', function(req, res, next) {
 
 router.post('/', function(req, res, next) {
     Third.check(req.body.account, function(err, third) {
-        var md5 = crypto.createHash('md5');
-        var password = md5.update(req.body.password).digest('hex');
-
-        if (password != third.password) {
-            res.redirect('/thirdlogin_error');
+        if (err) {
+            res.render('login_error', {
+                error: '帳號錯誤',
+                link: 'thirdlogin'
+            });
         } else {
-            req.session.third = third;
-            res.redirect('/third_order');
+            var md5 = crypto.createHash('md5');
+            var password = md5.update(req.body.password).digest('hex');
+
+            if (password != third.password) {
+                res.render('login_error', {
+                    error: '密碼錯誤',
+                    link: 'thirdlogin'
+                });
+            } else {
+                req.session.third = third;
+                res.redirect('/third_order');
+            }
         }
     });
 });

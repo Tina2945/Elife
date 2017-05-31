@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head></head>
+
+<body>
+    <div class="container">
+        <div class="row content">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10">
+                <h3>親愛的<%= customer %>:<br>您的訂單已成立，非常感謝您的訂購!</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>店名/品項</th>
+                            <th>單價</th>
+                            <th>數量</th>
+                            <th>小計</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% cartList.forEach(function(cart) { %>
+                            <tr>
+                                <td>
+                                    <%= cart.supplier.storeName %>
+                                        <br>
+                                        <%= cart.name %>
+                                </td>
+                                <td>
+                                    <%= cart.price %>
+                                </td>
+                                <td>
+                                    <%= cart.quantity %>
+                                </td>
+                                <td>
+                                    <%= cart.total %>
+                                </td>
+                            </tr>
+                            <% }); %>
+                                <tr style="color:red">
+                                    <td><strong>總金額(元):</strong></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td><strong><%= sum %></strong></td>
+                                    <td></td>
+                                </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+    </div>
+</body>
+
+</html>
