@@ -104,7 +104,7 @@ Member.check = function(memberAccount, cb) {
             if (memberList.length) {
                 cb(null, memberList[0]);
             } else {
-                cb(new GeneralErrors.NotFound());
+                cb(new GeneralErrors.Database());
             }
         })
         .catch(function(err) {

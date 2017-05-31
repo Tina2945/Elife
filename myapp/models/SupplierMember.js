@@ -18,16 +18,13 @@ var SupplierMember = function(options) {
     this.password = options.password;
 };
 
-SupplierMember.getAll = function(memberId, city, hometown, cb) {
+SupplierMember.getAll = function(city, hometown, cb) {
     db.select()
         .from('supplierm')
-        .leftOuterJoin('follow', 'supplierm.id', 'follow.supplier_id')
         .where({
             city: city,
             hometown: hometown
         })
-        .whereNull('follow.supplier_id')
-        .orWhereNot('follow.member_id', memberId)
         .map(function(row) {
             return new SupplierMember(row);
         })

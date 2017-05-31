@@ -1,4 +1,4 @@
-var db = require('../libs/db'); //引入我們的sql builder
+var db = require('../libs/db');
 var GeneralErrors = require('../errors/GeneralErrors');
 
 var Product = function(options) {
@@ -8,6 +8,7 @@ var Product = function(options) {
     this.description = options.description;
     this.photo = options.photo;
     this.supplierId = options.supplierId;
+    this.storeName = options.storeName;
 };
 
 Product.getAll = function(supplierId, cb) {
@@ -24,7 +25,8 @@ Product.getAll = function(supplierId, cb) {
                 price: row.price,
                 description: row.description,
                 photo: row.photo,
-                supplierId: row.supplier_id
+                supplierId: row.supplier_id,
+                storeName: row.storeName
             });
         })
         .then(function(productList) {
@@ -55,7 +57,8 @@ Product.search = function(supplierId, name, cb) {
                 price: row.price,
                 description: row.description,
                 photo: row.photo,
-                supplierId: row.supplier_id
+                supplierId: row.supplier_id,
+                storeName: row.storeName
             });
         })
         .then(function(productList) {
@@ -84,7 +87,8 @@ Product.get = function(productId, cb) {
                 price: row.price,
                 description: row.description,
                 photo: row.photo,
-                supplierId: row.supplier_id
+                supplierId: row.supplier_id,
+                storeName: row.storeName
             });
         })
         .then(function(productList) {
@@ -125,7 +129,8 @@ Product.prototype.save = function(cb) {
                 price: this.price,
                 description: this.description,
                 photo: this.photo,
-                supplier_id: this.supplierId
+                supplier_id: this.supplierId,
+                storeName: row.storeName
             })
             .then(function(result) {
                 var insertedId = result[0];
