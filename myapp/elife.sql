@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2017-05-24 11:02:32
+-- 產生時間： 2017-07-19 08:02:53
 -- 伺服器版本: 10.1.10-MariaDB-log
 -- PHP 版本： 5.6.19
 
@@ -48,19 +48,13 @@ CREATE TABLE `buylist` (
 --
 
 INSERT INTO `buylist` (`id`, `member_id`, `supplier_id`, `product_id`, `name`, `price`, `quantity`, `total`, `paid`, `date`, `time`, `status`, `third_id`, `received`) VALUES
-(3, 1, 1, 9, '白玫瑰', 555, 1, 555, 1, '2017-4-8', '15:11:02', 1, 2, 1),
-(4, 1, 1, 10, '紅玫瑰', 555, 1, 555, 1, '2017-4-8', '15:11:02', 1, 2, 1),
-(7, 1, 1, 13, 'annie', 520, 2, 1040, 1, '2017-5-10', '16:14:12', 0, NULL, 0),
-(9, 1, 1, 9, '白玫瑰', 500, 2, 1000, 1, '2017-5-10', '16:14:12', 0, NULL, 0),
-(10, 4, 1, 4, 'nick', 1500, 1, 1500, 1, '2017-5-18', '19:19:19', 1, 2, 0),
-(11, 1, 1, 4, 'nick', 1500, 2, 3000, 1, '2017-5-19', '18:31:28', 1, 2, 0),
-(12, 1, 1, 11, '星光熠熠', 100, 1, 100, 1, '2017-5-19', '18:31:28', 1, 2, 0),
-(13, 1, 1, 11, '星光熠熠', 100, 2, 200, 1, '2017-5-20', '19:41:16', 0, NULL, 0),
-(14, 4, 2, 6, '貓咪拉花咖啡', 400, 2, 800, 1, '2017-5-20', '17:19:30', 0, NULL, 0),
-(15, 4, 1, 13, 'annie', 520, 1, 520, 1, '2017-5-20', '17:19:30', 0, NULL, 0),
-(16, 1, 1, 13, 'annie', 520, 3, 1560, 1, '2017-5-20', '19:41:16', 0, NULL, 0),
-(20, 1, 1, 22, '蛋糕', 99, 2, 198, 0, '2017-5-21', '15:59:57', 0, NULL, 0),
-(21, 1, 1, 10, '紅玫瑰', 555, 2, 1110, 0, '2017-5-21', '15:59:57', 0, NULL, 0);
+(2, 1, 1, 24, '北海鱈魚香絲', 50, 1, 50, 1, '2017-05-26', '21:03:43', 1, 4, 1),
+(3, 1, 1, 20, '台糖紅糖', 42, 2, 84, 1, '2017-05-26', '21:03:43', 1, 4, 1),
+(4, 6, 1, 26, '台鹽高級精鹽', 15, 4, 60, 1, '2017-05-26', '21:15:22', 1, 4, 1),
+(5, 6, 1, 24, '北海鱈魚香絲', 50, 5, 250, 1, '2017-05-26', '21:15:22', 1, 4, 1),
+(6, 6, 1, 20, '台糖紅糖', 42, 4, 168, 1, '2017-05-26', '21:15:22', 1, 4, 1),
+(7, 6, 1, 17, '維力炸醬麵', 75, 5, 375, 1, '2017-05-26', '21:15:22', 1, 4, 1),
+(8, 6, 1, 4, '綠巨人玉米罐頭', 40, 5, 200, 1, '2017-05-26', '21:15:22', 1, 4, 1);
 
 -- --------------------------------------------------------
 
@@ -8028,7 +8022,8 @@ CREATE TABLE `follow` (
 --
 
 INSERT INTO `follow` (`follow_id`, `member_id`, `supplier_id`) VALUES
-(9, 1, 1);
+(2, 1, 1),
+(3, 6, 1);
 
 -- --------------------------------------------------------
 
@@ -8057,8 +8052,10 @@ CREATE TABLE `member` (
 --
 
 INSERT INTO `member` (`id`, `name`, `phonenum`, `email`, `city`, `hometown`, `address`, `card1`, `card2`, `card3`, `card4`, `account`, `password`) VALUES
-(1, '謝小庭', '0911222333', 'a23305760@yahoo.com.tw', '臺中市 霧峰區', '中正村', '振興街21號3樓之一', '1111', '2222', '3333', '0102', '1227', 'c4851e8e264415c4094e4e85b0baa7cc'),
-(4, '羅靖婷', '0911111111', '', '臺中市 霧峰區', '中正村', '四德路32號', '2222', '3333', '4444', '5555', 'tina', 'ef2afe0ea76c76b6b4b1ee92864c4d5c');
+(1, '謝宜庭', '0972492802', 'a23305760@yahoo.com.tw', '臺中市 霧峰區', '中正村', '振興街21號3樓之一', '1111', '2222', '3333', '0102', '1227', 'c4851e8e264415c4094e4e85b0baa7cc'),
+(5, '洪翊慈', '0911222333', '', '臺中市 霧峰區', '中正村', '中正路300號', '1122', '1122', '1122', '1212', 'bluesky', 'c1a23116461d5856f98ee072ea319bc9'),
+(6, '羅靖婷', '0931960318', '103306006@nccu.edu.tw', '臺北市 文山區', '萬年里', '羅斯福路五段', '1234', '2345', '3456', '4567', 'tina', 'ef2afe0ea76c76b6b4b1ee92864c4d5c'),
+(7, '牛愛元', '0923851852', '103306044@nccu.edu.tw', '臺北市 松山區', '安平里', '南京東路五段251巷32弄3-1號4F', '1111', '2222', '3333', '4444', 'alice8567', 'f5139a70f31b673fd980081e709bdaf8');
 
 -- --------------------------------------------------------
 
@@ -8072,25 +8069,41 @@ CREATE TABLE `product` (
   `price` varchar(20) NOT NULL,
   `description` varchar(500) NOT NULL,
   `photo` varchar(100) NOT NULL,
-  `supplier_id` int(11) NOT NULL
+  `supplier_id` int(11) NOT NULL,
+  `storeName` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- 資料表的匯出資料 `product`
 --
 
-INSERT INTO `product` (`id`, `name`, `price`, `description`, `photo`, `supplier_id`) VALUES
-(4, 'nick', '1500', '我的帥哥', 'http://i.imgur.com/VEZzESn.jpg', 1),
-(6, '貓咪拉花咖啡', '400', '超好喝~大推!!!', 'http://imgur.com/POsbHD6.jpg', 2),
-(8, '草地上的男孩', '3000', '陽光帥氣', 'http://imgur.com/ugyXC9S.jpg', 2),
-(9, '白玫瑰', '500', '很白', 'http://i.imgur.com/H4wbgHq.jpg', 1),
-(10, '紅玫瑰', '555', '很紅', 'http://imgur.com/5gtluX3.jpg', 1),
-(11, '星光熠熠', '100', '我好帥!', 'http://imgur.com/JaGliiN.jpg', 1),
-(13, 'annie', '520', '最Q室友', 'http://imgur.com/VsNeems.jpg', 1),
-(21, 'Jessica', '900', '女神\r\n                ', 'http://i.imgur.com/lODM3yN.jpg', 1),
-(22, '蛋糕', '99', '好吃', 'http://i.imgur.com/NK9DJVn.jpg', 1),
-(23, 'Mike', '50', '吊飾', 'http://i.imgur.com/AoSZ8uu.png', 1),
-(24, '徽章', '50', '可愛實用', 'http://i.imgur.com/0UoyFZD.png', 1);
+INSERT INTO `product` (`id`, `name`, `price`, `description`, `photo`, `supplier_id`, `storeName`) VALUES
+(1, '火雞炒麵', '50', '韓國火雞炒麵', 'http://imgur.com/jqO3hDR.jpg', 3, 'Jasons'),
+(2, '黑人牙膏', '79', '強化琺瑯', 'http://imgur.com/hSzONli.jpg', 2, '屈臣氏'),
+(3, '安怡奶粉', '419', '長青高鈣', 'http://imgur.com/1ynYy98.jpg', 3, 'Jasons'),
+(4, '綠巨人玉米罐頭', '40', '方便好吃', 'http://imgur.com/IDGWxv7.jpg', 1, '581生活館'),
+(5, 'Biore沐浴乳', '139', '抗菌保溼', 'http://imgur.com/fqNGOd5.jpg', 2, '屈臣氏'),
+(6, '多芬乳液', '178', '潤澤柔嫩', 'http://imgur.com/EiWRdYz.jpg', 2, '屈臣氏'),
+(7, 'OP垃圾袋', '68', '花香環保', 'http://imgur.com/d0QKqvb.jpg', 1, '581生活館'),
+(8, '一匙靈洗衣精', '143', '制菌超濃縮', 'http://imgur.com/u277632.jpg', 1, '581生活館'),
+(9, '玫瑰莊園洗髮精', '290', '草本精華', 'http://imgur.com/mebqX2k.png', 2, '屈臣氏'),
+(10, '桂格大燕麥片', '160', '即充即食', 'http://imgur.com/FUFapu8.jpg', 3, 'Jasons'),
+(11, '魔術靈馬桶清潔劑', '55', '殺菌瞬潔', 'http://imgur.com/BtPcq41.jpg', 1, '581生活館'),
+(12, '萬歲牌堅果飲', '79', '健康元氣', 'http://imgur.com/2mOxJHY.jpg', 1, '581生活館'),
+(13, '覆盆莓麥片', '180', '有機水果', 'http://imgur.com/hjmFHbl.jpg', 3, 'Jasons'),
+(14, '棉花棒', '59', '安全衛生', 'http://imgur.com/NvVHPQV.jpg', 2, '屈臣氏'),
+(15, '舒跑975ml', '32', '低鈉更健康', 'http://imgur.com/Sh7jLIp.jpg', 1, '581生活館'),
+(16, '葡萄乾', '200', '新鮮有機', 'http://imgur.com/o6D4m4O.jpg', 3, 'Jasons'),
+(17, '維力炸醬麵', '75', '5入', 'http://imgur.com/fsffcK0.jpg', 1, '581生活館'),
+(18, '蔓越莓乾', '150', '嚴選天然', 'http://imgur.com/R2ACDEE.jpg', 3, 'Jasons'),
+(19, '得意衛生紙', '90', '抽取式8入', 'http://imgur.com/EipzTnR.jpeg', 1, '581生活館'),
+(20, '台糖紅糖', '42', '500g', 'http://imgur.com/8pp6XZU.jpg', 1, '581生活館'),
+(21, '愛之味鮪魚罐頭', '65', '185g', 'http://imgur.com/9cxqyiH.jpg', 1, '581生活館'),
+(22, '白蘭氏雞精', '180', '6瓶一盒', 'http://imgur.com/Tzo5SKq.jpg', 3, 'Jasons'),
+(23, '青蔥蘇打餅乾', '72', '嚴選食材', 'http://imgur.com/5hHFbBA.jpg', 1, '581生活館'),
+(24, '北海鱈魚香絲', '50', '越吃越好吃', 'http://imgur.com/yO8L1Zl.jpg', 1, '581生活館'),
+(25, '低筋麵粉', '35', '營養強化', 'http://imgur.com/9jDT2Z5.jpg', 3, 'Jasons'),
+(26, '台鹽高級精鹽', '15', '1kg', 'http://imgur.com/cEHSPEj.jpg', 1, '581生活館');
 
 -- --------------------------------------------------------
 
@@ -8120,10 +8133,9 @@ CREATE TABLE `supplierm` (
 --
 
 INSERT INTO `supplierm` (`id`, `storeName`, `photo`, `name`, `phonenum`, `city`, `hometown`, `address`, `card1`, `card2`, `card3`, `card4`, `account`, `password`) VALUES
-(1, '581生活館', 'http://imgur.com/2YLC3yz.jpg', 'Eating', '0930222', '臺中市 霧峰區', '中正村', '振興街21號3樓之一', '1111', '2222', '3333', '4444', 'alice', '6384e2b2184bcbf58eccf10ca7a6563c'),
-(2, '屈臣氏', NULL, '王先生', '99999999', '臺中市 西屯區', '何成里', '中正路25號', '', '', '', '', '123', '202cb962ac59075b964b07152d234b70'),
-(3, '康是美', NULL, '張益菕', '11111', '臺中市 霧峰區', '中正村', '中正路15號', '', '', '', '', 'nick', 'e2e42a07550863f8b67f5eb252581f6d'),
-(4, '111', 'http://imgur.com/XQHY32y.jpg', '111', '111', '臺中市 霧峰區', '中正村', '111', '1111', '1111', '1111', '1111', 'www', '4eae35f1b35977a00ebd8086c259d4c9');
+(1, '581生活館', 'http://imgur.com/wylBNIM.jpg', '林先生', '0911222333', '臺中市 霧峰區', '中正村', '四德路153號', '1111', '2222', '3333', '4444', 'alice', '6384e2b2184bcbf58eccf10ca7a6563c'),
+(2, '屈臣氏', 'http://imgur.com/iJ1y2op.jpg', '羅小姐', '0930777888', '臺中市 西屯區', '何成里', '中正路25號', '0101', '1010', '0101', '1010', '123', '202cb962ac59075b964b07152d234b70'),
+(3, 'Jasons', 'http://imgur.com/XRpGplZ.jpg', '何美欣', '0987654321', '臺中市 西屯區', '何成里', '大敦二十街173號', '9876', '9876', '9876', '9876', '103306079', '9e29f3ff7c4c4c989505d3615e03787e');
 
 -- --------------------------------------------------------
 
@@ -8144,7 +8156,9 @@ CREATE TABLE `thirdm` (
 --
 
 INSERT INTO `thirdm` (`id`, `name`, `phonenum`, `account`, `password`) VALUES
-(2, '葉大雄', '0988123456', 'bear', '893b56e3cfe153fb770a120b83bac20c');
+(2, '葉大雄', '0988123456', 'bear', '893b56e3cfe153fb770a120b83bac20c'),
+(3, '胖虎', '0930111222', 'tiger', '43b90920409618f188bfc6923f16b9fa'),
+(4, 'Luo', '0911222333', 'ttt', '9990775155c3518a0d7917f7780b24aa');
 
 --
 -- 已匯出資料表的索引
@@ -8209,7 +8223,7 @@ ALTER TABLE `thirdm`
 -- 使用資料表 AUTO_INCREMENT `buylist`
 --
 ALTER TABLE `buylist`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- 使用資料表 AUTO_INCREMENT `district`
 --
@@ -8219,27 +8233,27 @@ ALTER TABLE `district`
 -- 使用資料表 AUTO_INCREMENT `follow`
 --
 ALTER TABLE `follow`
-  MODIFY `follow_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `follow_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- 使用資料表 AUTO_INCREMENT `member`
 --
 ALTER TABLE `member`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- 使用資料表 AUTO_INCREMENT `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 --
 -- 使用資料表 AUTO_INCREMENT `supplierm`
 --
 ALTER TABLE `supplierm`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- 使用資料表 AUTO_INCREMENT `thirdm`
 --
 ALTER TABLE `thirdm`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- 已匯出資料表的限制(Constraint)
 --
